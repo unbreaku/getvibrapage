@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibra · No es una herramienta. Es una contratación.</title>
+<meta name="description" content="Vibra es el community manager con IA para tu comunidad de WhatsApp. Trabaja en el grupo, te reporta en privado y activa a tu gente — las 24 horas. Lista de espera abierta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#071208;
+    --bg-2:#0b1a0e;
+    --surface:#0f2113;
+    --surface-2:#12291a;
+    --line:rgba(255,255,255,.08);
+    --line-strong:rgba(255,255,255,.14);
+    --green:#22C55E;
+    --green-soft:rgba(34,197,94,.12);
+    --text:#eaf2ec;
+    --text-2:#a9bcae;
+    --text-3:#6f8576;
+    --wa-out:#1f3b2a;
+    --wa-in:#16241b;
+    --radius:18px;
+    --maxw:1140px;
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{position:relative}
+  .glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5;pointer-events:none;z-index:0}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(7,18,8,.72);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em}
+  .logo-dot{width:11px;height:11px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);flex-shrink:0}
+  .nav-links{display:flex;gap:28px;font-size:15px;color:var(--text-2);font-weight:500}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;font-family:inherit;cursor:pointer;border-radius:999px;padding:11px 22px;border:1px solid transparent;transition:.2s}
+  .btn-primary{background:var(--green);color:#04140a}
+  .btn-primary:hover{background:#34d36e;transform:translateY(-1px)}
+  .btn-ghost{color:var(--text-2);background:transparent}
+  .btn-ghost:hover{color:var(--text)}
+  .btn-outline{border:1px solid var(--line-strong);color:var(--text)}
+  .btn-outline:hover{border-color:var(--green);color:var(--green)}
+  @media(max-width:820px){.nav-links{display:none}}
+
+  /* hero */
+  .hero{padding:76px 0 50px;position:relative;z-index:1}
+  .hero .glow{width:600px;height:600px;background:var(--green);top:-260px;left:-120px;opacity:.16}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text-2);font-weight:600;background:var(--green-soft);border:1px solid rgba(34,197,94,.22);padding:7px 14px;border-radius:999px;margin-bottom:26px}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font-size:clamp(38px,5vw,62px);line-height:1.02;font-weight:800;letter-spacing:-.035em;margin-bottom:22px}
+  h1 .accent{color:var(--green)}
+  .lede{font-size:19px;color:var(--text-2);max-width:520px;margin-bottom:32px}
+  .hero-ctas{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:8px}
+  @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:44px}.lede{max-width:none}}
+
+  /* trust marquee */
+  .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin-top:44px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .marquee-track{display:flex;gap:46px;width:max-content;animation:scroll 28s linear infinite}
+  .marquee-track span{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text-3);white-space:nowrap}
+  .marquee-track svg{width:15px;height:15px;color:var(--green);flex-shrink:0}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+  /* two-level chat stack */
+  .chat-stack{display:flex;flex-direction:column;gap:18px;position:relative}
+  .level-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:10px}
+  .level-tag.grupo{background:rgba(143,182,255,.1);border:1px solid rgba(143,182,255,.25);color:#8fb6ff}
+  .level-tag.privado{background:var(--green-soft);border:1px solid rgba(34,197,94,.3);color:var(--green)}
+  .level-tag svg{width:12px;height:12px}
+  .connector{display:flex;justify-content:center;color:var(--text-3);font-size:12.5px;font-weight:600;gap:8px;align-items:center;margin:-4px 0}
+  .connector .arrow{color:var(--green);font-size:16px}
+
+  .phone{background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--line-strong);border-radius:22px;padding:14px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7),0 0 0 1px rgba(34,197,94,.05)}
+  .chat-head{display:flex;align-items:center;gap:11px;padding:4px 6px 12px;border-bottom:1px solid var(--line)}
+  .ch-avatar{width:38px;height:38px;border-radius:50%;background:var(--green);display:grid;place-items:center;font-weight:800;color:#04140a;font-size:16px;flex-shrink:0}
+  .ch-avatar.grp{background:linear-gradient(135deg,#8fb6ff,#4a7dd6);color:#0a1530}
+  .ch-name{font-weight:700;font-size:14.5px}
+  .ch-sub{font-size:11.5px;color:var(--text-3)}
+  .ch-sub.on{color:var(--green);display:flex;align-items:center;gap:5px}
+  .ch-sub .pulse{width:6px;height:6px;border-radius:50%;background:var(--green)}
+  .chat-body{display:flex;flex-direction:column;gap:9px;padding:14px 4px 6px}
+  .bubble{max-width:84%;padding:8px 12px;border-radius:13px;font-size:13.5px;line-height:1.45;position:relative}
+  .bubble .meta{display:block;font-size:10px;color:var(--text-3);margin-top:3px;text-align:right}
+  .bubble.in{background:var(--wa-in);border:1px solid var(--line);align-self:flex-start;border-top-left-radius:4px}
+  .bubble.out{background:var(--wa-out);border:1px solid rgba(34,197,94,.18);align-self:flex-end;border-top-right-radius:4px}
+  .bubble.out .meta .tick{color:var(--green)}
+  .bubble .who{display:block;font-size:10.5px;font-weight:700;color:var(--green);margin-bottom:2px}
+  .bubble .who.alt{color:#8fb6ff}
+  .bubble .who.alt2{color:#e2a857}
+  .bubble .who.alt3{color:#d98fff}
+  .pill-attach{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:7px 10px;margin-top:5px;font-size:12.5px;font-weight:600}
+  .quoted{border-left:3px solid var(--green);background:rgba(255,255,255,.04);border-radius:6px;padding:6px 9px;font-size:12px;color:var(--text-2);margin-bottom:5px}
+  .quoted b{color:var(--green);display:block;font-size:10.5px;margin-bottom:1px}
+
+  /* salary anchor */
+  .anchor{padding:84px 0 0}
+  .anchor-card{background:var(--bg-2);border:1px solid var(--line);border-radius:24px;padding:48px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+  .anchor-card h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+  .anchor-card h2 .accent{color:var(--green)}
+  .anchor-card p{font-size:17px;color:var(--text-2)}
+  .salary-rows{display:flex;flex-direction:column;gap:14px}
+  .srow{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+  .srow .lbl{font-size:14.5px;color:var(--text-2);font-weight:600}
+  .srow .val{font-size:17px;font-weight:800}
+  .srow.vibra{background:var(--green-soft);border-color:rgba(34,197,94,.3)}
+  .srow.vibra .val{color:var(--green)}
+  .srow .sub{display:block;font-size:12px;color:var(--text-3);font-weight:500}
+  @media(max-width:860px){.anchor-card{grid-template-columns:1fr;padding:30px}}
+
+  /* sin/con contrast */
+  .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:54px}
+  .vs-card{border-radius:var(--radius);padding:30px 28px;border:1px solid var(--line);background:var(--surface)}
+  .vs-card.con{border-color:rgba(34,197,94,.3);background:linear-gradient(180deg,var(--surface-2),var(--surface))}
+  .vs-card h4{font-size:20px;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .vs-card ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .vs-card li{display:flex;gap:11px;font-size:15.5px;color:var(--text-2);line-height:1.45}
+  .vs-card li .x{color:#e2735a;font-weight:800;flex-shrink:0}
+  .vs-card.con li{color:var(--text)}
+  .vs-card li .c{color:var(--green);font-weight:800;flex-shrink:0}
+  @media(max-width:820px){.vs-grid{grid-template-columns:1fr}}
+
+  /* sections */
+  .sec{padding:96px 0}
+  .sec-label{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:16px}
+  .sec-title{font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.08;max-width:780px}
+  .sec-sub{font-size:18px;color:var(--text-2);max-width:640px;margin-top:18px}
+
+  /* engines */
+  .engine{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:78px}
+  .engine:nth-child(even) .engine-copy{order:2}
+  .engine-num{font-size:14px;font-weight:700;color:var(--green);letter-spacing:.1em;margin-bottom:14px}
+  .engine h3{font-size:30px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px;line-height:1.12}
+  .engine p{font-size:17px;color:var(--text-2);max-width:440px}
+  .mini-chat{background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--line-strong);border-radius:var(--radius);padding:16px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+  @media(max-width:820px){.engine{grid-template-columns:1fr;gap:32px}.engine:nth-child(even) .engine-copy{order:0}}
+
+  /* frontier */
+  .frontier-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:54px}
+  .fcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .fcard.h{border-color:rgba(34,197,94,.28);background:linear-gradient(180deg,var(--surface-2),var(--surface))}
+  .fcard h4{font-size:21px;font-weight:800;margin-bottom:10px}
+  .fcard>p{font-size:15px;color:var(--text-2);margin-bottom:16px}
+  @media(max-width:820px){.frontier-grid{grid-template-columns:1fr}}
+
+  /* integrations */
+  .int-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin-top:54px}
+  .int-pills{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
+  .ipill{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:6px 16px 6px 6px;font-size:14px;font-weight:600;color:var(--text-2)}
+  .ilogo{width:27px;height:27px;border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+  .ipill-txt{padding:9px 17px}
+  .int-copy p{font-size:17px;color:var(--text-2)}
+  .int-copy p+p{margin-top:14px}
+  @media(max-width:860px){.int-grid{grid-template-columns:1fr;gap:34px}}
+
+  /* integrations carousel */
+  .icarousel{position:relative}
+  .cslide{display:none}
+  .cslide.active{display:block;animation:fade .4s ease}
+  .cdots{display:flex;gap:8px;justify-content:center;margin-top:16px}
+  .cdot{width:9px;height:9px;border-radius:50%;background:var(--line-strong);border:none;cursor:pointer;padding:0;transition:.2s}
+  .cdot.active{background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.6)}
+
+  /* comparison: tabla clásica (solo desktop) */
+  .compare{background:var(--bg-2);border-radius:24px;border:1px solid var(--line);overflow:hidden;margin-top:54px}
+  .compare-row{display:grid;grid-template-columns:1.15fr 1fr 1fr 1.15fr;border-bottom:1px solid var(--line)}
+  .compare-row:last-child{border-bottom:none}
+  .compare-cell{padding:22px;font-size:15px;color:var(--text-2);display:flex;align-items:center}
+  .compare-row.head .compare-cell{font-weight:700;color:var(--text);background:var(--surface)}
+  .compare-cell.job{font-weight:700;color:var(--text);background:rgba(255,255,255,.02)}
+  .compare-cell.vibra{background:var(--green-soft);color:var(--text);font-weight:600;border-left:1px solid rgba(34,197,94,.2)}
+  .compare-cell.vibra::before{content:"✓ ";color:var(--green);font-weight:800;margin-right:6px}
+  .compare-head-vibra{color:var(--green)!important;background:rgba(34,197,94,.14)!important}
+  @media(max-width:820px){.compare{display:none}}
+  @media(min-width:821px){.duels{display:none}}
+
+  /* comparison duels */
+  .duels{margin-top:54px;display:flex;flex-direction:column;gap:18px}
+  .duel{background:var(--bg-2);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .duel-job{padding:15px 24px;font-size:17px;font-weight:800;background:var(--surface);border-bottom:1px solid var(--line)}
+  .duel-row{display:grid;grid-template-columns:1fr 1fr 1.15fr}
+  .duel-cell{padding:17px 24px;border-right:1px solid var(--line)}
+  .duel-cell:last-child{border-right:none}
+  .duel-cell .actor{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:7px}
+  .duel-cell .ans{font-size:15px;color:var(--text-2);line-height:1.45}
+  .duel-cell.vw{background:var(--green-soft)}
+  .duel-cell.vw .actor{color:var(--green)}
+  .duel-cell.vw .ans{color:var(--text);font-weight:600}
+  .duel-cell.vw .ans::before{content:"✓ ";color:var(--green);font-weight:800}
+  @media(max-width:820px){
+    .duel-row{grid-template-columns:1fr}
+    .duel-cell{border-right:none;border-bottom:1px solid var(--line);padding:13px 22px}
+    .duel-cell:last-child{border-bottom:none}
+  }
+
+  /* testimonials */
+  .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}
+  .tcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column}
+  .tsaved{font-size:12.5px;font-weight:700;color:var(--green);background:var(--green-soft);border-radius:999px;padding:5px 12px;align-self:flex-start;margin-bottom:18px}
+  .tcard blockquote{font-size:16px;line-height:1.5;margin-bottom:22px;flex:1}
+  .tauthor{display:flex;align-items:center;gap:12px}
+  .tav{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--green),#0e7a3a);display:grid;place-items:center;font-weight:800;color:#04140a}
+  .tauthor .nm{font-weight:700;font-size:14.5px}
+  .tauthor .rl{font-size:13px;color:var(--text-3)}
+  @media(max-width:820px){.tgrid{grid-template-columns:1fr}}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:54px}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
+  .step-n{font-size:13px;font-weight:800;color:var(--green);letter-spacing:.1em;margin-bottom:18px}
+  .step h4{font-size:20px;font-weight:700;margin-bottom:10px}
+  .step p{font-size:15px;color:var(--text-2)}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+  /* segments */
+  .tabs{display:flex;gap:10px;margin-top:46px;flex-wrap:wrap}
+  .tab{padding:11px 20px;border-radius:999px;border:1px solid var(--line-strong);font-weight:600;font-size:15px;color:var(--text-2);cursor:pointer;transition:.2s;background:transparent;font-family:inherit}
+  .tab.active{background:var(--green);color:#04140a;border-color:var(--green)}
+  .panel{display:none;margin-top:34px;background:var(--bg-2);border:1px solid var(--line);border-radius:24px;padding:38px}
+  .panel.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .panel h3{font-size:26px;font-weight:800;margin-bottom:10px;max-width:640px}
+  .panel .ptag{font-size:14px;color:var(--green);font-weight:600;margin-bottom:18px}
+  .panel-feats{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:28px}
+  .pfeat h5{font-size:16.5px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:9px}
+  .pfeat h5 .dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
+  .pfeat p{font-size:14.5px;color:var(--text-2)}
+  @media(max-width:680px){.panel-feats{grid-template-columns:1fr}.panel{padding:26px}}
+
+  /* ask AI */
+  .askai{background:var(--bg-2);border:1px solid var(--line);border-radius:24px;padding:48px;text-align:center}
+  .askai h3{font-size:32px;font-weight:800;margin-bottom:12px}
+  .askai p{font-size:16px;color:var(--text-2);max-width:480px;margin:0 auto 28px}
+  .ai-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+  .ai-btn{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;padding:12px 20px;font-weight:600;font-size:15px;transition:.2s}
+  .ai-btn:hover{border-color:var(--green);transform:translateY(-1px)}
+
+  /* pricing / waitlist */
+  .pricing{background:linear-gradient(135deg,var(--surface-2),var(--bg-2));border:1px solid rgba(34,197,94,.22);border-radius:28px;padding:64px 48px;text-align:center;position:relative;overflow:hidden}
+  .pricing .glow{width:480px;height:480px;background:var(--green);bottom:-280px;right:-120px;opacity:.13}
+  .price-big{font-size:clamp(44px,7vw,72px);font-weight:800;letter-spacing:-.04em;line-height:1;position:relative;z-index:1}
+  .price-unit{font-size:19px;color:var(--text-2);font-weight:600;margin-top:12px;position:relative;z-index:1}
+  .pricing .sub{font-size:18px;color:var(--text-2);margin:16px auto 32px;max-width:480px;position:relative;z-index:1}
+  .pricing .hero-ctas{justify-content:center;position:relative;z-index:1;margin-bottom:0}
+  .price-feats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:28px;font-size:14px;color:var(--text-3);position:relative;z-index:1}
+  .price-feats span{display:flex;align-items:center;gap:7px}
+  .price-feats svg{width:15px;height:15px;color:var(--green)}
+
+  /* faq */
+  .faq-list{margin-top:46px;border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{width:100%;text-align:left;background:none;border:none;font-family:inherit;color:var(--text);font-size:18px;font-weight:600;padding:24px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px}
+  .faq-q .ic{color:var(--green);font-size:24px;transition:.3s;flex-shrink:0}
+  .faq-item.open .ic{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-a p{font-size:16px;color:var(--text-2);padding-bottom:24px;max-width:760px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  .foot-brand .lede{font-size:15px;margin-top:14px;max-width:280px}
+  .foot-col h6{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:16px;font-weight:700}
+  .foot-col a{display:block;font-size:14.5px;color:var(--text-2);margin-bottom:11px}
+  .foot-col a:hover{color:var(--green)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-3);flex-wrap:wrap;gap:14px}
+  @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+
+  /* waitlist phone capture — el CTA protagonista */
+  .wl-card{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid rgba(34,197,94,.35);border-radius:20px;padding:22px;max-width:560px;box-shadow:0 0 0 1px rgba(34,197,94,.06),0 24px 60px -28px rgba(34,197,94,.25)}
+  .wl-card-title{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+  .wl-card-title .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+  .wl-combo{display:flex;gap:10px}
+  .wl-select{background:var(--bg-2);border:1px solid var(--line-strong);border-radius:14px;padding:14px 10px;color:var(--text);font-family:inherit;font-size:15px;outline:none;cursor:pointer;max-width:108px;transition:.2s}
+  .wl-select:focus{border-color:var(--green)}
+  .wl-input{flex:1;min-width:0;background:var(--bg-2);border:1px solid var(--line-strong);border-radius:14px;padding:14px 18px;color:var(--text);font-family:inherit;font-size:16px;outline:none;transition:.2s}
+  .wl-input::placeholder{color:var(--text-3)}
+  .wl-input:focus{border-color:var(--green)}
+  .wl-input.err{border-color:#e2735a}
+  .wl-btn{width:100%;justify-content:center;margin-top:12px;padding:15px 22px;font-size:16.5px;box-shadow:0 10px 30px -10px rgba(34,197,94,.5)}
+  .wl-hint{font-size:13.5px;color:var(--text-3);margin-top:13px;line-height:1.5}
+  .wl-ok{font-size:14px;color:var(--green);font-weight:600;margin-top:13px;display:none}
+  .pricing .wl-card{margin:0 auto;position:relative;z-index:1;text-align:left}
+  @media(max-width:560px){.wl-combo{flex-wrap:wrap}.wl-select{max-width:none;flex:1 1 100%}}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#" class="logo"><span class="logo-dot"></span>Vibra</a>
+    <div class="nav-links">
+      <a href="#motores">Funcionalidades</a>
+      <a href="#integraciones">Integraciones</a>
+      <a href="#segmentos">Para quién es</a>
+      <a href="#faq">Preguntas</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#precio" class="btn btn-primary js-gowl">Unirme a la lista</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="pulse"></span>Lista de espera abierta · precio de lanzamiento para los primeros 100 grupos</span>
+        <h1>No es una herramienta.<br><span class="accent">Es una contratación.</span></h1>
+        <p class="lede">Vibra es el community manager con IA para tu comunidad de WhatsApp. Trabaja en el grupo a la vista de todos — y te reporta en privado, como lo haría tu mejor empleado.</p>
+        <div class="hero-ctas">
+          <a href="#precio" class="btn btn-primary js-gowl" style="padding:14px 30px;font-size:16.5px">Unirme a la lista de espera →</a>
+        </div>
+      </div>
+
+      <!-- TWO-LEVEL CHAT STACK -->
+      <div class="chat-stack reveal">
+        <!-- LEVEL 1: GROUP -->
+        <div>
+          <span class="level-tag grupo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg>En el grupo · público</span>
+          <div class="phone">
+            <div class="chat-head">
+              <div class="ch-avatar grp">M</div>
+              <div>
+                <div class="ch-name">Membresía de Marketing 🚀</div>
+                <div class="ch-sub">1.240 participantes · Laura, Diego, Vibra…</div>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="bubble in"><span class="who alt">Laura M.</span>alguien sabe si la sesión de hoy se grabó? me la perdí 😩<span class="meta">21:47</span></div>
+              <div class="bubble out"><span class="who">Vibra</span>¡Hola Laura! Sí 🙌 La grabación ya está disponible — te la paso por privado para no llenar el grupo 👌<span class="meta">21:47 <span class="tick">✓✓</span></span></div>
+              <div class="bubble in"><span class="who alt2">Diego R.</span>esta comunidad es otro nivel 🔥<span class="meta">21:48</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector">mientras tanto, en tu chat privado <span class="arrow">↓</span></div>
+
+        <!-- LEVEL 2: PRIVATE 1:1 WITH ADMIN -->
+        <div>
+          <span class="level-tag privado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Contigo · privado</span>
+          <div class="phone">
+            <div class="chat-head">
+              <div class="ch-avatar">V</div>
+              <div>
+                <div class="ch-name">Vibra</div>
+                <div class="ch-sub on"><span class="pulse"></span>en línea</div>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="bubble in"><span class="who">Vibra</span>👀 Dato sobre Laura: preguntó por la grabación, pero su renovación venció hace 3 días y sigue en el grupo. Te propongo mandarle la grabación junto con esto:<div class="quoted" style="margin-top:6px;margin-bottom:0"><b>Borrador</b>Laura, aquí está la grabación 🎥 Aprovecho: tu membresía venció el lunes — ¿la renuevo para que no pierdas acceso al reto que empieza el jueves?</div><span class="meta">21:48</span></div>
+              <div class="bubble out">perfecto, envíalo 👍<span class="meta">21:49 <span class="tick">✓✓</span></span></div>
+              <div class="bubble in"><span class="who">Vibra</span>Enviado ✅ Te aviso si renueva.<span class="meta">21:49</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRUST MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marquee">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Hecho 100% para WhatsApp</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Sin tarjeta para empezar</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Tus datos son tuyos — exportables y borrables</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Tú decides qué aprueba un humano</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Soporte humano en español</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Listo en minutos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SALARY ANCHOR -->
+<section class="anchor">
+  <div class="wrap">
+    <div class="anchor-card reveal">
+      <div>
+        <h2>El community manager más barato que vas a contratar. <span class="accent">Y el único que no duerme.</span></h2>
+        <p>Un CM humano dedicado lee una fracción de los mensajes, trabaja 8 horas y cuesta un salario completo. Vibra lee el 100%, trabaja 24/7 y cobra solo por los miembros que de verdad participan.</p>
+      </div>
+      <div class="salary-rows">
+        <div class="srow"><span class="lbl">CM en LATAM<span class="sub">salario mensual típico</span></span><span class="val">USD 800 – 1.500</span></div>
+        <div class="srow"><span class="lbl">CM en España<span class="sub">salario mensual típico</span></span><span class="val">EUR 1.800 – 2.500</span></div>
+        <div class="srow"><span class="lbl">CM en USA<span class="sub">salario mensual típico</span></span><span class="val">USD 4.000+</span></div>
+        <div class="srow vibra"><span class="lbl">Vibra<span class="sub">por miembro activo al mes</span></span><span class="val">USD 1</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIN / CON -->
+<section class="sec" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-label">Te suena, ¿verdad?</div>
+    <h2 class="sec-title">El grupo que conoces vs. el grupo con alguien al volante.</h2>
+    <div class="vs-grid">
+      <div class="vs-card reveal">
+        <h4>😮‍💨 Tu grupo hoy</h4>
+        <ul>
+          <li><span class="x">✕</span>Despiertas con 340 mensajes sin leer y la sensación de que algo importante se te pasó.</li>
+          <li><span class="x">✕</span>Te preguntan lo mismo por quinta vez esta semana — el link, la fecha, la grabación.</li>
+          <li><span class="x">✕</span>Los nuevos entran, nadie los recibe, y desaparecen sin que nadie lo note.</li>
+          <li><span class="x">✕</span>Los miembros que pagaban se enfrían en silencio… hasta que llega la cancelación.</li>
+          <li><span class="x">✕</span>Eres el creador, el soporte, el moderador y el animador. A la vez. A las 11pm.</li>
+        </ul>
+      </div>
+      <div class="vs-card con reveal">
+        <h4>😌 Tu grupo con Vibra</h4>
+        <ul>
+          <li><span class="c">✓</span>Despiertas con un resumen en tu privado: qué pasó, qué resolvió Vibra y qué espera tu OK.</li>
+          <li><span class="c">✓</span>Las preguntas de siempre se responden solas, en el momento, con buen tono.</li>
+          <li><span class="c">✓</span>Cada nuevo miembro es recibido, presentado y conectado desde el minuto uno.</li>
+          <li><span class="c">✓</span>Te enteras de quién se enfría <em>antes</em> de que cancele — con el mensaje de rescate listo.</li>
+          <li><span class="c">✓</span>Tú vuelves a hacer lo que solo tú puedes hacer: crear. Vibra sostiene el resto.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGINES -->
+<section class="sec" id="motores">
+  <div class="wrap">
+    <div class="sec-label">Tres motores, dos niveles</div>
+    <h2 class="sec-title">El valor de tu comunidad está encerrado en conversaciones que nadie alcanza a ver.</h2>
+    <p class="sec-sub">Toda comunidad de WhatsApp vive en dos niveles: el grupo, donde pasa la conversación, y los privados, donde pasa la relación. Vibra trabaja en los dos — como un buen community manager.</p>
+
+    <div class="engine reveal">
+      <div class="engine-copy">
+        <div class="engine-num">01 · Escucha</div>
+        <h3>Lee lo que nadie alcanza a leer.</h3>
+        <p>4.000 mensajes al día, a las 2 de la mañana, en tres grupos a la vez. Vibra los lee todos. Detecta la pregunta sin responder, la queja que se repite y el momento exacto en que alguien empieza a enfriarse.</p>
+      </div>
+      <div class="mini-chat">
+        <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+        <div class="chat-body">
+          <div class="bubble in"><span class="who">Vibra</span>☀️ Resumen de la noche: 412 mensajes en tus 3 grupos. Respondí 9 preguntas, di 2 bienvenidas. Lo que me llamó la atención: "precio del próximo reto" se mencionó 14 veces 👀 — huele a interés de compra. Y 3 de tus top-10 bajaron su actividad 60% esta semana. ¿Te armo las dos listas?<span class="meta">07:30</span></div>
+          <div class="bubble out">sí, y empieza por los del reto 🔥<span class="meta">07:42 <span class="tick">✓✓</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="engine reveal">
+      <div class="engine-copy">
+        <div class="engine-num">02 · Entiende</div>
+        <h3>Sabe quién es quién.</h3>
+        <p>Recuerda quién preguntó qué, quién aporta, quién lleva semanas en silencio y qué temas encienden a tu gente. Cada conversación la hace más lista sobre tu comunidad — nunca le repites lo mismo dos veces.</p>
+      </div>
+      <div class="mini-chat">
+        <span class="level-tag grupo" style="margin-bottom:8px">En el grupo · público</span>
+        <div class="chat-body">
+          <div class="bubble in"><span class="who alt">Andrea</span>alguien tiene experiencia vendiendo high-ticket en frío? estoy perdida 😅<span class="meta">10:02</span></div>
+          <div class="bubble out"><span class="who">Vibra</span>Andrea, justo Marcos compartió en marzo el sistema con el que cerró $40K en frío — uno de los mejores hilos del grupo 🏆 @Marcos, ¿le cuentas? Andrea, te mando el resumen de ese hilo por privado 📩<span class="meta">10:02 <span class="tick">✓✓</span></span></div>
+          <div class="bubble in"><span class="who alt3">Marcos</span>jaja buena memoria Vibra 😂 Andrea claro, escríbeme<span class="meta">10:04</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="engine reveal">
+      <div class="engine-copy">
+        <div class="engine-num">03 · Activa</div>
+        <h3>Hizo el trabajo. Te avisó. Punto.</h3>
+        <p>Dio la bienvenida en el grupo, respondió lo de siempre, movió lo personal al privado y conectó a dos miembros que debían conocerse. Lo que pesa de verdad te llega a tu chat con el borrador listo. Tú respondes "envíalo"; Vibra ejecuta.</p>
+      </div>
+      <div class="mini-chat">
+        <span class="level-tag grupo" style="margin-bottom:8px">En el grupo · público</span>
+        <div class="chat-body">
+          <div class="bubble in"><span class="who alt2">Martín</span>Hola! me acabo de unir 👋 Tengo una agencia de marketing y estamos lanzando nuestra primera membresía<span class="meta">15:30</span></div>
+          <div class="bubble out"><span class="who">Vibra</span>¡Bienvenido, Martín! 🙌 Entonces tienes que conocer a Sofía — lanzó la membresía de su agencia hace 6 meses y ya pasó por todo lo que viene. @Sofía, ¿se conocen? Creo que tienen mucho de qué hablar.<span class="meta">15:30 <span class="tick">✓✓</span></span></div>
+          <div class="bubble in"><span class="who alt3">Sofía</span>jaja sí! Martín te escribo 👋<span class="meta">15:32</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRONTIER -->
+<section class="sec" style="padding-top:0" id="frontera">
+  <div class="wrap">
+    <div class="sec-label">Autonomía con frontera</div>
+    <h2 class="sec-title">Resuelve solo. Te llama cuando pesa.</h2>
+    <p class="sec-sub">Lo rutinario — bienvenidas, FAQs, recordatorios — Vibra lo resuelve en el grupo sin pedir permiso, y queda registrado. Lo que pesa de verdad llega a tu chat privado con el borrador listo, y nada sale sin tu visto bueno. Tú decides dónde está la frontera.</p>
+
+    <div class="frontier-grid">
+      <div class="fcard">
+        <span class="level-tag grupo">En el grupo · resuelve solo</span>
+        <h4>Sin pedir permiso.</h4>
+        <p>Las reglas las defines una vez. Vibra ejecuta dentro de ellas, sin parar, y cada acción queda en un registro que puedes revisar.</p>
+        <div class="chat-body" style="padding:0">
+          <div class="bubble in"><span class="who alt">Lucía</span>a qué hora es el evento de mañana?<span class="meta">14:19</span></div>
+          <div class="bubble out"><span class="who">Vibra</span>Mañana 18:00 (hora Madrid) 🗓️ Les mando recordatorio al grupo 1 hora antes. Lucía, si quieres el link de calendario te lo paso por privado 👌<span class="meta">14:19 <span class="tick">✓✓</span></span></div>
+        </div>
+      </div>
+      <div class="fcard h">
+        <span class="level-tag privado">En tu chat privado · espera tu OK</span>
+        <h4>Con tu visto bueno.</h4>
+        <p>Te llega el contexto y la propuesta. Respondes con un mensaje normal — como le responderías a un empleado de confianza.</p>
+        <div class="chat-body" style="padding:0">
+          <div class="bubble in"><span class="who">Vibra</span>🤝 Diego preguntó en el grupo si alguien conoce gente en Mercado Libre. Tú tienes a Valeria Gómez (se conocieron en el evento de marzo y quedó en buena onda). ¿Le paso su contacto a Diego, o prefieres hacer tú la intro?<span class="meta">16:02</span></div>
+          <div class="bubble out">haz tú la intro, mencioname<span class="meta">16:04 <span class="tick">✓✓</span></span></div>
+          <div class="bubble in"><span class="who">Vibra</span>Hecha ✅ Les escribí a los dos de tu parte. Diego ya respondió: "eres un crack" 😄<span class="meta">16:05</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="sec" style="padding-top:0" id="integraciones">
+  <div class="wrap">
+    <div class="sec-label">Un mensaje, todas tus herramientas</div>
+    <h2 class="sec-title">Tu comunidad vive en WhatsApp. Tu negocio vive en todas partes.</h2>
+    <div class="int-grid">
+      <div class="int-copy">
+        <p>Vibra conecta lo que pasa en el grupo con las herramientas donde corre tu operación: el evento en Luma, la lista en Google Sheets, lo que tu equipo documentó en Slack, el alumno en tu LMS, el lead en tu CRM. Le pides cosas por tu chat privado, como a un empleado — y las cruza todas en una sola respuesta.</p>
+        <p>Sin exportar CSVs, sin cambiar de pestaña, sin "después lo reviso".</p>
+        <div class="int-pills">
+          <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#4A154B"/></svg></span>Slack</span>
+          <span class="ipill"><span class="ilogo" style="background:#34A853"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z" fill="#fff"/></svg></span>Google Sheets</span>
+          <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M18.316 5.684H24v12.632h-5.684V5.684zM5.684 24h12.632v-5.684H5.684V24zM18.316 5.684V0H1.895A1.894 1.894 0 0 0 0 1.895v16.421h5.684V5.684h12.632zm-7.207 6.25v-.065c.272-.144.5-.349.687-.617s.279-.595.279-.982c0-.379-.099-.72-.3-1.025a2.05 2.05 0 0 0-.832-.714 2.703 2.703 0 0 0-1.197-.257c-.6 0-1.094.156-1.481.467-.386.311-.65.671-.793 1.078l1.085.452c.086-.249.224-.461.413-.633.189-.172.445-.257.767-.257.33 0 .602.088.816.264a.86.86 0 0 1 .322.703c0 .33-.12.589-.36.778-.24.19-.535.284-.886.284h-.567v1.085h.633c.407 0 .748.109 1.02.327.272.218.407.499.407.843 0 .336-.129.614-.387.832s-.565.327-.924.327c-.351 0-.651-.103-.897-.311-.248-.208-.422-.502-.521-.881l-1.096.452c.178.616.505 1.082.977 1.401.472.319.984.478 1.538.477a2.84 2.84 0 0 0 1.293-.291c.382-.193.684-.458.902-.794.218-.336.327-.72.327-1.149 0-.429-.115-.797-.344-1.105a2.067 2.067 0 0 0-.881-.689zm2.093-1.931l.602.913L15 10.045v5.744h1.187V8.446h-.827l-2.158 1.557zM22.105 0h-3.289v5.184H24V1.895A1.894 1.894 0 0 0 22.105 0zm-3.289 23.5l4.684-4.684h-4.684V23.5zM0 22.105C0 23.152.848 24 1.895 24h3.289v-5.184H0v3.289z" fill="#4285F4"/></svg></span>Google Calendar</span>
+          <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z" fill="#4285F4"/></svg></span>Google Drive</span>
+          <span class="ipill"><span class="ilogo" style="background:#FF7A59"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z" fill="#fff"/></svg></span>HubSpot</span>
+          <span class="ipill"><span class="ilogo" style="background:#635BFF"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z" fill="#fff"/></svg></span>Stripe</span>
+          <span class="ipill"><span class="ilogo" style="background:#006BFF"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M19.655 14.262c.281 0 .557.023.828.064 0 .005-.005.01-.005.014-.105.267-.234.534-.381.786l-1.219 2.106c-1.112 1.936-3.177 3.127-5.411 3.127h-2.432c-2.23 0-4.294-1.191-5.412-3.127l-1.218-2.106a6.251 6.251 0 0 1 0-6.252l1.218-2.106C6.736 4.832 8.8 3.641 11.035 3.641h2.432c2.23 0 4.294 1.191 5.411 3.127l1.219 2.106c.147.252.271.519.381.786 0 .004.005.009.005.014-.267.041-.543.064-.828.064-1.816 0-2.501-.607-3.291-1.306-.764-.676-1.711-1.517-3.44-1.517h-1.029c-1.251 0-2.387.455-3.2 1.278-.796.805-1.233 1.904-1.233 3.099v1.411c0 1.196.437 2.295 1.233 3.099.813.823 1.949 1.278 3.2 1.278h1.034c1.729 0 2.676-.841 3.439-1.517.791-.703 1.471-1.306 3.287-1.301Zm.005-3.237c.399 0 .794-.036 1.179-.11-.002-.004-.002-.01-.002-.014-.073-.414-.193-.823-.349-1.218.731-.12 1.407-.396 1.986-.819 0-.004-.005-.013-.005-.018-.331-1.085-.832-2.101-1.489-3.03-.649-.915-1.435-1.719-2.331-2.395-1.867-1.398-4.088-2.138-6.428-2.138-1.448 0-2.855.28-4.175.841-1.273.543-2.423 1.315-3.407 2.299S2.878 6.552 2.341 7.83c-.557 1.324-.842 2.726-.842 4.175 0 1.448.281 2.855.842 4.174.542 1.274 1.314 2.423 2.298 3.407s2.129 1.761 3.407 2.299c1.324.556 2.727.841 4.175.841 2.34 0 4.561-.74 6.428-2.137a10.815 10.815 0 0 0 2.331-2.396c.652-.929 1.158-1.949 1.489-3.03 0-.004.005-.014.005-.018-.579-.423-1.255-.699-1.986-.819.161-.395.276-.804.349-1.218.005-.009.005-.014.005-.023.869.166 1.692.506 2.404 1.035.685.505.552 1.075.446 1.416C22.184 20.437 17.619 24 12.221 24c-6.625 0-12-5.375-12-12s5.37-12 12-12c5.398 0 9.963 3.563 11.471 8.464.106.341.239.915-.446 1.421-.717.529-1.535.873-2.404 1.034.128.716.128 1.45 0 2.166-.387-.074-.782-.11-1.182-.11-4.184 0-3.968 2.823-6.736 2.823h-1.029c-1.899 0-3.15-1.357-3.15-3.095v-1.411c0-1.738 1.251-3.094 3.15-3.094h1.034c2.768 0 2.552 2.823 6.731 2.827Z" fill="#fff"/></svg></span>Calendly</span>
+          <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" fill="#000"/></svg></span>Notion</span>
+          <span class="ipill"><span class="ilogo" style="background:#6D00CC"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M13.38 3.498c-.27 0-.511.19-.566.465L9.85 18.986a.578.578 0 0 0 .453.678l4.095.826a.58.58 0 0 0 .682-.455l2.963-15.021a.578.578 0 0 0-.453-.678l-4.096-.826a.589.589 0 0 0-.113-.012zm-5.876.098a.576.576 0 0 0-.516.318L.062 17.697a.575.575 0 0 0 .256.774l3.733 1.877a.578.578 0 0 0 .775-.258l6.926-13.781a.577.577 0 0 0-.256-.776L7.762 3.658a.571.571 0 0 0-.258-.062zm11.74.115a.576.576 0 0 0-.576.576v15.426c0 .318.258.578.576.578h4.178a.58.58 0 0 0 .578-.578V4.287a.578.578 0 0 0-.578-.576Z" fill="#fff"/></svg></span>Make</span>
+          <span class="ipill"><span class="ilogo" style="background:#FF4F00"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.157 0A4.151 4.151 0 0 0 0 4.161v15.678A4.151 4.151 0 0 0 4.157 24h15.682A4.152 4.152 0 0 0 24 19.839V4.161A4.152 4.152 0 0 0 19.839 0H4.157Zm10.61 8.761h.03a.577.577 0 0 1 .23.038.585.585 0 0 1 .201.124.63.63 0 0 1 .162.431.612.612 0 0 1-.162.435.58.58 0 0 1-.201.128.58.58 0 0 1-.23.042.529.529 0 0 1-.235-.042.585.585 0 0 1-.332-.328.559.559 0 0 1-.038-.235.613.613 0 0 1 .17-.431.59.59 0 0 1 .405-.162Zm2.853 1.572c.03.004.061.004.095.004.325-.011.646.064.937.219.238.144.431.355.552.609.128.279.189.582.185.888v.193a2 2 0 0 1 0 .219h-2.498c.003.227.075.45.204.642a.78.78 0 0 0 .646.265.714.714 0 0 0 .484-.136.642.642 0 0 0 .23-.318l.915.257a1.398 1.398 0 0 1-.28.537c-.14.159-.321.284-.521.355a2.234 2.234 0 0 1-.836.136 1.923 1.923 0 0 1-1.001-.245 1.618 1.618 0 0 1-.665-.703 2.221 2.221 0 0 1-.227-1.036 1.95 1.95 0 0 1 .48-1.398 1.9 1.9 0 0 1 1.3-.488Zm-9.607.023c.162.004.325.026.48.079.207.065.4.174.563.314.26.302.393.692.366 1.088v2.276H8.53l-.109-.711h-.065c-.064.163-.155.31-.272.439a1.122 1.122 0 0 1-.374.264 1.023 1.023 0 0 1-.453.083 1.334 1.334 0 0 1-.866-.264.965.965 0 0 1-.329-.801.993.993 0 0 1 .076-.431 1.02 1.02 0 0 1 .242-.363 1.478 1.478 0 0 1 1.043-.303h.952v-.181a.696.696 0 0 0-.136-.454.553.553 0 0 0-.438-.154.695.695 0 0 0-.378.086.48.48 0 0 0-.193.254l-.99-.144a1.26 1.26 0 0 1 .257-.563c.14-.174.321-.302.533-.378.261-.091.54-.136.82-.129.053-.003.106-.007.163-.007Zm4.384.007c.174 0 .347.038.506.114.182.083.34.211.458.374.257.423.377.911.351 1.406a2.53 2.53 0 0 1-.355 1.448 1.148 1.148 0 0 1-1.009.517c-.204 0-.401-.045-.582-.136a1.052 1.052 0 0 1-.48-.457 1.298 1.298 0 0 1-.114-.234h-.045l.004 1.784h-1.059v-4.713h.904l.117.805h.057c.068-.208.177-.401.328-.56a1.129 1.129 0 0 1 .843-.344h.076v-.004Zm7.559.084h.903l.113.805h.053a1.37 1.37 0 0 1 .235-.484.813.813 0 0 1 .313-.242.82.82 0 0 1 .39-.076h.234v1.051h-.401a.662.662 0 0 0-.313.008.623.623 0 0 0-.272.155.663.663 0 0 0-.174.26.683.683 0 0 0-.027.314v1.875h-1.054v-3.666Zm-17.515.003h3.262v.896L3.73 13.104l.034.113h1.973l.042.9H2.4v-.9l1.931-1.754-.045-.117H2.441v-.896Zm11.815 0h1.055v3.659h-1.055V10.45Zm3.443.684.019.016a.69.69 0 0 0-.351.045.756.756 0 0 0-.287.204c-.11.155-.174.336-.189.522h1.545c-.034-.526-.257-.787-.74-.787h.003Zm-5.718.163c-.026 0-.057 0-.083.004a.78.78 0 0 0-.31.053.746.746 0 0 0-.257.189 1.016 1.016 0 0 0-.204.695v.064c-.015.257.057.507.204.711a.634.634 0 0 0 .253.196.638.638 0 0 0 .314.061.644.644 0 0 0 .578-.265c.14-.223.204-.48.189-.74a1.216 1.216 0 0 0-.181-.711.677.677 0 0 0-.503-.257Zm-4.509 1.266a.464.464 0 0 0-.268.102.373.373 0 0 0-.114.276c0 .053.008.106.027.155a.375.375 0 0 0 .087.132.576.576 0 0 0 .397.11v.004a.863.863 0 0 0 .563-.182.573.573 0 0 0 .211-.457v-.14h-.903Z" fill="#fff"/></svg></span>Zapier</span>
+          <span class="ipill"><span class="ilogo" style="background:#0f0f0f;border:1px solid rgba(255,255,255,.2)"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12 1c.55 5.9 4.55 9.9 11 11-6.45 1.1-10.45 5.1-11 11-.55-5.9-4.55-9.9-11-11 6.45-1.1 10.45-5.1 11-11z" fill="#fff"/></svg></span>Luma</span>
+          <span class="ipill"><span class="ilogo" style="background:#F04E23"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.2 2c.9 3.9-2.9 5.6-2.9 9.2a4.8 4.8 0 009.6 0c0-2.1-1-3.7-2.2-4.8.3 1.6-.4 2.7-1.5 3.2.7-2.7-1-5.8-3-7.6zM8 9.5C6.7 10.8 6 12.4 6 14.2 6 17.4 8.7 20 12 20s6-2.6 6-5.8" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>Hotmart</span>
+          <span class="ipill"><span class="ilogo" style="background:#2670E8"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M6 4h3.2v16H6zM11.5 12l6.2-8h3.6l-6.7 8 6.7 8h-3.6l-6.2-8z" fill="#fff"/></svg></span>Kajabi</span>
+          <span class="ipill"><span class="ilogo" style="background:#36A0F5"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.5 14h3.4v6H4.5zM10.3 9.5h3.4V20h-3.4zM16.1 4h3.4v16h-3.4z" fill="#fff"/></svg></span>GoHighLevel</span>
+        </div>
+      </div>
+      <div class="icarousel">
+        <div class="cslide active">
+        <div class="mini-chat">
+        <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+        <div class="chat-body">
+          <div class="bubble out">quiénes del grupo confirmaron al evento de mañana en Luma?<span class="meta">11:20 <span class="tick">✓✓</span></span></div>
+          <div class="bubble in"><span class="who">Vibra</span>Confirmaron 38 de 52 invitados ✅ Del grupo, faltan 9 — incluidos 3 de tus top-10. ¿Les mando un recordatorio personal por privado y actualizo la hoja de asistencia?<span class="meta">11:20</span></div>
+          <div class="bubble out">sí a ambos<span class="meta">11:21 <span class="tick">✓✓</span></span></div>
+          <div class="bubble in"><span class="who">Vibra</span>Listo: 9 recordatorios enviados y Sheet actualizado 📋<span class="meta">11:22</span></div>
+        </div>
+      </div>
+        </div>
+        <div class="cslide">
+        <div class="mini-chat">
+          <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+          <div class="chat-body">
+            <div class="bubble out">quién tiene la renovación vencida este mes?<span class="meta">09:10 <span class="tick">✓✓</span></span></div>
+            <div class="bubble in"><span class="who">Vibra</span>Según Stripe: 3 miembros 💳 Laura (3 días), Pedro (1 semana) y Ana (venció hoy). Laura sigue súper activa en el grupo — ¿le mando primero a ella un recordatorio amable?<span class="meta">09:10</span></div>
+            <div class="bubble out">sí, y a los otros dos mañana<span class="meta">09:11 <span class="tick">✓✓</span></span></div>
+            <div class="bubble in"><span class="who">Vibra</span>Hecho ✅ Programados para mañana 10am.<span class="meta">09:11</span></div>
+          </div>
+        </div>
+        </div>
+        <div class="cslide">
+        <div class="mini-chat">
+          <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+          <div class="chat-body">
+            <div class="bubble out">quiénes del reto no han entregado la tarea 2?<span class="meta">17:40 <span class="tick">✓✓</span></span></div>
+            <div class="bubble in"><span class="who">Vibra</span>Según tu hoja de Google Sheets: 14 de 60 📋 De ellos, 9 siguen activos en el grupo. ¿Les mando un empujón por privado con el link de entrega y les doy hasta el viernes?<span class="meta">17:40</span></div>
+            <div class="bubble out">dale, tono motivador 💪<span class="meta">17:42 <span class="tick">✓✓</span></span></div>
+          </div>
+        </div>
+        </div>
+        <div class="cslide">
+        <div class="mini-chat">
+          <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+          <div class="chat-body">
+            <div class="bubble out">salió mi video nuevo sobre pricing, muévelo en la comunidad<span class="meta">12:05 <span class="tick">✓✓</span></span></div>
+            <div class="bubble in"><span class="who">Vibra</span>🎯 12 personas preguntaron por pricing este mes. Propongo mandárselo por privado solo a ellas — les sirve de verdad, y no se siente spam. Al resto, una mención natural cuando el tema salga en el grupo. ¿Va?<span class="meta">12:05</span></div>
+            <div class="bubble out">perfecto así<span class="meta">12:06 <span class="tick">✓✓</span></span></div>
+          </div>
+        </div>
+        </div>
+        <div class="cdots">
+          <button class="cdot active" aria-label="Caso 1"></button>
+          <button class="cdot" aria-label="Caso 2"></button>
+          <button class="cdot" aria-label="Caso 3"></button>
+          <button class="cdot" aria-label="Caso 4"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label">Vibra vs. lo de siempre</div>
+    <h2 class="sec-title">Ya probaste los bots. Tu comunidad sigue muerta.</h2>
+    <p class="sec-sub">Un bot espera el comando exacto. Un CM humano lo intenta cuando está despierto. Vibra lo hace — y te muestra el registro.</p>
+
+    <div class="compare">
+      <div class="compare-row head">
+        <div class="compare-cell">El trabajo</div>
+        <div class="compare-cell">Plataforma de bots</div>
+        <div class="compare-cell">CM humano</div>
+        <div class="compare-cell compare-head-vibra">Vibra</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell job">¿Quién hace el trabajo?</div>
+        <div class="compare-cell">Tú: armas flujos, plantillas y reglas</div>
+        <div class="compare-cell">Él, cuando puede</div>
+        <div class="compare-cell vibra">Vibra. Tú solo apruebas lo que pesa</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell job">La duda de las 2am</div>
+        <div class="compare-cell">Espera el comando exacto</div>
+        <div class="compare-cell">La verá mañana, quizás</div>
+        <div class="compare-cell vibra">La respondió a las 2:01</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell job">El nuevo miembro</div>
+        <div class="compare-cell">Pega el mensaje genérico</div>
+        <div class="compare-cell">Saluda cuando se acuerda</div>
+        <div class="compare-cell vibra">Lo recibió y le presentó a alguien</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell job">El miembro que se enfría</div>
+        <div class="compare-cell">No lo ve</div>
+        <div class="compare-cell">Imposible leer 4.000 mensajes</div>
+        <div class="compare-cell vibra">Te escribió en privado con el rescate listo</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell job">Costo al mes</div>
+        <div class="compare-cell">Barato, y se nota</div>
+        <div class="compare-cell">Un salario completo</div>
+        <div class="compare-cell vibra"><span class="js-cur">$1</span>&nbsp;por miembro activo</div>
+      </div>
+    </div>
+
+    <div class="duels">
+      <div class="duel reveal">
+        <div class="duel-job">¿Quién hace el trabajo?</div>
+        <div class="duel-row">
+          <div class="duel-cell"><span class="actor">Plataforma de bots</span><span class="ans">Tú: armas flujos, plantillas y reglas</span></div>
+          <div class="duel-cell"><span class="actor">CM humano</span><span class="ans">Él, cuando puede</span></div>
+          <div class="duel-cell vw"><span class="actor">Vibra</span><span class="ans">Vibra. Tú solo apruebas lo que pesa</span></div>
+        </div>
+      </div>
+      <div class="duel reveal">
+        <div class="duel-job">La duda de las 2am</div>
+        <div class="duel-row">
+          <div class="duel-cell"><span class="actor">Plataforma de bots</span><span class="ans">Espera el comando exacto</span></div>
+          <div class="duel-cell"><span class="actor">CM humano</span><span class="ans">La verá mañana, quizás</span></div>
+          <div class="duel-cell vw"><span class="actor">Vibra</span><span class="ans">La respondió a las 2:01</span></div>
+        </div>
+      </div>
+      <div class="duel reveal">
+        <div class="duel-job">El nuevo miembro</div>
+        <div class="duel-row">
+          <div class="duel-cell"><span class="actor">Plataforma de bots</span><span class="ans">Pega el mensaje genérico</span></div>
+          <div class="duel-cell"><span class="actor">CM humano</span><span class="ans">Saluda cuando se acuerda</span></div>
+          <div class="duel-cell vw"><span class="actor">Vibra</span><span class="ans">Lo recibió y le presentó a alguien</span></div>
+        </div>
+      </div>
+      <div class="duel reveal">
+        <div class="duel-job">El miembro que se enfría</div>
+        <div class="duel-row">
+          <div class="duel-cell"><span class="actor">Plataforma de bots</span><span class="ans">No lo ve</span></div>
+          <div class="duel-cell"><span class="actor">CM humano</span><span class="ans">Imposible leer 4.000 mensajes</span></div>
+          <div class="duel-cell vw"><span class="actor">Vibra</span><span class="ans">Te escribió en privado con el rescate listo</span></div>
+        </div>
+      </div>
+      <div class="duel reveal">
+        <div class="duel-job">Costo al mes</div>
+        <div class="duel-row">
+          <div class="duel-cell"><span class="actor">Plataforma de bots</span><span class="ans">Barato, y se nota</span></div>
+          <div class="duel-cell"><span class="actor">CM humano</span><span class="ans">Un salario completo</span></div>
+          <div class="duel-cell vw"><span class="actor">Vibra</span><span class="ans"><span class="js-cur">$1</span> por miembro activo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (PLACEHOLDER — reemplazar por testimonios reales del beta antes de publicar) -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label">Lo que dicen quienes ya la contrataron</div>
+    <h2 class="sec-title">Recuperaron sus noches.</h2>
+    <div class="tgrid">
+      <div class="tcard reveal">
+        <span class="tsaved">Ahorra 12h / semana</span>
+        <blockquote>"Tenía un grupo de 800 personas y vivía pegada al teléfono. Ahora Vibra responde antes que yo y me escribe en privado solo cuando algo importa. Es como tener un socio que nunca duerme."</blockquote>
+        <div class="tauthor"><div class="tav">CR</div><div><div class="nm">Carolina Ríos</div><div class="rl">Comunidad de finanzas personales · @carolinarios</div></div></div>
+      </div>
+      <div class="tcard reveal">
+        <span class="tsaved">Ahorra 8h / semana</span>
+        <blockquote>"Mi membresía tenía cancelaciones que no entendía. Vibra me mostró exactamente quién se estaba enfriando y por qué. Subí la retención sin contratar a nadie."</blockquote>
+        <div class="tauthor"><div class="tav">JF</div><div><div class="nm">Javier Fuentes</div><div class="rl">Membresía de marketing · @javierfuentes</div></div></div>
+      </div>
+      <div class="tcard reveal">
+        <span class="tsaved">Ahorra 15h / semana</span>
+        <blockquote>"Manejo tres cohortes a la vez. Antes era imposible. Vibra da la bienvenida, contesta lo de siempre y me deja solo las conversaciones que de verdad necesitan a un humano."</blockquote>
+        <div class="tauthor"><div class="tav">MP</div><div><div class="nm">María Paz Soto</div><div class="rl">Cohortes en vivo · @mariapazsoto</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label">Cómo funciona</div>
+    <h2 class="sec-title">Contratar a tu primer empleado con IA nunca fue tan fácil.</h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-n">01</div>
+        <h4>Agrégala al grupo donde eres admin</h4>
+        <p>Vibra tiene su propio número de WhatsApp. La agregas a tu grupo como agregarías a cualquier persona de tu equipo. Sin instalar nada, sin código.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">02</div>
+        <h4>Configura una vez, por mensaje</h4>
+        <p>En tu conversación privada le dices el tono, las reglas y la frontera: qué resuelve sola en el grupo y qué espera tu OK. Y si prefieres verlo todo en una pantalla, también la administras desde su propio panel.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">03</div>
+        <h4>Vibra trabaja</h4>
+        <p>Atiende el grupo en público, mueve lo personal al privado y te trae lo importante ya redactado. Y propone cosas que ni se te habían ocurrido pedirle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTS -->
+<section class="sec" style="padding-top:0" id="segmentos">
+  <div class="wrap">
+    <div class="sec-label">Para quién es</div>
+    <h2 class="sec-title">Lo que Vibra puede tomar en sus manos.</h2>
+    <div class="tabs">
+      <button class="tab active" data-tab="0">Creadores y membresías</button>
+      <button class="tab" data-tab="1">Comunidades profesionales</button>
+      <button class="tab" data-tab="2">Redes de alumni</button>
+    </div>
+
+    <div class="panel active" data-panel="0">
+      <h3>Tu membresía se siente viva, aunque tú estés grabando el próximo curso.</h3>
+      <div class="ptag">Creadores, coaches y cohortes educativas</div>
+      <div class="panel-feats">
+        <div class="pfeat"><h5><span class="dot"></span>Bienvenida que retiene</h5><p>Cada nuevo miembro recibe un saludo en el grupo y un onboarding por privado que lo conecta con la gente y el contenido correcto desde el minuto uno.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Soporte sin tickets</h5><p>Responde las dudas de siempre — acceso, enlaces, fechas, grabaciones — en el grupo o por privado, antes de que se vuelvan una queja.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Alerta de cancelaciones</h5><p>Te escribe en privado con quién se está enfriando y el mensaje de reactivación ya redactado, antes de que cancele.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Lo que vale oro, a la superficie</h5><p>Rescata las preguntas e insights que se pierden en el scroll y los convierte en contenido o en FAQ.</p></div>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="1">
+      <h3>Tu mastermind de C-levels por fin tiene a alguien al volante 24/7.</h3>
+      <div class="ptag">Founders, ejecutivos y comunidades de pago premium</div>
+      <div class="panel-feats">
+        <div class="pfeat"><h5><span class="dot"></span>Conexiones con fit real</h5><p>Detecta complementariedad — founder con advisor del mismo vertical, problema con quien ya lo resolvió — y te trae la intro con borrador listo en tu privado.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Discreción total</h5><p>Lo delicado nunca pasa por el grupo. Te llega a tu chat con Vibra; la comunidad solo ve un grupo vivo.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Memoria institucional</h5><p>Recuerda qué se discutió, qué se decidió y quién pidió qué — para que nada se pierda entre mensajes.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Pulso semanal</h5><p>Cada lunes, en tu privado: qué pasó, quién participó y qué temas encendieron al grupo. Sin leer 4.000 mensajes.</p></div>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="2">
+      <h3>Tu red de egresados vuelve a sentirse como una comunidad, no un grupo muerto.</h3>
+      <div class="ptag">Alumni de universidades top, YPO, EO, aceleradoras</div>
+      <div class="panel-feats">
+        <div class="pfeat"><h5><span class="dot"></span>Reactivación a escala</h5><p>Vuelve a traer a la conversación a los miembros que llevan meses en silencio — con mensajes privados, uno por uno.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Matchmaking entre capítulos</h5><p>Conecta personas por intereses, ciudad o industria — el motor de toda red de alumni.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Eventos sin fricción</h5><p>Anuncia en el grupo, confirma asistencia por privado, responde la logística y hace seguimiento después del encuentro.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Cero trabajo manual</h5><p>El voluntario que hoy mantiene el grupo vivo a pulso recupera su tiempo. Vibra lo sostiene.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK AI -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="askai reveal">
+      <div class="sec-label">No nos creas a nosotros</div>
+      <h3>Pregúntale a la IA qué opina de Vibra</h3>
+      <p>Abre tu IA favorita y pregúntale qué hace Vibra, para quién es y dónde flojea. Sin filtro, sin venta.</p>
+      <div class="ai-btns">
+        <a class="ai-btn" target="_blank" rel="noopener" href="https://chatgpt.com/?q=Estoy%20evaluando%20Vibra%20(getvibra.co)%2C%20un%20community%20manager%20con%20IA%20para%20comunidades%20de%20WhatsApp.%20%C2%BFQu%C3%A9%20hace%2C%20cu%C3%A1les%20son%20sus%20fortalezas%20y%20debilidades%2C%20y%20para%20qui%C3%A9n%20es%3F">Preguntar a ChatGPT</a>
+        <a class="ai-btn" target="_blank" rel="noopener" href="https://claude.ai/new?q=Estoy%20evaluando%20Vibra%20(getvibra.co)%2C%20un%20community%20manager%20con%20IA%20para%20comunidades%20de%20WhatsApp.%20%C2%BFQu%C3%A9%20hace%2C%20cu%C3%A1les%20son%20sus%20fortalezas%20y%20debilidades%2C%20y%20para%20qui%C3%A9n%20es%3F">Preguntar a Claude</a>
+        <a class="ai-btn" target="_blank" rel="noopener" href="https://www.perplexity.ai/search?q=Estoy%20evaluando%20Vibra%20(getvibra.co)%2C%20un%20community%20manager%20con%20IA%20para%20comunidades%20de%20WhatsApp.%20%C2%BFQu%C3%A9%20hace%20y%20para%20qui%C3%A9n%20es%3F">Preguntar a Perplexity</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / WAITLIST -->
+<section class="sec" style="padding-top:0" id="precio">
+  <div class="wrap">
+    <div class="pricing">
+      <div class="glow"></div>
+      <div class="sec-label" style="position:relative;z-index:1">Precio de lanzamiento · solo para los primeros 100 grupos</div>
+      <div class="price-big"><span class="js-cur">$1</span></div>
+      <div class="price-unit">por miembro activo &nbsp;·&nbsp; al mes</div>
+      <p class="sub">Precio especial de lanzamiento, solo para los primeros 100 grupos. Sin mínimos, sin contratos: solo pagas por quienes participan — los miembros silenciosos no se cobran.</p>
+      <div class="wl-card">
+        <div class="wl-card-title"><span class="pulse"></span>Reserva tu lugar ahora</div>
+        <div class="wl-combo">
+          <select class="wl-select" aria-label="País">
+              <option value="+34" data-country="ES" selected>🇪🇸 +34</option>
+              <option value="+52" data-country="MX">🇲🇽 +52</option>
+              <option value="+57" data-country="CO">🇨🇴 +57</option>
+              <option value="+54" data-country="AR">🇦🇷 +54</option>
+              <option value="+56" data-country="CL">🇨🇱 +56</option>
+              <option value="+51" data-country="PE">🇵🇪 +51</option>
+              <option value="+1" data-country="US">🇺🇸 +1</option>
+              <option value="+593" data-country="EC">🇪🇨 +593</option>
+              <option value="+58" data-country="VE">🇻🇪 +58</option>
+              <option value="+591" data-country="BO">🇧🇴 +591</option>
+              <option value="+598" data-country="UY">🇺🇾 +598</option>
+              <option value="+595" data-country="PY">🇵🇾 +595</option>
+              <option value="+502" data-country="GT">🇬🇹 +502</option>
+              <option value="+506" data-country="CR">🇨🇷 +506</option>
+              <option value="+507" data-country="PA">🇵🇦 +507</option>
+              <option value="+1" data-country="DO">🇩🇴 +1</option>
+              <option value="+504" data-country="HN">🇭🇳 +504</option>
+              <option value="+503" data-country="SV">🇸🇻 +503</option>
+              <option value="+505" data-country="NI">🇳🇮 +505</option>
+              <option value="+55" data-country="BR">🇧🇷 +55</option>
+              <option value="+351" data-country="PT">🇵🇹 +351</option>
+            </select>
+          <input class="wl-input" type="tel" inputmode="tel" placeholder="Tu número de WhatsApp" aria-label="Tu número de WhatsApp">
+        </div>
+        <button class="btn btn-primary wl-btn">Unirme a la lista de espera →</button>
+        <div class="wl-hint">Sin compromiso. Se abre un chat de WhatsApp con un asesor del equipo para reservar tu lugar.</div>
+        <div class="wl-ok">✓ Tu número quedó registrado — te esperamos en el chat.</div>
+      </div>
+      <div class="price-feats">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Hecho 100% para WhatsApp</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Sin tarjeta para empezar</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Soporte humano en español</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" style="padding-top:0" id="faq">
+  <div class="wrap" style="max-width:860px">
+    <div class="sec-label">Preguntas</div>
+    <h2 class="sec-title">Lo que todos preguntan — empezando por la privacidad.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">¿Vibra lee todos los mensajes de mi grupo?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Sí — igual que lo haría un community manager humano si lo contrataras. Es la única forma de hacer el trabajo: detectar la duda sin responder, el miembro que se enfría, la queja que escala. La diferencia es que con Vibra cada acción queda en un registro que puedes revisar, y un humano no te da eso.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo se conecta Vibra a WhatsApp?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Vibra tiene su propio número y entra a tu grupo como un miembro más del equipo — la agregas como agregarías a una persona. Hoy WhatsApp no ofrece una API oficial para grupos grandes de comunidad (la API de grupos de Meta está limitada a salas de 8 participantes), así que esta es la forma en que cualquier community manager, humano o IA, puede estar presente en tu grupo. Para los mensajes privados 1:1, trabajamos alineados con las políticas de WhatsApp Business.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Qué pasa con los datos de mi comunidad?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Son tuyos. Los datos de tu comunidad nunca se comparten con otras comunidades ni se usan para entrenar modelos de terceros. Puedes exportar todo y borrar todo — perfiles, historial, configuración — cuando quieras, sin tickets de soporte.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Los miembros saben que Vibra está en el grupo?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Sí — Vibra aparece como un participante más, con su nombre, y recomendamos presentarla abiertamente como parte del equipo. Las comunidades sanas saben quién las cuida. Lo que sí controlas es cuánto habla en público y cuánto trabaja por privado contigo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Puede un miembro pedir que no se le perfile?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Sí. Cada perfil es revisable, editable y borrable. Si un miembro pide salir del análisis, sale — y Vibra respeta ese opt-out en todas sus funciones, desde la reactivación hasta el matchmaking.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿En qué se diferencia de un bot como ManyChat?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Un bot tradicional vive en el 1:1, espera el comando exacto y sigue reglas que tú escribes. Vibra vive donde vive tu comunidad — el grupo — entiende lenguaje natural, recuerda el contexto de cada persona y toma iniciativa: detecta lo que hay que hacer y lo hace, o te lo trae redactado a tu chat privado.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Y si Vibra se equivoca?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Tú defines la frontera: qué resuelve sola en el grupo y qué requiere tu OK por privado. Todo lo autónomo queda registrado, y lo sensible — clientes clave, temas delicados, crisis — siempre pasa por tu chat antes de salir.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Mi número corre riesgo de baneo?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Tu número, no — Vibra trabaja con su propio número, separado del tuyo y del de tu negocio. El riesgo operativo de la presencia en el grupo lo asumimos nosotros, no tu línea. Además, Vibra opera con ritmos de comportamiento prudentes (responde como respondería una persona, no como un cañón de mensajes masivos), que es exactamente lo contrario del patrón que Meta persigue.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Qué cuenta como "miembro activo"?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Un miembro que participó en tu comunidad durante el mes: escribió en el grupo o conversó con Vibra por privado. Solo se cuenta una vez al mes, sin importar cuántas veces participe. Los miembros silenciosos no se cobran — si tu grupo tiene 1.000 personas y participan 300, pagas por 300.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo es el precio?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Precio de lanzamiento: <span class="js-cur">$1</span> por miembro activo al mes, solo para los primeros 100 grupos de la lista de espera. Pagas únicamente por la gente que participa, no por la lista entera, y entras con onboarding acompañado.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid" style="grid-template-columns:1.5fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="#" class="logo"><span class="logo-dot"></span>Vibra</a>
+        <p class="lede">Tu comunidad ya tiene a la gente. Vibra le da el vibe.</p>
+      </div>
+      <div class="foot-col">
+        <h6>Producto</h6>
+        <a href="#motores">Funcionalidades</a>
+        <a href="#integraciones">Integraciones</a>
+        <a href="#segmentos">Para quién es</a>
+        <a href="#faq">Preguntas</a>
+      </div>
+      <div class="foot-col">
+        <h6>Contacto</h6>
+        <a href="#precio">Lista de espera</a>
+        <a href="mailto:hello@getvibra.com">hello@getvibra.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Vibra. Todos los derechos reservados.</span>
+      <span>Escucha. Entiende. Activa.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============================================================
+  // ⚙️ CONFIGURACIÓN — edita solo esta línea:
+  // El número de WhatsApp del asesor, solo dígitos con código de país.
+  // Ejemplo España: '34600111222' · México: '5215512345678'
+  const ASESOR_WHATSAPP = '34610367954';
+  // ============================================================
+  // Base de datos de leads (Supabase — ya conectada, no tocar)
+  const SUPA_URL = 'https://wewzukhfebeyvvummsbx.supabase.co';
+  const SUPA_KEY = 'sb_publishable_T12SX3XsCEKR_3ycPA7CUw_oEO8Sf8m';
+  const waReady = ASESOR_WHATSAPP !== '0000000000';
+
+  function saveLead(phone, countryCode, country){
+    // Guarda el lead en la base de datos (fire-and-forget: nunca bloquea la conversión)
+    return fetch(SUPA_URL + '/rest/v1/vibra_waitlist?on_conflict=phone', {
+      method:'POST',
+      headers:{
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + SUPA_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'resolution=ignore-duplicates'
+      },
+      body: JSON.stringify({phone:phone, country_code:countryCode, country:country, source:'landing'})
+    }).catch(()=>{});
+  }
+
+  function joinWaitlist(card){
+    const input=card.querySelector('.wl-input'), sel=card.querySelector('.wl-select');
+    const digits = input.value.replace(/\D/g,'').replace(/^0+/,'');
+    if(digits.length < 7){
+      input.classList.add('err'); input.focus();
+      input.placeholder = 'Escribe tu número de WhatsApp';
+      return;
+    }
+    input.classList.remove('err');
+    const prefix = sel.value;                      // ej. +34
+    const country = sel.selectedOptions[0].dataset.country; // ej. ES
+    const fullPhone = prefix + digits;             // ej. +34600111222
+    saveLead(fullPhone, prefix, country);          // 1) lead a la base de datos, siempre
+    const ok = card.querySelector('.wl-ok'); if(ok) ok.style.display='block';
+    if(!waReady){ return; }                        // sin número de asesor aún: solo registra
+    const text = encodeURIComponent('¡Hola! Acabo de registrar mi solicitud para unirme a la lista de espera de Vibra 🙋 Mi WhatsApp es ' + fullPhone + '. Mi comunidad se llama: ');
+    window.open('https://wa.me/' + ASESOR_WHATSAPP + '?text=' + text, '_blank'); // 2) chat con el asesor
+  }
+  document.querySelectorAll('.wl-card').forEach(card=>{
+    card.querySelector('.wl-btn').addEventListener('click',()=>joinWaitlist(card));
+    card.querySelector('.wl-input').addEventListener('keydown',e=>{if(e.key==='Enter')joinWaitlist(card)});
+  });
+  // Botones de nav/footer: bajan al bloque de precio y enfocan el input
+  document.querySelectorAll('.js-gowl').forEach(a=>{
+    a.addEventListener('click',()=>{setTimeout(()=>{const i=document.querySelector('#precio .wl-input');if(i)i.focus();},600)});
+  });
+
+  // Moneda según región: $1 en América (default), €1 en Europa
+  try{
+    const tz=(Intl.DateTimeFormat().resolvedOptions().timeZone)||'';
+    if(tz.indexOf('Europe')===0){
+      document.querySelectorAll('.js-cur').forEach(el=>el.textContent='€1');
+    }
+  }catch(e){}
+
+  // Anclas internas: scroll suave dentro de la página (evita navegación externa en iframes)
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href').slice(1);
+      const el=document.getElementById(id);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      else if(a.getAttribute('href')==='#'){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }
+    });
+  });
+
+  // Carrusel de casos de integración
+  (function(){
+    const slides=document.querySelectorAll('.cslide'), dots=document.querySelectorAll('.cdot');
+    if(!slides.length) return;
+    let cur=0, timer;
+    function go(i){
+      slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
+      cur=i%slides.length;
+      slides[cur].classList.add('active'); dots[cur].classList.add('active');
+    }
+    function auto(){ timer=setInterval(()=>go(cur+1), 7000); }
+    dots.forEach((d,i)=>d.addEventListener('click',()=>{clearInterval(timer);go(i);auto();}));
+    auto();
+  })();
+
+  const mq=document.getElementById('marquee');
+  mq.innerHTML+=mq.innerHTML;
+
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+      const item=q.parentElement;
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});
+      if(!open){item.classList.add('open');const a=item.querySelector('.faq-a');a.style.maxHeight=a.scrollHeight+'px';}
+    });
+  });
+
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      document.querySelector('.panel[data-panel="'+t.dataset.tab+'"]').classList.add('active');
+    });
+  });
+
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
