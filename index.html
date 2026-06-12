@@ -259,8 +259,11 @@
     .tabs{display:none}
     .panel{display:block;padding:0;margin-top:14px}
     .panel.active{animation:none}
+    .panel{border-radius:18px;transition:border-color .25s}
+    .panel.open{border-color:rgba(34,197,94,.4);box-shadow:0 0 0 1px rgba(34,197,94,.08)}
     .panel-head{display:flex;width:100%;justify-content:space-between;align-items:center;background:none;border:none;font-family:inherit;color:var(--text);font-size:16.5px;font-weight:700;padding:18px 20px;cursor:pointer;text-align:left;gap:12px}
-    .ph-ic{color:var(--green);font-size:22px;transition:.3s;flex-shrink:0}
+    .panel-head:active{background:rgba(34,197,94,.06)}
+    .ph-ic{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--green-soft);border:1px solid rgba(34,197,94,.35);color:var(--green);font-size:19px;line-height:1;transition:.3s;flex-shrink:0}
     .panel.open .ph-ic{transform:rotate(45deg)}
     .panel-body{max-height:0;overflow:hidden;transition:max-height .45s ease;padding:0 20px}
     .panel.open .panel-body{max-height:3000px;padding:0 20px 22px}
@@ -443,6 +446,7 @@
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Tú decides qué aprueba un humano</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Soporte humano en español</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Listo en minutos</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Hecho desde Barcelona, España 🇪🇸</span>
       </div>
     </div>
   </div>
@@ -456,7 +460,7 @@
     <h2 class="sec-title">La comunidad que conoces vs. la comunidad con alguien al volante.</h2>
     <div class="vs-grid">
       <div class="vs-card reveal">
-        <h4>😮‍💨 Tu comunidad hoy</h4>
+        <h4>😓 Tu comunidad hoy</h4>
         <ul>
           <li><span class="x">✕</span>Despiertas con 340 mensajes sin leer y la sensación de que algo importante se te pasó.</li>
           <li><span class="x">✕</span>Te preguntan lo mismo por quinta vez esta semana — el link, la fecha, la grabación.</li>
@@ -484,27 +488,27 @@
   <div class="wrap">
     <div class="sec-label">El valor, sin rodeos</div>
     <h2 class="sec-title">Para qué la contratas.</h2>
-    <p class="sec-sub">Tomamos la descripción real del puesto de community manager — las cuatro cosas por las que pagarías un salario. Vibra, tu agente, aplica al cargo.</p>
+    <p class="sec-sub">Las cuatro cosas por las que contratarías a alguien — hechas por tu agente, desde el día uno.</p>
     <div class="vgrid">
       <div class="vcard reveal">
         <span class="vtag">↑ Engagement</span>
         <h4>Una comunidad que conversa sola</h4>
-        <p>La vacante pide dinamizar la conversación y que nadie quede en visto. Vibra responde, anima y sostiene el ritmo 24/7 — tu comunidad se siente atendida aunque tú no estés.</p>
+        <p>Vibra responde, anima y sostiene el ritmo cada día, en el grupo y en los chats privados. Nadie queda en visto — ni cuando tú no estás.</p>
       </div>
       <div class="vcard reveal">
         <span class="vtag">↓ Cancelaciones</span>
-        <h4>Retén a quien ya paga</h4>
-        <p>La vacante pide recibir a cada nuevo y evitar fugas. Vibra hace el onboarding por privado y detecta al que se enfría semanas antes de que cancele — con el rescate redactado.</p>
+        <h4>Retiene a quien ya paga</h4>
+        <p>Vibra detecta a quien se enfría semanas antes de que cancele y te trae el mensaje de rescate ya redactado. Tú solo das el OK.</p>
       </div>
       <div class="vcard reveal">
         <span class="vtag">🤝 Networking</span>
         <h4>La razón por la que renuevan</h4>
-        <p>La vacante pide crear relaciones entre miembros. Vibra mapea quién es quién y presenta a las personas correctas — una comunidad donde consigues clientes y socios no se cancela.</p>
+        <p>Vibra sabe quién es quién y presenta a las personas correctas en el momento justo. De la comunidad donde consigues clientes y socios, nadie se va.</p>
       </div>
       <div class="vcard reveal">
         <span class="vtag">↑ Ingresos</span>
-        <h4>Señales convertidas en ventas</h4>
-        <p>La vacante pide reportar qué pasa y detectar oportunidades. Vibra te trae el pulso de tu comunidad y la demanda detectada — 14 personas preguntando por tu reto es una lista de venta.</p>
+        <h4>Convierte señales en ventas</h4>
+        <p>Vibra detecta la demanda escondida en la conversación: quienes preguntan por tu próximo programa son prospectos calientes — te llegan con nombre y contexto.</p>
       </div>
     </div>
   </div>
@@ -607,9 +611,11 @@
     <h2 class="sec-title">Tu comunidad vive en WhatsApp. Tu negocio vive en todas partes.</h2>
     <div class="int-grid">
       <div class="int-copy">
-        <p>Vibra conecta lo que pasa en el grupo con las herramientas donde corre tu operación: el evento en Luma, la lista en Google Sheets, lo que tu equipo documentó en Slack, el alumno en tu LMS, el lead en tu CRM. Le pides cosas por tu chat privado, como a un empleado — y las cruza todas en una sola respuesta. Lo que significa que tu operación entera cabe en un chat.</p>
-        <p>Sin exportar CSVs, sin cambiar de pestaña, sin "después lo reviso".</p>
+        <p>Vibra conecta lo que pasa en el grupo con las herramientas donde corre tu operación: el evento en Luma, la lista en Google Sheets, tu último video de YouTube, el alumno en tu curso, el contacto en tu CRM. Le pides cosas por tu chat privado, como a un empleado — y las cruza todas en una sola respuesta. Lo que significa que tu operación entera cabe en un chat.</p>
+        <p>Y al revés: tu contenido alimenta a tu comunidad — el video que subiste a YouTube llega por privado justo a quien lo estaba esperando. Nutrir sin hacer spam. Sin exportar CSVs, sin cambiar de pestaña.</p>
         <div class="int-pills">
+          <span class="ipill"><span class="ilogo" style="background:#FF0000"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M9.6 7.8v8.4l7.2-4.2z" fill="#fff"/><rect x="2.5" y="5" width="19" height="14" rx="3.5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></span>YouTube</span>
+          <span class="ipill"><span class="ilogo" style="background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)"><svg viewBox="0 0 24 24" width="15" height="15"><rect x="4" y="4" width="16" height="16" rx="4.5" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.6" cy="7.4" r="1.1" fill="#fff"/></svg></span>Instagram</span>
           <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#4A154B"/></svg></span>Slack</span>
           <span class="ipill"><span class="ilogo" style="background:#34A853"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z" fill="#fff"/></svg></span>Google Sheets</span>
           <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M18.316 5.684H24v12.632h-5.684V5.684zM5.684 24h12.632v-5.684H5.684V24zM18.316 5.684V0H1.895A1.894 1.894 0 0 0 0 1.895v16.421h5.684V5.684h12.632zm-7.207 6.25v-.065c.272-.144.5-.349.687-.617s.279-.595.279-.982c0-.379-.099-.72-.3-1.025a2.05 2.05 0 0 0-.832-.714 2.703 2.703 0 0 0-1.197-.257c-.6 0-1.094.156-1.481.467-.386.311-.65.671-.793 1.078l1.085.452c.086-.249.224-.461.413-.633.189-.172.445-.257.767-.257.33 0 .602.088.816.264a.86.86 0 0 1 .322.703c0 .33-.12.589-.36.778-.24.19-.535.284-.886.284h-.567v1.085h.633c.407 0 .748.109 1.02.327.272.218.407.499.407.843 0 .336-.129.614-.387.832s-.565.327-.924.327c-.351 0-.651-.103-.897-.311-.248-.208-.422-.502-.521-.881l-1.096.452c.178.616.505 1.082.977 1.401.472.319.984.478 1.538.477a2.84 2.84 0 0 0 1.293-.291c.382-.193.684-.458.902-.794.218-.336.327-.72.327-1.149 0-.429-.115-.797-.344-1.105a2.067 2.067 0 0 0-.881-.689zm2.093-1.931l.602.913L15 10.045v5.744h1.187V8.446h-.827l-2.158 1.557zM22.105 0h-3.289v5.184H24V1.895A1.894 1.894 0 0 0 22.105 0zm-3.289 23.5l4.684-4.684h-4.684V23.5zM0 22.105C0 23.152.848 24 1.895 24h3.289v-5.184H0v3.289z" fill="#4285F4"/></svg></span>Google Calendar</span>
@@ -618,8 +624,6 @@
           <span class="ipill"><span class="ilogo" style="background:#635BFF"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z" fill="#fff"/></svg></span>Stripe</span>
           <span class="ipill"><span class="ilogo" style="background:#006BFF"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M19.655 14.262c.281 0 .557.023.828.064 0 .005-.005.01-.005.014-.105.267-.234.534-.381.786l-1.219 2.106c-1.112 1.936-3.177 3.127-5.411 3.127h-2.432c-2.23 0-4.294-1.191-5.412-3.127l-1.218-2.106a6.251 6.251 0 0 1 0-6.252l1.218-2.106C6.736 4.832 8.8 3.641 11.035 3.641h2.432c2.23 0 4.294 1.191 5.411 3.127l1.219 2.106c.147.252.271.519.381.786 0 .004.005.009.005.014-.267.041-.543.064-.828.064-1.816 0-2.501-.607-3.291-1.306-.764-.676-1.711-1.517-3.44-1.517h-1.029c-1.251 0-2.387.455-3.2 1.278-.796.805-1.233 1.904-1.233 3.099v1.411c0 1.196.437 2.295 1.233 3.099.813.823 1.949 1.278 3.2 1.278h1.034c1.729 0 2.676-.841 3.439-1.517.791-.703 1.471-1.306 3.287-1.301Zm.005-3.237c.399 0 .794-.036 1.179-.11-.002-.004-.002-.01-.002-.014-.073-.414-.193-.823-.349-1.218.731-.12 1.407-.396 1.986-.819 0-.004-.005-.013-.005-.018-.331-1.085-.832-2.101-1.489-3.03-.649-.915-1.435-1.719-2.331-2.395-1.867-1.398-4.088-2.138-6.428-2.138-1.448 0-2.855.28-4.175.841-1.273.543-2.423 1.315-3.407 2.299S2.878 6.552 2.341 7.83c-.557 1.324-.842 2.726-.842 4.175 0 1.448.281 2.855.842 4.174.542 1.274 1.314 2.423 2.298 3.407s2.129 1.761 3.407 2.299c1.324.556 2.727.841 4.175.841 2.34 0 4.561-.74 6.428-2.137a10.815 10.815 0 0 0 2.331-2.396c.652-.929 1.158-1.949 1.489-3.03 0-.004.005-.014.005-.018-.579-.423-1.255-.699-1.986-.819.161-.395.276-.804.349-1.218.005-.009.005-.014.005-.023.869.166 1.692.506 2.404 1.035.685.505.552 1.075.446 1.416C22.184 20.437 17.619 24 12.221 24c-6.625 0-12-5.375-12-12s5.37-12 12-12c5.398 0 9.963 3.563 11.471 8.464.106.341.239.915-.446 1.421-.717.529-1.535.873-2.404 1.034.128.716.128 1.45 0 2.166-.387-.074-.782-.11-1.182-.11-4.184 0-3.968 2.823-6.736 2.823h-1.029c-1.899 0-3.15-1.357-3.15-3.095v-1.411c0-1.738 1.251-3.094 3.15-3.094h1.034c2.768 0 2.552 2.823 6.731 2.827Z" fill="#fff"/></svg></span>Calendly</span>
           <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" fill="#000"/></svg></span>Notion</span>
-          <span class="ipill"><span class="ilogo" style="background:#6D00CC"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M13.38 3.498c-.27 0-.511.19-.566.465L9.85 18.986a.578.578 0 0 0 .453.678l4.095.826a.58.58 0 0 0 .682-.455l2.963-15.021a.578.578 0 0 0-.453-.678l-4.096-.826a.589.589 0 0 0-.113-.012zm-5.876.098a.576.576 0 0 0-.516.318L.062 17.697a.575.575 0 0 0 .256.774l3.733 1.877a.578.578 0 0 0 .775-.258l6.926-13.781a.577.577 0 0 0-.256-.776L7.762 3.658a.571.571 0 0 0-.258-.062zm11.74.115a.576.576 0 0 0-.576.576v15.426c0 .318.258.578.576.578h4.178a.58.58 0 0 0 .578-.578V4.287a.578.578 0 0 0-.578-.576Z" fill="#fff"/></svg></span>Make</span>
-          <span class="ipill"><span class="ilogo" style="background:#FF4F00"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.157 0A4.151 4.151 0 0 0 0 4.161v15.678A4.151 4.151 0 0 0 4.157 24h15.682A4.152 4.152 0 0 0 24 19.839V4.161A4.152 4.152 0 0 0 19.839 0H4.157Zm10.61 8.761h.03a.577.577 0 0 1 .23.038.585.585 0 0 1 .201.124.63.63 0 0 1 .162.431.612.612 0 0 1-.162.435.58.58 0 0 1-.201.128.58.58 0 0 1-.23.042.529.529 0 0 1-.235-.042.585.585 0 0 1-.332-.328.559.559 0 0 1-.038-.235.613.613 0 0 1 .17-.431.59.59 0 0 1 .405-.162Zm2.853 1.572c.03.004.061.004.095.004.325-.011.646.064.937.219.238.144.431.355.552.609.128.279.189.582.185.888v.193a2 2 0 0 1 0 .219h-2.498c.003.227.075.45.204.642a.78.78 0 0 0 .646.265.714.714 0 0 0 .484-.136.642.642 0 0 0 .23-.318l.915.257a1.398 1.398 0 0 1-.28.537c-.14.159-.321.284-.521.355a2.234 2.234 0 0 1-.836.136 1.923 1.923 0 0 1-1.001-.245 1.618 1.618 0 0 1-.665-.703 2.221 2.221 0 0 1-.227-1.036 1.95 1.95 0 0 1 .48-1.398 1.9 1.9 0 0 1 1.3-.488Zm-9.607.023c.162.004.325.026.48.079.207.065.4.174.563.314.26.302.393.692.366 1.088v2.276H8.53l-.109-.711h-.065c-.064.163-.155.31-.272.439a1.122 1.122 0 0 1-.374.264 1.023 1.023 0 0 1-.453.083 1.334 1.334 0 0 1-.866-.264.965.965 0 0 1-.329-.801.993.993 0 0 1 .076-.431 1.02 1.02 0 0 1 .242-.363 1.478 1.478 0 0 1 1.043-.303h.952v-.181a.696.696 0 0 0-.136-.454.553.553 0 0 0-.438-.154.695.695 0 0 0-.378.086.48.48 0 0 0-.193.254l-.99-.144a1.26 1.26 0 0 1 .257-.563c.14-.174.321-.302.533-.378.261-.091.54-.136.82-.129.053-.003.106-.007.163-.007Zm4.384.007c.174 0 .347.038.506.114.182.083.34.211.458.374.257.423.377.911.351 1.406a2.53 2.53 0 0 1-.355 1.448 1.148 1.148 0 0 1-1.009.517c-.204 0-.401-.045-.582-.136a1.052 1.052 0 0 1-.48-.457 1.298 1.298 0 0 1-.114-.234h-.045l.004 1.784h-1.059v-4.713h.904l.117.805h.057c.068-.208.177-.401.328-.56a1.129 1.129 0 0 1 .843-.344h.076v-.004Zm7.559.084h.903l.113.805h.053a1.37 1.37 0 0 1 .235-.484.813.813 0 0 1 .313-.242.82.82 0 0 1 .39-.076h.234v1.051h-.401a.662.662 0 0 0-.313.008.623.623 0 0 0-.272.155.663.663 0 0 0-.174.26.683.683 0 0 0-.027.314v1.875h-1.054v-3.666Zm-17.515.003h3.262v.896L3.73 13.104l.034.113h1.973l.042.9H2.4v-.9l1.931-1.754-.045-.117H2.441v-.896Zm11.815 0h1.055v3.659h-1.055V10.45Zm3.443.684.019.016a.69.69 0 0 0-.351.045.756.756 0 0 0-.287.204c-.11.155-.174.336-.189.522h1.545c-.034-.526-.257-.787-.74-.787h.003Zm-5.718.163c-.026 0-.057 0-.083.004a.78.78 0 0 0-.31.053.746.746 0 0 0-.257.189 1.016 1.016 0 0 0-.204.695v.064c-.015.257.057.507.204.711a.634.634 0 0 0 .253.196.638.638 0 0 0 .314.061.644.644 0 0 0 .578-.265c.14-.223.204-.48.189-.74a1.216 1.216 0 0 0-.181-.711.677.677 0 0 0-.503-.257Zm-4.509 1.266a.464.464 0 0 0-.268.102.373.373 0 0 0-.114.276c0 .053.008.106.027.155a.375.375 0 0 0 .087.132.576.576 0 0 0 .397.11v.004a.863.863 0 0 0 .563-.182.573.573 0 0 0 .211-.457v-.14h-.903Z" fill="#fff"/></svg></span>Zapier</span>
           <span class="ipill"><span class="ilogo" style="background:#0f0f0f;border:1px solid rgba(255,255,255,.2)"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12 1c.55 5.9 4.55 9.9 11 11-6.45 1.1-10.45 5.1-11 11-.55-5.9-4.55-9.9-11-11 6.45-1.1 10.45-5.1 11-11z" fill="#fff"/></svg></span>Luma</span>
           <span class="ipill"><span class="ilogo" style="background:#F04E23"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.2 2c.9 3.9-2.9 5.6-2.9 9.2a4.8 4.8 0 009.6 0c0-2.1-1-3.7-2.2-4.8.3 1.6-.4 2.7-1.5 3.2.7-2.7-1-5.8-3-7.6zM8 9.5C6.7 10.8 6 12.4 6 14.2 6 17.4 8.7 20 12 20s6-2.6 6-5.8" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>Hotmart</span>
           <span class="ipill"><span class="ilogo" style="background:#2670E8"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M6 4h3.2v16H6zM11.5 12l6.2-8h3.6l-6.7 8 6.7 8h-3.6l-6.2-8z" fill="#fff"/></svg></span>Kajabi</span>
@@ -666,8 +670,8 @@
         <div class="mini-chat">
           <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
           <div class="chat-body">
-            <div class="bubble out">salió mi video nuevo sobre pricing, muévelo en la comunidad<span class="meta">12:05 <span class="tick">✓✓</span></span></div>
-            <div class="bubble in"><span class="who">Vibra</span>🎯 12 personas preguntaron por pricing este mes. Propongo mandárselo por privado solo a ellas — les sirve de verdad, y no se siente spam. Al resto, una mención natural cuando el tema salga en el grupo. ¿Va?<span class="meta">12:05</span></div>
+            <div class="bubble out">acabo de subir un video a YouTube sobre pricing — muévelo en la comunidad<span class="meta">12:05 <span class="tick">✓✓</span></span></div>
+            <div class="bubble in"><span class="who">Vibra</span>🎯 Lo vi. 12 personas preguntaron por pricing este mes — se lo mando por privado solo a ellas, con una línea de por qué les sirve. Al resto, mención natural cuando el tema salga en el grupo. ¿Va?<span class="meta">12:05</span></div>
             <div class="bubble out">perfecto así<span class="meta">12:06 <span class="tick">✓✓</span></span></div>
           </div>
         </div>
@@ -799,8 +803,8 @@
 <section class="sec" style="padding-top:0" id="segmentos">
   <div class="glow" style="width:440px;height:440px;background:var(--green);top:60px;left:-200px;opacity:.08"></div>
   <div class="wrap">
-    <div class="sec-label">Para quién es</div>
-    <h2 class="sec-title">Lo que Vibra puede tomar en sus manos.</h2>
+    <div class="sec-label">Casos de uso</div>
+    <h2 class="sec-title">¿Para quién está creada Vibra?</h2>
     <div class="tabs">
       <button class="tab active" data-tab="0">Comunidades de creadores</button>
       <button class="tab" data-tab="1">Comunidades profesionales</button>
@@ -809,10 +813,10 @@
     <div class="panel active open" data-panel="0">
       <button class="panel-head" type="button">Comunidades de creadores <span class="ph-ic">+</span></button>
       <div class="panel-body">
-      <h3>Tu membresía se siente viva, aunque tú estés grabando el próximo curso.</h3>
+      <h3>Tu membresía se siente viva mientras tú creas tu próximo contenido.</h3>
       <div class="ptag">Creadores, coaches, membresías y cohortes educativas</div>
       <div class="panel-feats">
-        <div class="pfeat"><h5><span class="dot"></span>Bienvenida que retiene</h5><p>Saludo en el grupo y onboarding por privado que conecta a cada nuevo con la gente y el contenido correcto. Tu inversión en captar miembros deja de fugarse en la primera semana.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Bienvenida que retiene</h5><p>Saludo en el grupo y acompañamiento inicial por privado que conecta a cada nuevo con la gente y el contenido correcto. Tu inversión en captar miembros deja de fugarse en la primera semana.</p></div>
         <div class="pfeat"><h5><span class="dot"></span>Soporte sin tickets</h5><p>Las dudas de siempre — acceso, enlaces, fechas, grabaciones — respondidas al momento, con buen tono. No vuelves a contestar "¿me pasas el link?" nunca más.</p></div>
         <div class="pfeat"><h5><span class="dot"></span>Alerta de cancelaciones</h5><p>Quién se está enfriando, detectado semanas antes, con el mensaje de reactivación redactado. Peleas cada renovación antes de perderla, no después.</p></div>
         <div class="pfeat"><h5><span class="dot"></span>Lo que vale oro, a la superficie</h5><p>Las preguntas e insights que se pierden en el scroll, rescatados y convertidos en FAQ o contenido. Tu comunidad te escribe las ideas del próximo mes.</p></div>
@@ -825,14 +829,14 @@
     <div class="panel" data-panel="1">
       <button class="panel-head" type="button">Comunidades profesionales <span class="ph-ic">+</span></button>
       <div class="panel-body">
-      <h3>Tu red de alto nivel por fin tiene a alguien al volante 24/7.</h3>
-      <div class="ptag">Masterminds, founders, YPO/EO, aceleradoras y redes de alumni</div>
+      <h3>Tu red de empresarios, directivos y emprendedores por fin tiene a alguien al volante.</h3>
+      <div class="ptag">Empresarios, directivos, emprendedores, YPO/EO, aceleradoras y redes de alumni</div>
       <div class="panel-feats">
-        <div class="pfeat"><h5><span class="dot"></span>Conexiones con fit real</h5><p>Detecta complementariedad — el problema con quien ya lo resolvió, el founder con el advisor correcto — y te trae la intro con borrador listo. El valor de pertenecer se siente cada semana.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Conexiones que encajan de verdad</h5><p>Detecta complementariedad — el problema con quien ya lo resolvió, el emprendedor con el mentor correcto — y te trae la intro con borrador listo. El valor de pertenecer se siente cada semana.</p></div>
         <div class="pfeat"><h5><span class="dot"></span>Discreción total</h5><p>Lo delicado nunca pasa por el grupo: te llega a tu chat con Vibra. La comunidad ve un grupo vivo; tu reputación de anfitrión, intacta.</p></div>
         <div class="pfeat"><h5><span class="dot"></span>Memoria institucional</h5><p>Qué se discutió, qué se decidió, quién pidió qué — nada se pierde entre mensajes. Tu red acumula valor en vez de evaporarlo con cada scroll.</p></div>
         <div class="pfeat"><h5><span class="dot"></span>Pulso semanal</h5><p>Cada lunes, en tu chat privado: qué pasó, quién participó y qué temas encendieron al grupo. Diriges con datos, en cinco minutos.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Matchmaking en toda la red</h5><p>Conecta personas por industria, ciudad o intereses — también entre capítulos. El motor de la red, funcionando en piloto automático.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Eventos y encuentros que sí llenan</h5><p>Anuncia en el grupo, confirma asistencia por privado, resuelve la logística y hace seguimiento después. Más asistencia, sin perseguir a nadie.</p></div>
         <div class="pfeat"><h5><span class="dot"></span>Reactivación a escala</h5><p>Los miembros que llevan meses en silencio vuelven a la conversación con mensajes privados, uno por uno. La red "dormida" vuelve a ser el activo que prometía ser.</p></div>
       </div>
       </div>
@@ -867,24 +871,24 @@
 
 
 <!-- HOW IT WORKS -->
-<section class="sec" style="padding-top:0">
+<section class="sec" style="padding-top:0" id="como-funciona">
   <div class="wrap">
     <div class="sec-label">Cómo funciona</div>
     <h2 class="sec-title">Contratar al primer agente de tu comunidad nunca fue tan fácil.</h2>
     <div class="steps">
       <div class="step reveal">
         <div class="step-n">01</div>
-        <h4>Agrégala al grupo donde eres admin</h4>
-        <p>Vibra tiene su propio número de WhatsApp. La agregas a tu grupo como agregarías a cualquier persona de tu equipo. Sin instalar nada, sin código — empezar es literalmente mandar una invitación.</p>
+        <h4>Agrégala al grupo</h4>
+        <p>Vibra tiene su propio número de WhatsApp. La agregas al grupo donde eres admin, como a cualquier persona de tu equipo. Sin instalar nada, sin código — empezar es mandar una invitación.</p>
       </div>
       <div class="step reveal">
         <div class="step-n">02</div>
-        <h4>Configura una vez, por mensaje</h4>
-        <p>En tu conversación privada le dices el tono, las reglas y la frontera: qué resuelve sola en el grupo y qué espera tu OK. Y si prefieres verlo todo en una pantalla, también la administras desde su propio panel. Configurarla es una conversación, no un proyecto.</p>
+        <h4>Configúrala por mensaje</h4>
+        <p>En tu chat privado le dices el tono, las reglas y la frontera: qué resuelve sola y qué espera tu OK. Y si prefieres una pantalla, también puedes administrarla desde su plataforma — tú decides.</p>
       </div>
       <div class="step reveal">
         <div class="step-n">03</div>
-        <h4>Vibra trabaja</h4>
+        <h4>Vibra se pone a trabajar</h4>
         <p>Atiende el grupo en público, mueve lo personal a los chats privados y te trae lo importante ya redactado. Y propone cosas que ni se te habían ocurrido pedirle.</p>
       </div>
     </div>
@@ -948,12 +952,12 @@
     <div class="anchor-card reveal" style="margin-top:54px">
       <div>
         <h2>Hagamos las cuentas.</h2>
-        <p>Un community manager dedicado cuesta un salario completo, trabaja 8 horas y alcanza a leer una fracción de lo que pasa. Vibra trabaja 24/7, lee el 100% — y su precio escala con tu comunidad: solo pagas por quien participa, desde el primer miembro.</p>
+        <p>Un community manager dedicado cuesta un salario completo y trabaja una jornada. Vibra trabaja a toda hora, con el contexto completo de tu comunidad y de las herramientas que conectes — y su precio escala contigo: solo pagas por quien participa, desde el primer miembro.</p>
       </div>
       <div class="salary-rows">
-        <div class="srow"><span class="lbl">CM en LATAM<span class="sub">salario mensual típico</span></span><span class="val">USD 800–1.500</span></div>
-        <div class="srow"><span class="lbl">CM en España<span class="sub">salario mensual típico</span></span><span class="val">EUR 1.800–2.500</span></div>
-        <div class="srow"><span class="lbl">CM en USA<span class="sub">salario mensual típico</span></span><span class="val">USD 4.000+</span></div>
+        <div class="srow"><span class="lbl">CM en LATAM<span class="sub">salario mensual típico</span></span><span class="val">USD 500–1.200</span></div>
+        <div class="srow"><span class="lbl">CM en España<span class="sub">salario mensual típico</span></span><span class="val">EUR 1.500–2.200</span></div>
+        <div class="srow"><span class="lbl">CM en USA<span class="sub">salario mensual típico</span></span><span class="val">USD 4.500+</span></div>
         <div class="srow vibra"><span class="lbl">Vibra<span class="sub">por miembro activo al mes</span></span><span class="val js-cur">$1</span></div>
       </div>
     </div>
@@ -964,39 +968,47 @@
 <section class="sec" style="padding-top:0" id="faq">
   <div class="wrap" style="max-width:860px">
     <div class="sec-label">Preguntas</div>
-    <h2 class="sec-title">Lo que todos preguntan — empezando por la privacidad.</h2>
+    <h2 class="sec-title">Lo que todos preguntan — empezando por tu número y tus datos.</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q">¿Vibra lee todos los mensajes de mi comunidad?<span class="ic">+</span></button>
-        <div class="faq-a"><p>Sí — igual que lo haría un community manager humano si lo contrataras. Es la única forma de hacer el trabajo: detectar la duda sin responder, el miembro que se enfría, la queja que escala. La diferencia es que con Vibra cada acción queda en un registro que puedes revisar, y un humano no te da eso.</p></div>
+        <button class="faq-q">¿Mi número corre riesgo de baneo?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Tu número, no — Vibra trabaja con su propio número, separado del tuyo y del de tu negocio. El riesgo operativo de la presencia en el grupo lo asumimos nosotros, no tu línea. Además, Vibra opera con ritmos de comportamiento prudentes (responde como respondería una persona, no como un cañón de mensajes masivos), que es exactamente lo contrario del patrón que Meta persigue.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Cómo se conecta Vibra a WhatsApp?<span class="ic">+</span></button>
-        <div class="faq-a"><p>Vibra tiene su propio número y entra a tu grupo como un miembro más del equipo — la agregas como agregarías a una persona. Hoy WhatsApp no ofrece una API oficial para grupos grandes de comunidad (la API de grupos de Meta está limitada a salas de 8 participantes), así que esta es la forma en que cualquier community manager, humano o IA, puede estar presente en tu grupo. Para los mensajes privados 1:1, trabajamos alineados con las políticas de WhatsApp Business.</p></div>
+        <div class="faq-a"><p>Vibra tiene su propio número y entra a tu grupo como un miembro más del equipo — la agregas como agregarías a una persona. Hoy WhatsApp no ofrece una API oficial para grupos grandes de comunidad (la API de grupos de Meta está limitada a salas de 8 participantes), así que esta es la forma en que cualquier community manager, humano o agente, puede estar presente en tu grupo. Para los mensajes privados, trabajamos alineados con las políticas de WhatsApp Business.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Vibra lee todos los mensajes de mi comunidad?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Sí — igual que lo haría un community manager humano si lo contrataras. Es la única forma de hacer el trabajo: detectar la duda sin responder, el miembro que se enfría, la queja que escala. La diferencia es que con Vibra cada acción queda en un registro que puedes revisar, y un humano no te da eso.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Qué pasa con los datos de mi comunidad?<span class="ic">+</span></button>
         <div class="faq-a"><p>Son tuyos. Los datos de tu comunidad nunca se comparten con otras comunidades ni se usan para entrenar modelos de terceros. Puedes exportar todo y borrar todo — perfiles, historial, configuración — cuando quieras, sin tickets de soporte.</p></div>
       </div>
       <div class="faq-item">
+        <button class="faq-q">¿Puede un miembro pedir que no se le perfile?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Sí. Cada perfil es revisable, editable y borrable. Si un miembro pide salir del análisis, sale — y Vibra respeta ese opt-out en todas sus funciones, desde la reactivación hasta las presentaciones entre miembros.</p></div>
+      </div>
+      <div class="faq-item">
         <button class="faq-q">¿Los miembros saben que Vibra está en el grupo?<span class="ic">+</span></button>
         <div class="faq-a"><p>Sí — Vibra aparece como un participante más, con su nombre, y recomendamos presentarla abiertamente como parte del equipo. Las comunidades sanas saben quién las cuida. Lo que sí controlas es cuánto habla en público y cuánto trabaja por privado contigo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Puede un miembro pedir que no se le perfile?<span class="ic">+</span></button>
-        <div class="faq-a"><p>Sí. Cada perfil es revisable, editable y borrable. Si un miembro pide salir del análisis, sale — y Vibra respeta ese opt-out en todas sus funciones, desde la reactivación hasta el matchmaking.</p></div>
+        <button class="faq-q">¿Puedo entrenar a Vibra con mi información?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Sí — esa es la gracia. Le enseñas por mensaje tu tono, tus reglas, tus enlaces y tus respuestas tipo; le pasas tus documentos y preguntas frecuentes; y aprende de cada corrección que le haces. Conectada a tus herramientas, responde con tu información real. Cuanto más le enseñas, más tuya se vuelve.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Vibra puede sustituir a mi community manager?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Depende de tu situación, y te lo decimos sin rodeos. Si hoy nadie sostiene la comunidad — o alguien lo hace a medio tiempo, entre mil cosas — Vibra cubre el rol completo desde el día uno. Si ya tienes un equipo de comunidad, Vibra es su palanca, no su reemplazo: ejecuta lo operativo y entrega el contexto para que tu equipo dedique su tiempo a lo que solo un humano puede construir — estrategia, contenido y relaciones profundas. Los mejores resultados son humanos con Vibra, no humanos contra Vibra.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿En qué se diferencia de un bot como ManyChat?<span class="ic">+</span></button>
-        <div class="faq-a"><p>Un bot tradicional vive en el 1:1, espera el comando exacto y sigue reglas que tú escribes. Vibra vive donde vive tu comunidad — el grupo — entiende lenguaje natural, recuerda el contexto de cada persona y toma iniciativa: detecta lo que hay que hacer y lo hace, o te lo trae redactado a tu chat privado.</p></div>
+        <div class="faq-a"><p>Un bot tradicional vive en el chat individual, espera el comando exacto y sigue reglas que tú escribes. Vibra vive donde vive tu comunidad — el grupo — entiende lenguaje natural, recuerda el contexto de cada persona y toma iniciativa: detecta lo que hay que hacer y lo hace, o te lo trae redactado a tu chat privado.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Y si Vibra se equivoca?<span class="ic">+</span></button>
         <div class="faq-a"><p>Tú defines la frontera: qué resuelve sola en el grupo y qué requiere tu OK por privado. Todo lo autónomo queda registrado, y lo sensible — clientes clave, temas delicados, crisis — siempre pasa por tu chat antes de salir.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">¿Mi número corre riesgo de baneo?<span class="ic">+</span></button>
-        <div class="faq-a"><p>Tu número, no — Vibra trabaja con su propio número, separado del tuyo y del de tu negocio. El riesgo operativo de la presencia en el grupo lo asumimos nosotros, no tu línea. Además, Vibra opera con ritmos de comportamiento prudentes (responde como respondería una persona, no como un cañón de mensajes masivos), que es exactamente lo contrario del patrón que Meta persigue.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Qué cuenta como "miembro activo"?<span class="ic">+</span></button>
@@ -1016,23 +1028,25 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#" class="logo"><span class="logo-dot"></span>Vibra</a>
-        <p class="lede">Tu comunidad ya tiene a la gente. Vibra le da el vibe.</p>
+        <p class="lede">Tu comunidad ya tiene a la gente.<br>Vibra le da el vibe.</p>
       </div>
       <div class="foot-col">
         <h6>Producto</h6>
         <a href="#motores">Funcionalidades</a>
         <a href="#integraciones">Integraciones</a>
         <a href="#segmentos">Para quién es</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#numeros">Comparación de costos</a>
         <a href="#faq">Preguntas</a>
       </div>
       <div class="foot-col">
         <h6>Contacto</h6>
         <a href="#precio">Lista de espera</a>
-        <a href="mailto:hello@getvibra.com">hello@getvibra.com</a>
+        <a href="mailto:hola@getvibra.ai">hola@getvibra.ai</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Vibra. Todos los derechos reservados.</span>
+      <span>© 2026 Vibra · Hecho desde Barcelona, España 🇪🇸</span>
       <span>Escucha. Entiende. Activa.</span>
     </div>
   </div>
