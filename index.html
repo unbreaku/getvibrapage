@@ -185,14 +185,21 @@
   /* integrations carousel */
   .icarousel{position:relative}
   .cslide{display:none}
-  .cslide.active{display:block;animation:fade .4s ease}
+  .cslide.active{display:block;animation:cfade .35s ease}
+  @keyframes cfade{from{opacity:0}to{opacity:1}}
   .cstage{position:relative;transition:min-height .3s ease}
   .cnav{position:absolute;top:45%;z-index:2;width:38px;height:38px;border-radius:50%;background:var(--surface);border:1px solid var(--line-strong);color:var(--text);font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:.2s}
   .cnav:hover{border-color:var(--green);color:var(--green)}
   .cprev{left:-14px}
   .cnext{right:-14px}
   .icarousel{position:relative}
-  @media(max-width:600px){.cprev{left:-6px}.cnext{right:-6px}.cnav{width:34px;height:34px}}
+  @media(max-width:820px){
+    .cnav{display:none}
+    .cslide.active{animation:none}
+    .cstage{touch-action:pan-y}
+    .cdots{margin-top:18px}
+    .cdot{width:11px;height:11px}
+  }
   .cdots{display:flex;gap:8px;justify-content:center;margin-top:16px}
   .cdot{width:9px;height:9px;border-radius:50%;background:var(--line-strong);border:none;cursor:pointer;padding:0;transition:.2s}
   .cdot.active{background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.6)}
@@ -544,13 +551,14 @@
       <div class="engine-copy">
         <div class="engine-num">01 · Escucha</div>
         <h3>Lee lo que nadie alcanza a leer.</h3>
-        <p>Cientos de mensajes al día, a las 2am, en tres grupos a la vez. Vibra los lee todos: la pregunta sin responder, la queja que crece, el miembro que empieza a soltarse. Nada se le escapa.</p>
+        <p>Mientras duermes se acumulan cientos de mensajes en tus grupos. Vibra los lee todos, te dice qué pasó y te llega con un plan: a quién escribir, qué responder, qué oportunidad no dejar pasar.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
         <div class="chat-body">
-          <div class="bubble in"><span class="who">Vibra</span>☀️ Resumen de la noche: 412 mensajes en tus 3 grupos. Respondí 9 preguntas, di 2 bienvenidas. Lo que me llamó la atención: "precio del próximo reto" se mencionó 14 veces 👀 — huele a interés de compra. Y 3 de tus top-10 bajaron su actividad 60% esta semana. ¿Te armo las dos listas?<span class="meta">07:30</span></div>
-          <div class="bubble out">sí, y empieza por los del reto 🔥<span class="meta">07:42 <span class="tick">✓✓</span></span></div>
+          <div class="bubble in"><span class="who">Vibra</span>buenas ☀️ te resumo la noche y te dejo 3 cosas para hoy:<span class="meta">07:30</span></div>
+          <div class="bubble in"><span class="who">Vibra</span>1️⃣ 14 personas preguntaron por tu próximo evento — te armo la lista para escribirles 💰<br>2️⃣ Carla lleva 2 semanas sin aparecer, yo le hablo para traerla de vuelta<br>3️⃣ se armó un buen debate y quedaron 3 preguntas sin responder, ¿las contesto? 📝<span class="meta">07:30</span></div>
+          <div class="bubble out">dale a las 3 🔥<span class="meta">07:42 <span class="tick">✓✓</span></span></div>
         </div>
       </div>
     </div>
@@ -559,14 +567,14 @@
       <div class="engine-copy">
         <div class="engine-num">02 · Entiende</div>
         <h3>Sabe quién es quién — y quién debería conocer a quién.</h3>
-        <p>Crea un mapa vivo de tu comunidad: quién sabe qué, quién busca qué, quién aporta. Con él hace lo que toda comunidad promete y ninguna cumple: presentar a las personas correctas en el momento correcto.</p>
+        <p>En toda comunidad hay gente con algo que ofrecer y gente que lo necesita, pero nunca se cruzan. Vibra los encuentra y los conecta — el networking que prometiste, hecho realidad.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag grupo" style="margin-bottom:8px">En el grupo · público</span>
         <div class="chat-body">
-          <div class="bubble in"><span class="who alt">Andrea</span>alguien tiene experiencia vendiendo high-ticket en frío? estoy perdida 😅<span class="meta">10:02</span></div>
-          <div class="bubble out"><span class="who">Vibra</span>Andrea, justo Marcos compartió en marzo el sistema con el que cerró $40K en frío — uno de los mejores hilos del grupo 🏆 @Marcos, ¿le cuentas? Andrea, te mando el resumen de ese hilo por privado 📩<span class="meta">10:02 <span class="tick">✓✓</span></span></div>
-          <div class="bubble in"><span class="who alt3">Marcos</span>jaja buena memoria Vibra 😂 Andrea claro, escríbeme<span class="meta">10:04</span></div>
+          <div class="bubble in"><span class="who alt">Andrea</span>alguien ha conseguido clientes por LinkedIn? estoy medio perdida 😅<span class="meta">10:02</span></div>
+          <div class="bubble out"><span class="who">Vibra</span>Andrea, justo Marcos contó en marzo cómo armó su sistema de clientes por LinkedIn — uno de los mejores hilos del grupo 🏆 @Marcos, ¿le cuentas? Andrea, te paso el resumen por privado 📩<span class="meta">10:02 <span class="tick">✓✓</span></span></div>
+          <div class="bubble in"><span class="who alt3">Marcos</span>jaja buena memoria 😂 Andrea claro, escríbeme<span class="meta">10:04</span></div>
         </div>
       </div>
     </div>
@@ -574,15 +582,15 @@
     <div class="engine reveal">
       <div class="engine-copy">
         <div class="engine-num">03 · Activa</div>
-        <h3>Hace el trabajo — no te da tareas.</h3>
-        <p>Bienvenidas, respuestas, recordatorios, reactivaciones: hechas, no sugeridas. Al cierre del día te llega un reporte.</p>
+        <h3>Mantiene la comunidad viva — sin que tú estés.</h3>
+        <p>Bienvenidas, respuestas, recordatorios, conversaciones que no se apagan — hechas, no sugeridas. Tú no haces nada. Al final del día te cuenta qué hizo.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
         <div class="chat-body">
-          <div class="bubble in"><span class="who">Vibra</span>🧾 Parte del día: di 2 bienvenidas, respondí 11 preguntas y mandé el recordatorio del taller. Reactivé a los 3 que se estaban enfriando — Carla ya volvió a escribir 🎉 Mañana: seguimiento a los 14 del reto.<span class="meta">20:00</span></div>
-          <div class="bubble out">buen trabajo 👏<span class="meta">20:12 <span class="tick">✓✓</span></span></div>
-          <div class="bubble in"><span class="who">Vibra</span>A sus órdenes 😄 Cualquier cosa, aquí estoy.<span class="meta">20:12</span></div>
+          <div class="bubble in"><span class="who">Vibra</span>cierre del día 🌙 esto hice hoy mientras grababas:<span class="meta">20:00</span></div>
+          <div class="bubble in"><span class="who">Vibra</span>✅ recibí a 2 nuevos y los presenté al grupo<br>✅ respondí 11 dudas<br>✅ Carla volvió a escribir, le di la bienvenida de vuelta 🎉<br>✅ reviví el chat con una pregunta y se armó conversación<span class="meta">20:00</span></div>
+          <div class="bubble out">crack 👏<span class="meta">20:12 <span class="tick">✓✓</span></span></div>
         </div>
       </div>
     </div>
@@ -612,9 +620,9 @@
         <h4>Con tu visto bueno.</h4>
         <p>Te llega el contexto y la propuesta. Respondes con un mensaje normal, como a un empleado de confianza.</p>
         <div class="chat-body" style="padding:0">
-          <div class="bubble in"><span class="who">Vibra</span>🤝 Diego acaba de preguntar en el grupo si alguien conoce gente en Mercado Libre. Valeria, de tu comunidad, trabajó ahí 4 años — lo contó en su presentación de febrero. Casi no han hablado entre ellos. ¿Los conecto por privado de tu parte?<span class="meta">16:02</span></div>
+          <div class="bubble in"><span class="who">Vibra</span>🤝 Diego preguntó en el grupo si alguien conoce gente en Mercado Libre. Valeria, de tu comunidad, trabajó ahí 4 años — lo contó cuando se presentó. Casi no han hablado entre ellos. ¿Los pongo en contacto?<span class="meta">16:02</span></div>
           <div class="bubble out">sí, conéctalos 🤝<span class="meta">16:04 <span class="tick">✓✓</span></span></div>
-          <div class="bubble in"><span class="who">Vibra</span>Hecho ✅ Valeria respondió: "claro, que me escriba". Diego ya le habló. Esto es exactamente por lo que la gente se queda en tu comunidad 😉<span class="meta">16:05</span></div>
+          <div class="bubble in"><span class="who">Vibra</span>Hecho ✅ Valeria respondió: "claro, que me escriba" 🙌<span class="meta">16:05</span></div>
         </div>
       </div>
     </div>
@@ -634,19 +642,19 @@
         <p>Vibra conecta el grupo con las herramientas donde corre tu operación: Luma, Google Sheets, tu último video de YouTube, tu curso, tu CRM. Le pides cosas por tu chat privado y las cruza todas en una respuesta.</p>
         <p>Y al revés: el video que subiste a YouTube llega por privado a quien lo estaba esperando. Nutrir sin spam.</p>
         <div class="int-pills">
+          <span class="ipill"><span class="ilogo" style="background:#F04E23"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.2 2c.9 3.9-2.9 5.6-2.9 9.2a4.8 4.8 0 009.6 0c0-2.1-1-3.7-2.2-4.8.3 1.6-.4 2.7-1.5 3.2.7-2.7-1-5.8-3-7.6zM8 9.5C6.7 10.8 6 12.4 6 14.2 6 17.4 8.7 20 12 20s6-2.6 6-5.8" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>Hotmart</span>
           <span class="ipill"><span class="ilogo" style="background:#FF0000"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M9.6 7.8v8.4l7.2-4.2z" fill="#fff"/><rect x="2.5" y="5" width="19" height="14" rx="3.5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></span>YouTube</span>
           <span class="ipill"><span class="ilogo" style="background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)"><svg viewBox="0 0 24 24" width="15" height="15"><rect x="4" y="4" width="16" height="16" rx="4.5" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.6" cy="7.4" r="1.1" fill="#fff"/></svg></span>Instagram</span>
-          <span class="ipill m-hide"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#4A154B"/></svg></span>Slack</span>
+          <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#4A154B"/></svg></span>Slack</span>
           <span class="ipill"><span class="ilogo" style="background:#34A853"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z" fill="#fff"/></svg></span>Google Sheets</span>
           <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M18.316 5.684H24v12.632h-5.684V5.684zM5.684 24h12.632v-5.684H5.684V24zM18.316 5.684V0H1.895A1.894 1.894 0 0 0 0 1.895v16.421h5.684V5.684h12.632zm-7.207 6.25v-.065c.272-.144.5-.349.687-.617s.279-.595.279-.982c0-.379-.099-.72-.3-1.025a2.05 2.05 0 0 0-.832-.714 2.703 2.703 0 0 0-1.197-.257c-.6 0-1.094.156-1.481.467-.386.311-.65.671-.793 1.078l1.085.452c.086-.249.224-.461.413-.633.189-.172.445-.257.767-.257.33 0 .602.088.816.264a.86.86 0 0 1 .322.703c0 .33-.12.589-.36.778-.24.19-.535.284-.886.284h-.567v1.085h.633c.407 0 .748.109 1.02.327.272.218.407.499.407.843 0 .336-.129.614-.387.832s-.565.327-.924.327c-.351 0-.651-.103-.897-.311-.248-.208-.422-.502-.521-.881l-1.096.452c.178.616.505 1.082.977 1.401.472.319.984.478 1.538.477a2.84 2.84 0 0 0 1.293-.291c.382-.193.684-.458.902-.794.218-.336.327-.72.327-1.149 0-.429-.115-.797-.344-1.105a2.067 2.067 0 0 0-.881-.689zm2.093-1.931l.602.913L15 10.045v5.744h1.187V8.446h-.827l-2.158 1.557zM22.105 0h-3.289v5.184H24V1.895A1.894 1.894 0 0 0 22.105 0zm-3.289 23.5l4.684-4.684h-4.684V23.5zM0 22.105C0 23.152.848 24 1.895 24h3.289v-5.184H0v3.289z" fill="#4285F4"/></svg></span>Google Calendar</span>
-          <span class="ipill m-hide"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z" fill="#4285F4"/></svg></span>Google Drive</span>
-          <span class="ipill m-hide"><span class="ilogo" style="background:#FF7A59"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z" fill="#fff"/></svg></span>HubSpot</span>
+          <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z" fill="#4285F4"/></svg></span>Google Drive</span>
+          <span class="ipill"><span class="ilogo" style="background:#FF7A59"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z" fill="#fff"/></svg></span>HubSpot</span>
           <span class="ipill"><span class="ilogo" style="background:#635BFF"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z" fill="#fff"/></svg></span>Stripe</span>
-          <span class="ipill m-hide"><span class="ilogo" style="background:#006BFF"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M19.655 14.262c.281 0 .557.023.828.064 0 .005-.005.01-.005.014-.105.267-.234.534-.381.786l-1.219 2.106c-1.112 1.936-3.177 3.127-5.411 3.127h-2.432c-2.23 0-4.294-1.191-5.412-3.127l-1.218-2.106a6.251 6.251 0 0 1 0-6.252l1.218-2.106C6.736 4.832 8.8 3.641 11.035 3.641h2.432c2.23 0 4.294 1.191 5.411 3.127l1.219 2.106c.147.252.271.519.381.786 0 .004.005.009.005.014-.267.041-.543.064-.828.064-1.816 0-2.501-.607-3.291-1.306-.764-.676-1.711-1.517-3.44-1.517h-1.029c-1.251 0-2.387.455-3.2 1.278-.796.805-1.233 1.904-1.233 3.099v1.411c0 1.196.437 2.295 1.233 3.099.813.823 1.949 1.278 3.2 1.278h1.034c1.729 0 2.676-.841 3.439-1.517.791-.703 1.471-1.306 3.287-1.301Zm.005-3.237c.399 0 .794-.036 1.179-.11-.002-.004-.002-.01-.002-.014-.073-.414-.193-.823-.349-1.218.731-.12 1.407-.396 1.986-.819 0-.004-.005-.013-.005-.018-.331-1.085-.832-2.101-1.489-3.03-.649-.915-1.435-1.719-2.331-2.395-1.867-1.398-4.088-2.138-6.428-2.138-1.448 0-2.855.28-4.175.841-1.273.543-2.423 1.315-3.407 2.299S2.878 6.552 2.341 7.83c-.557 1.324-.842 2.726-.842 4.175 0 1.448.281 2.855.842 4.174.542 1.274 1.314 2.423 2.298 3.407s2.129 1.761 3.407 2.299c1.324.556 2.727.841 4.175.841 2.34 0 4.561-.74 6.428-2.137a10.815 10.815 0 0 0 2.331-2.396c.652-.929 1.158-1.949 1.489-3.03 0-.004.005-.014.005-.018-.579-.423-1.255-.699-1.986-.819.161-.395.276-.804.349-1.218.005-.009.005-.014.005-.023.869.166 1.692.506 2.404 1.035.685.505.552 1.075.446 1.416C22.184 20.437 17.619 24 12.221 24c-6.625 0-12-5.375-12-12s5.37-12 12-12c5.398 0 9.963 3.563 11.471 8.464.106.341.239.915-.446 1.421-.717.529-1.535.873-2.404 1.034.128.716.128 1.45 0 2.166-.387-.074-.782-.11-1.182-.11-4.184 0-3.968 2.823-6.736 2.823h-1.029c-1.899 0-3.15-1.357-3.15-3.095v-1.411c0-1.738 1.251-3.094 3.15-3.094h1.034c2.768 0 2.552 2.823 6.731 2.827Z" fill="#fff"/></svg></span>Calendly</span>
+          <span class="ipill"><span class="ilogo" style="background:#006BFF"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M19.655 14.262c.281 0 .557.023.828.064 0 .005-.005.01-.005.014-.105.267-.234.534-.381.786l-1.219 2.106c-1.112 1.936-3.177 3.127-5.411 3.127h-2.432c-2.23 0-4.294-1.191-5.412-3.127l-1.218-2.106a6.251 6.251 0 0 1 0-6.252l1.218-2.106C6.736 4.832 8.8 3.641 11.035 3.641h2.432c2.23 0 4.294 1.191 5.411 3.127l1.219 2.106c.147.252.271.519.381.786 0 .004.005.009.005.014-.267.041-.543.064-.828.064-1.816 0-2.501-.607-3.291-1.306-.764-.676-1.711-1.517-3.44-1.517h-1.029c-1.251 0-2.387.455-3.2 1.278-.796.805-1.233 1.904-1.233 3.099v1.411c0 1.196.437 2.295 1.233 3.099.813.823 1.949 1.278 3.2 1.278h1.034c1.729 0 2.676-.841 3.439-1.517.791-.703 1.471-1.306 3.287-1.301Zm.005-3.237c.399 0 .794-.036 1.179-.11-.002-.004-.002-.01-.002-.014-.073-.414-.193-.823-.349-1.218.731-.12 1.407-.396 1.986-.819 0-.004-.005-.013-.005-.018-.331-1.085-.832-2.101-1.489-3.03-.649-.915-1.435-1.719-2.331-2.395-1.867-1.398-4.088-2.138-6.428-2.138-1.448 0-2.855.28-4.175.841-1.273.543-2.423 1.315-3.407 2.299S2.878 6.552 2.341 7.83c-.557 1.324-.842 2.726-.842 4.175 0 1.448.281 2.855.842 4.174.542 1.274 1.314 2.423 2.298 3.407s2.129 1.761 3.407 2.299c1.324.556 2.727.841 4.175.841 2.34 0 4.561-.74 6.428-2.137a10.815 10.815 0 0 0 2.331-2.396c.652-.929 1.158-1.949 1.489-3.03 0-.004.005-.014.005-.018-.579-.423-1.255-.699-1.986-.819.161-.395.276-.804.349-1.218.005-.009.005-.014.005-.023.869.166 1.692.506 2.404 1.035.685.505.552 1.075.446 1.416C22.184 20.437 17.619 24 12.221 24c-6.625 0-12-5.375-12-12s5.37-12 12-12c5.398 0 9.963 3.563 11.471 8.464.106.341.239.915-.446 1.421-.717.529-1.535.873-2.404 1.034.128.716.128 1.45 0 2.166-.387-.074-.782-.11-1.182-.11-4.184 0-3.968 2.823-6.736 2.823h-1.029c-1.899 0-3.15-1.357-3.15-3.095v-1.411c0-1.738 1.251-3.094 3.15-3.094h1.034c2.768 0 2.552 2.823 6.731 2.827Z" fill="#fff"/></svg></span>Calendly</span>
           <span class="ipill"><span class="ilogo" style="background:#2D8CFF"><svg viewBox="0 0 24 24" width="15" height="15"><rect x="2.5" y="6.5" width="13" height="11" rx="3" fill="#fff"/><path d="M16.8 10.6l4.7-2.8v8.4l-4.7-2.8z" fill="#fff"/></svg></span>Zoom</span>
-          <span class="ipill m-hide"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" fill="#000"/></svg></span>Notion</span>
+          <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" fill="#000"/></svg></span>Notion</span>
           <span class="ipill"><span class="ilogo" style="background:#0f0f0f;border:1px solid rgba(255,255,255,.2)"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12 1c.55 5.9 4.55 9.9 11 11-6.45 1.1-10.45 5.1-11 11-.55-5.9-4.55-9.9-11-11 6.45-1.1 10.45-5.1 11-11z" fill="#fff"/></svg></span>Luma</span>
-          <span class="ipill"><span class="ilogo" style="background:#F04E23"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.2 2c.9 3.9-2.9 5.6-2.9 9.2a4.8 4.8 0 009.6 0c0-2.1-1-3.7-2.2-4.8.3 1.6-.4 2.7-1.5 3.2.7-2.7-1-5.8-3-7.6zM8 9.5C6.7 10.8 6 12.4 6 14.2 6 17.4 8.7 20 12 20s6-2.6 6-5.8" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>Hotmart</span>
           <span class="ipill m-hide"><span class="ilogo" style="background:#2670E8"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M6 4h3.2v16H6zM11.5 12l6.2-8h3.6l-6.7 8 6.7 8h-3.6l-6.2-8z" fill="#fff"/></svg></span>Kajabi</span>
           <span class="ipill m-hide"><span class="ilogo" style="background:#36A0F5"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.5 14h3.4v6H4.5zM10.3 9.5h3.4V20h-3.4zM16.1 4h3.4v16h-3.4z" fill="#fff"/></svg></span>GoHighLevel</span>
         </div>
@@ -656,46 +664,46 @@
         <button class="cnav cnext" aria-label="Caso siguiente">›</button>
         <div class="cstage">
         <div class="cslide active">
-        <div class="mini-chat">
-        <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
-        <div class="chat-body">
-          <div class="bubble out">quiénes del grupo confirmaron al evento de mañana en Luma?<span class="meta">11:20 <span class="tick">✓✓</span></span></div>
-          <div class="bubble in"><span class="who">Vibra</span>Confirmaron 38 de 52 invitados ✅ Del grupo, faltan 9 — incluidos 3 de tus top-10. ¿Les mando un recordatorio personal por privado y actualizo la hoja de asistencia?<span class="meta">11:20</span></div>
-          <div class="bubble out">sí a ambos<span class="meta">11:21 <span class="tick">✓✓</span></span></div>
-          <div class="bubble in"><span class="who">Vibra</span>Listo: 9 recordatorios enviados y Sheet actualizado 📋<span class="meta">11:22</span></div>
-        </div>
-      </div>
-        </div>
-        <div class="cslide">
-        <div class="mini-chat">
-          <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
-          <div class="chat-body">
-            <div class="bubble out">quién tiene la renovación vencida este mes?<span class="meta">09:10 <span class="tick">✓✓</span></span></div>
-            <div class="bubble in"><span class="who">Vibra</span>Según Stripe: 3 miembros 💳 Laura (3 días), Pedro (1 semana) y Ana (venció hoy). Laura sigue súper activa en el grupo — ¿le mando primero a ella un recordatorio amable?<span class="meta">09:10</span></div>
-            <div class="bubble out">sí, y a los otros dos mañana<span class="meta">09:11 <span class="tick">✓✓</span></span></div>
-            <div class="bubble in"><span class="who">Vibra</span>Hecho ✅ Programados para mañana 10am.<span class="meta">09:11</span></div>
+          <div class="mini-chat">
+            <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+            <div class="chat-body">
+              <div class="bubble out">quién tiene la renovación vencida este mes?<span class="meta">09:10 <span class="tick">✓✓</span></span></div>
+              <div class="bubble in"><span class="who">Vibra</span>Según Hotmart: 3 miembros 💳 Laura (3 días), Pedro (1 semana) y Ana (venció hoy). Laura sigue súper activa en el grupo — ¿le mando primero a ella un recordatorio amable?<span class="meta">09:10</span></div>
+              <div class="bubble out">sí, y a los otros dos mañana<span class="meta">09:11 <span class="tick">✓✓</span></span></div>
+              <div class="bubble in"><span class="who">Vibra</span>Hecho ✅ Programados para mañana 10am.<span class="meta">09:11</span></div>
+            </div>
           </div>
         </div>
-        </div>
         <div class="cslide">
-        <div class="mini-chat">
-          <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
-          <div class="chat-body">
-            <div class="bubble out">quiénes del reto no han entregado la tarea 2?<span class="meta">17:40 <span class="tick">✓✓</span></span></div>
-            <div class="bubble in"><span class="who">Vibra</span>Según tu hoja de Google Sheets: 14 de 60 📋 De ellos, 9 siguen activos en el grupo. ¿Les mando un empujón por privado con el link de entrega y les doy hasta el viernes?<span class="meta">17:40</span></div>
-            <div class="bubble out">dale, tono motivador 💪<span class="meta">17:42 <span class="tick">✓✓</span></span></div>
+          <div class="mini-chat">
+            <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+            <div class="chat-body">
+              <div class="bubble out">quiénes del grupo confirmaron al evento de mañana en Luma?<span class="meta">11:20 <span class="tick">✓✓</span></span></div>
+              <div class="bubble in"><span class="who">Vibra</span>Confirmaron 38 de 52 invitados ✅ Del grupo, faltan 9 — incluidos 3 de tus top-10. ¿Les mando un recordatorio personal por privado y actualizo la hoja de asistencia?<span class="meta">11:20</span></div>
+              <div class="bubble out">sí a ambos<span class="meta">11:21 <span class="tick">✓✓</span></span></div>
+              <div class="bubble in"><span class="who">Vibra</span>Listo: 9 recordatorios enviados y Sheet actualizado 📋<span class="meta">11:22</span></div>
+            </div>
           </div>
         </div>
-        </div>
         <div class="cslide">
-        <div class="mini-chat">
-          <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
-          <div class="chat-body">
-            <div class="bubble out">acabo de subir un video a YouTube sobre pricing — muévelo en la comunidad<span class="meta">12:05 <span class="tick">✓✓</span></span></div>
-            <div class="bubble in"><span class="who">Vibra</span>🎯 Lo vi. 12 personas preguntaron por pricing este mes — se lo mando por privado solo a ellas, con una línea de por qué les sirve. Al resto, mención natural cuando el tema salga en el grupo. ¿Va?<span class="meta">12:05</span></div>
-            <div class="bubble out">perfecto así<span class="meta">12:06 <span class="tick">✓✓</span></span></div>
+          <div class="mini-chat">
+            <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+            <div class="chat-body">
+              <div class="bubble out">quiénes del reto no han entregado la tarea 2?<span class="meta">17:40 <span class="tick">✓✓</span></span></div>
+              <div class="bubble in"><span class="who">Vibra</span>Según tu hoja de Google Sheets: 14 de 60 📋 De ellos, 9 siguen activos en el grupo. ¿Les mando un empujón por privado con el link de entrega y les doy hasta el viernes?<span class="meta">17:40</span></div>
+              <div class="bubble out">dale, tono motivador 💪<span class="meta">17:42 <span class="tick">✓✓</span></span></div>
+            </div>
           </div>
         </div>
+        <div class="cslide">
+          <div class="mini-chat">
+            <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
+            <div class="chat-body">
+              <div class="bubble out">acabo de subir un video a YouTube — muévelo en la comunidad<span class="meta">12:05 <span class="tick">✓✓</span></span></div>
+              <div class="bubble in"><span class="who">Vibra</span>🎯 Lo vi. 12 personas preguntaron por ese tema este mes — se lo mando por privado solo a ellas, con una línea de por qué les sirve. Al resto, mención natural cuando salga en el grupo. ¿Va?<span class="meta">12:05</span></div>
+              <div class="bubble out">perfecto así<span class="meta">12:06 <span class="tick">✓✓</span></span></div>
+            </div>
+          </div>
         </div>
         </div>
         <div class="cdots">
@@ -725,15 +733,15 @@
     <div class="panel active open" data-panel="0">
       <button class="panel-head" type="button">Comunidades de creadores <span class="ph-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
       <div class="panel-body">
-      <h3>Tu membresía se siente viva mientras tú creas tu próximo contenido.</h3>
+      <h3>Tu membresía sigue viva aunque tú estés grabando.</h3>
       <div class="ptag">Creadores, coaches, membresías y cohortes educativas</div>
       <div class="panel-feats">
-        <div class="pfeat"><h5><span class="dot"></span>Bienvenida que retiene</h5><p>Saludo en el grupo y onboarding por privado para cada nuevo. Tu inversión en captarlos deja de fugarse en la primera semana.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Soporte sin tickets</h5><p>Acceso, enlaces, fechas, grabaciones: respondidas al momento. No vuelves a contestar "¿me pasas el link?" nunca más.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Alerta de cancelaciones</h5><p>Detecta quién se enfría semanas antes, con el mensaje de reactivación listo. Peleas la renovación antes de perderla.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Lo que vale oro, a la superficie</h5><p>Las preguntas que se pierden en el scroll, rescatadas y vueltas FAQ o contenido. Tu comunidad te escribe las ideas del mes.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Eventos y retos sin fricción</h5><p>Anuncia, confirma asistencia por privado, recuerda y persigue entregas. Más asistencia, sin perseguir a nadie.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Reactivación a escala</h5><p>Los que llevan semanas en silencio reciben un mensaje personal, uno por uno. La parte dormida vuelve a moverse.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Nadie entra y se pierde</h5><p>Recibe a cada nuevo y lo conecta con la gente y el contenido. No se te van en la primera semana.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Las dudas, resueltas</h5><p>El link, la fecha, la grabación. Contestadas al toque. No las vuelves a contestar tú.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Menos cancelaciones</h5><p>Te avisa quién se está por ir antes de que se vaya, con el mensaje listo para traerlo de vuelta.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Ideas de contenido gratis</h5><p>Lo que tu gente pregunta una y otra vez es tu próximo video. Vibra te lo rescata del scroll.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Más gente en tus eventos</h5><p>Avisa, confirma quién va y recuerda a los demás. Tú no persigues a nadie.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Despierta a los callados</h5><p>A los que llevan semanas sin aparecer, Vibra les escribe uno por uno. La mitad dormida vuelve.</p></div>
       </div>
       </div>
     </div>
@@ -741,15 +749,15 @@
     <div class="panel" data-panel="1">
       <button class="panel-head" type="button">Comunidades profesionales <span class="ph-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
       <div class="panel-body">
-      <h3>Tu red de empresarios, directivos y emprendedores por fin tiene a alguien al volante.</h3>
+      <h3>Tu red por fin tiene a alguien que la cuida 24/7.</h3>
       <div class="ptag">Empresarios, directivos, emprendedores, aceleradoras y redes de alumni</div>
       <div class="panel-feats">
-        <div class="pfeat"><h5><span class="dot"></span>Conexiones que encajan de verdad</h5><p>Conecta el problema con quien ya lo resolvió, el emprendedor con el mentor. Te trae la intro con borrador listo.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Discreción total</h5><p>Lo delicado nunca pasa por el grupo: te llega a tu chat. La comunidad ve un grupo vivo; tu reputación, intacta.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Memoria institucional</h5><p>Qué se discutió, qué se decidió, quién pidió qué. Nada se pierde entre mensajes.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Pulso semanal</h5><p>Cada lunes en tu chat: qué pasó, quién participó, qué encendió al grupo. Diriges con datos, en cinco minutos.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Eventos y encuentros que sí llenan</h5><p>Anuncia, confirma asistencia, resuelve la logística y hace seguimiento. Más asistencia, sin perseguir a nadie.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Reactivación a escala</h5><p>Los que llevan meses en silencio vuelven con mensajes privados, uno por uno. La red dormida vuelve a moverse.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Las presentaciones correctas</h5><p>Sabe quién necesita a quién y te arma la intro. El networking que prometiste, hecho realidad.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Lo delicado, contigo</h5><p>Nada sensible pasa por el grupo. Te llega a tu chat. La comunidad solo ve un grupo vivo.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>No se olvida de nada</h5><p>Qué se habló, qué se decidió, quién pidió qué. Todo guardado, nada perdido en el scroll.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Tu resumen de los lunes</h5><p>Qué pasó, quién participó, qué prendió al grupo. Te pones al día en cinco minutos.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Encuentros que sí se llenan</h5><p>Avisa, confirma quién va, resuelve la logística y hace el seguimiento. Tú solo te presentas.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span>Despierta a los callados</h5><p>A los que llevan meses sin aparecer, Vibra les escribe uno por uno. La red dormida vuelve a moverse.</p></div>
       </div>
       </div>
     </div>
@@ -901,7 +909,7 @@
       <div class="sec-label" style="position:relative;z-index:1">Precio de lanzamiento · solo para las primeras 100 comunidades</div>
       <div class="price-big"><span class="js-cur">$1</span></div>
       <div class="price-unit">por miembro activo &nbsp;·&nbsp; al mes</div>
-      <p class="sub">Precio especial de lanzamiento, solo para las primeras 100 comunidades. Sin mínimos, sin contratos: <strong>solo pagas por quien participa, desde el primer miembro.</strong> Los miembros silenciosos no se cobran. Lo que significa que tu costo solo crece cuando tu comunidad está viva. Nunca antes.</p>
+      <p class="sub"><strong>Solo pagas por quien participa.</strong> Los miembros silenciosos no se cobran.</p>
       <div class="wl-card">
         <div class="wl-card-title"><span class="pulse"></span>Reserva tu lugar · sin compromiso</div>
         <div class="wl-combo">
@@ -1030,7 +1038,7 @@
     <div class="anchor-card reveal" style="margin-top:54px">
       <div>
         <h2>Hagamos las cuentas.</h2>
-        <p>Un community manager dedicado cuesta un salario completo y trabaja una jornada. Vibra trabaja a toda hora, con el contexto completo de tu comunidad y de las herramientas que conectes — y su precio escala contigo: solo pagas por quien participa, desde el primer miembro.</p>
+        <p>Un community manager te cuesta un sueldo entero y trabaja 8 horas. Vibra trabaja todo el día y toda la noche, y solo pagas por la gente que participa.</p>
       </div>
       <div class="salary-rows">
         <div class="srow"><span class="lbl">CM en LATAM<span class="sub">salario mensual típico</span></span><span class="val">USD 500–1.200</span></div>
@@ -1048,55 +1056,55 @@
 <section class="sec" style="padding-top:0" id="faq">
   <div class="wrap" style="max-width:860px">
     <div class="sec-label">Preguntas</div>
-    <h2 class="sec-title">Lo que todos preguntan — del precio a la privacidad.</h2>
+    <h2 class="sec-title">Lo que todos preguntan.</h2>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q">¿Qué cuenta como "miembro activo"?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Un miembro que participó en tu comunidad durante el mes, de cualquier forma: escribió en el grupo, reaccionó a un mensaje o conversó con Vibra por privado. Solo se cuenta una vez al mes, participe lo que participe. Y esa es la filosofía del precio: Vibra trabaja para activar — una reacción es una puerta ("12 personas le dieron like al anuncio del evento, ¿les mando el link por privado?"). Los miembros silenciosos no se cobran: si tu comunidad tiene 1.000 personas y participan 300, pagas por 300.</p></div>
+        <div class="faq-a"><p>Alguien que durante el mes escribió, reaccionó o habló con Vibra por privado. Da igual cuántas veces — cuenta una sola vez al mes.</p><p>Si tu comunidad tiene 1.000 personas y participan 300, pagas por 300. Los silenciosos no se cobran.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Mi número corre riesgo de baneo?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Tu número, no — Vibra trabaja con su propio número, separado del tuyo y del de tu negocio. El riesgo operativo de la presencia en el grupo lo asumimos nosotros, no tu línea. Además, Vibra opera con ritmos de comportamiento prudentes (responde como respondería una persona, no como un cañón de mensajes masivos), que es exactamente lo contrario del patrón que Meta persigue.</p></div>
+        <div class="faq-a"><p>Tu número está a salvo. Vibra trabaja con su propio número, separado del tuyo y del de tu negocio, así que cualquier riesgo lo corre su línea, no la tuya.</p><p>Además responde a ritmo de persona, no como una máquina que dispara mensajes en masa — que es justo lo que Meta castiga.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Cómo se conecta Vibra a WhatsApp?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Vibra tiene su propio número y entra a tu grupo como un miembro más del equipo — la agregas como agregarías a una persona. Hoy WhatsApp no ofrece una API oficial para grupos grandes de comunidad (la API de grupos de Meta está limitada a salas de 8 participantes), así que esta es la forma en que cualquier community manager, humano o agente, puede estar presente en tu grupo. Para los mensajes privados, trabajamos alineados con las políticas de WhatsApp Business.</p></div>
+        <div class="faq-a"><p>Tiene su propio número y entra a tu grupo como un miembro más del equipo. La agregas igual que agregarías a una persona.</p><p>Hoy WhatsApp no tiene una API oficial para grupos grandes de comunidad, así que esta es la forma en que cualquier community manager, humano o agente, puede estar dentro de tu grupo.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Vibra lee todos los mensajes de mi comunidad?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sí — igual que lo haría un community manager humano si lo contrataras. Es la única forma de hacer el trabajo: detectar la duda sin responder, el miembro que se enfría, la queja que escala. La diferencia es que con Vibra cada acción queda en un registro que puedes revisar, y un humano no te da eso.</p></div>
+        <div class="faq-a"><p>Sí, igual que lo haría un community manager humano. Es la única forma de hacer el trabajo: ver la duda sin responder, el miembro que se enfría, la queja que crece.</p><p>La diferencia es que cada acción de Vibra queda registrada y la puedes revisar. Un humano no te da eso.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Qué pasa con los datos de mi comunidad?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Son tuyos. Los datos de tu comunidad nunca se comparten con otras comunidades ni se usan para entrenar modelos de terceros. Puedes exportar todo y borrar todo — perfiles, historial, configuración — cuando quieras, sin tickets de soporte.</p></div>
+        <div class="faq-a"><p>Son tuyos. Nunca se comparten con otras comunidades ni se usan para entrenar modelos de terceros.</p><p>Puedes exportar todo y borrar todo — perfiles, historial, configuración — cuando quieras, sin pedírselo a nadie.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Puede un miembro pedir que no se le perfile?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sí. Cada perfil es revisable, editable y borrable. Si un miembro pide salir del análisis, sale — y Vibra respeta ese opt-out en todas sus funciones, desde la reactivación hasta las presentaciones entre miembros.</p></div>
+        <div class="faq-a"><p>Sí. Si un miembro pide quedar fuera del análisis, queda fuera, y Vibra lo respeta en todo — desde la reactivación hasta las presentaciones entre miembros.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Los miembros saben que Vibra está en el grupo?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sí — Vibra aparece como un participante más, con su nombre, y recomendamos presentarla abiertamente como parte del equipo. Las comunidades sanas saben quién las cuida. Lo que sí controlas es cuánto habla en público y cuánto trabaja por privado contigo.</p></div>
+        <div class="faq-a"><p>Sí. Aparece como un participante más, con su nombre, y recomendamos presentarla abiertamente como parte del equipo. Las comunidades sanas saben quién las cuida.</p><p>Lo que tú controlas es cuánto habla en público y cuánto trabaja en privado contigo.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Puedo entrenar a Vibra con mi información?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sí — esa es la gracia. Le enseñas por mensaje tu tono, tus reglas, tus enlaces y tus respuestas tipo; le pasas tus documentos y preguntas frecuentes; y aprende de cada corrección que le haces. Conectada a tus herramientas, responde con tu información real. Cuanto más le enseñas, más tuya se vuelve.</p></div>
+        <div class="faq-a"><p>Sí, esa es la gracia. Le enseñas por mensaje tu tono, tus reglas y tus respuestas de siempre, le pasas tus documentos, y aprende de cada corrección que le haces.</p><p>Cuanto más le enseñas, más tuya se vuelve.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Vibra puede sustituir a mi community manager?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Depende de tu situación, y te lo decimos sin rodeos. Si hoy nadie sostiene la comunidad — o alguien lo hace a medio tiempo, entre mil cosas — Vibra cubre el rol completo desde el día uno. Si ya tienes un equipo de comunidad, Vibra es su palanca, no su reemplazo: ejecuta lo operativo y entrega el contexto para que tu equipo dedique su tiempo a lo que solo un humano puede construir — estrategia, contenido y relaciones profundas. Los mejores resultados son humanos con Vibra, no humanos contra Vibra.</p></div>
+        <div class="faq-a"><p>Depende de tu situación, y te lo decimos sin rodeos. Si hoy nadie sostiene la comunidad, o alguien lo hace a medio tiempo entre mil cosas, Vibra cubre el rol completo desde el primer día.</p><p>Si ya tienes un equipo de comunidad, Vibra es su palanca, no su reemplazo. Se encarga de lo operativo para que tu equipo use su tiempo en lo que solo un humano puede hacer — estrategia, contenido y relaciones de verdad. Los mejores resultados son humanos con Vibra, no humanos contra Vibra.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿En qué se diferencia de un bot como ManyChat?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Un bot tradicional vive en el chat individual, espera el comando exacto y sigue reglas que tú escribes. Vibra vive donde vive tu comunidad — el grupo — entiende lenguaje natural, recuerda el contexto de cada persona y toma iniciativa: detecta lo que hay que hacer y lo hace, o te lo trae redactado a tu chat privado.</p></div>
+        <div class="faq-a"><p>Un bot tradicional vive en el chat individual, espera el comando exacto y sigue reglas que tú escribes. Vibra vive donde vive tu comunidad, el grupo. Entiende lenguaje natural, recuerda a cada persona y toma la iniciativa — detecta lo que hay que hacer y lo hace, o te lo trae redactado a tu chat privado.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Y si Vibra se equivoca?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Tú defines la frontera: qué resuelve sola en el grupo y qué requiere tu OK por privado. Todo lo autónomo queda registrado, y lo sensible — clientes clave, temas delicados, crisis — siempre pasa por tu chat antes de salir.</p></div>
+        <div class="faq-a"><p>Tú defines la frontera — qué resuelve sola y qué necesita tu OK por privado. Todo lo que hace sola queda registrado, y lo sensible (un cliente clave, un tema delicado, una crisis) siempre pasa por tu chat antes de salir.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Cómo es el precio?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Precio de lanzamiento: <span class="js-cur">$1</span> por miembro activo al mes, solo para las primeras 100 comunidades de la lista de espera. Pagas únicamente por la gente que participa, no por la lista entera, y entras con onboarding acompañado.</p></div>
+        <div class="faq-a"><p>Precio de lanzamiento de <span class="js-cur">$1</span> por miembro activo al mes, solo para las primeras 100 comunidades de la lista de espera. Pagas por la gente que participa, no por la lista entera, y entras con onboarding acompañado.</p></div>
       </div>
     </div>
   </div>
@@ -1119,7 +1127,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#" class="logo"><span class="logo-dot"></span>Vibra</a>
-        <p class="lede">Tu comunidad ya tiene a la gente.<br>Vibra le da el vibe.</p>
+        <p class="lede">Tu comunidad ya tiene a la gente.<br>Es hora de darle más Vibra.</p>
       </div>
       <div class="foot-col">
         <h6>Producto</h6>
@@ -1293,6 +1301,16 @@
     window.addEventListener('resize',equalize);
     window.addEventListener('load',equalize);
     equalize();
+    setTimeout(equalize,300); setTimeout(equalize,1000); // recalcula cuando cargan fuentes/emojis
+    // Swipe táctil en mobile
+    let x0=null;
+    stage.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;stopAuto();},{passive:true});
+    stage.addEventListener('touchend',e=>{
+      if(x0===null)return;
+      const dx=e.changedTouches[0].clientX-x0;
+      if(Math.abs(dx)>40){ go(dx<0?cur+1:cur-1); }
+      x0=null;
+    },{passive:true});
     timer=setInterval(()=>go(cur+1), 8000); // auto suave; se apaga al primer toque del usuario
   })();
 
