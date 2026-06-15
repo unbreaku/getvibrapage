@@ -409,7 +409,13 @@
 
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
-</style>
+
+  /* language switch */
+  .lang-switch{display:inline-flex;align-items:center;gap:0;background:var(--bg-2);border:1px solid var(--line-strong);border-radius:999px;padding:3px;cursor:pointer;flex-shrink:0}
+  .lang-opt{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:13px;font-weight:700;font-family:inherit;color:var(--text-3);background:none;border:none;cursor:pointer;padding:6px 11px;border-radius:999px;transition:.2s;line-height:1}
+  .lang-opt .fl{font-size:15px}
+  .lang-opt.active{background:var(--green);color:#04140a}
+  @media(max-width:560px){.lang-opt{padding:6px 9px;font-size:12px}}</style>
 </head>
 <body>
 
@@ -418,23 +424,27 @@
   <div class="wrap nav-inner">
     <a href="#" class="logo"><span class="logo-dot"></span>Vibra</a>
     <div class="nav-links">
-      <a href="#motores">Funcionalidades</a>
-      <a href="#integraciones">Integraciones</a>
-      <a href="#segmentos">Para quién es</a>
-      <a href="#precio">Precio</a>
-      <a href="#faq">Preguntas</a>
+      <a data-i18n="nav_func" href="#motores">Funcionalidades</a>
+      <a data-i18n="nav_int" href="#integraciones">Integraciones</a>
+      <a data-i18n="nav_seg" href="#segmentos">Para quién es</a>
+      <a data-i18n="nav_price" href="#precio">Precio</a>
+      <a data-i18n="nav_faq" href="#faq">Preguntas</a>
     </div>
     <div class="nav-cta">
-      <a href="#precio" class="btn btn-primary js-gowl">Unirme a la lista</a>
+      <div class="lang-switch" id="langswitch">
+        <button class="lang-opt active" data-lang="es"><span class="fl">🇪🇸</span> ES</button>
+        <button class="lang-opt" data-lang="en"><span class="fl">🇺🇸</span> EN</button>
+      </div>
+      <a href="#precio" class="btn btn-primary js-gowl" data-i18n="nav_cta">Unirme a la lista</a>
       <button class="nav-burger" aria-label="Abrir menú"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
   </div>
   <div class="nav-mobile" id="navmobile">
-    <a href="#motores">Funcionalidades</a>
-    <a href="#integraciones">Integraciones</a>
-    <a href="#segmentos">Para quién es</a>
-    <a href="#precio">Precio</a>
-    <a href="#faq">Preguntas</a>
+    <a data-i18n="nav_func" href="#motores">Funcionalidades</a>
+    <a data-i18n="nav_int" href="#integraciones">Integraciones</a>
+    <a data-i18n="nav_seg" href="#segmentos">Para quién es</a>
+    <a data-i18n="nav_price" href="#precio">Precio</a>
+    <a data-i18n="nav_faq" href="#faq">Preguntas</a>
   </div>
 </nav>
 
@@ -444,11 +454,11 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow"><span class="pulse"></span>Agente community manager para WhatsApp</span>
-        <h1>No es una herramienta.<br><span class="accent">Es un empleado.</span></h1>
-        <p class="lede">El agente community manager de tu comunidad de WhatsApp. Trabaja en el grupo y te reporta en privado.</p>
+        <span class="eyebrow" data-i18n="hero_eyebrow"><span class="pulse"></span>Agente community manager para WhatsApp</span>
+        <h1 data-i18n-html="hero_h1">No es una herramienta.<br><span class="accent">Es un empleado.</span></h1>
+        <p class="lede" data-i18n="hero_lede">El agente community manager de tu comunidad de WhatsApp. Trabaja en el grupo y te reporta en privado.</p>
         <div class="hero-ctas">
-          <a href="#precio" class="btn btn-primary js-gowl" style="padding:14px 30px;font-size:16.5px">Unirme a la lista de espera →</a>
+          <a href="#precio" class="btn btn-primary js-gowl" style="padding:14px 30px;font-size:16.5px" data-i18n="cta_join_full">Unirme a la lista de espera →</a>
         </div>
       </div>
 
@@ -461,8 +471,8 @@
             <div class="chat-head">
               <div class="ch-avatar grp">M</div>
               <div>
-                <div class="ch-name">Membresía de Marketing 🚀</div>
-                <div class="ch-sub">1.240 participantes · Laura, Diego, Vibra…</div>
+                <div class="ch-name" data-i18n="hero_grpname">Membresía de Marketing 🚀</div>
+                <div class="ch-sub" data-i18n="hero_grpsub">1.240 participantes · Laura, Diego, Vibra…</div>
               </div>
             </div>
             <div class="chat-body">
@@ -499,11 +509,11 @@
     <!-- TRUST MARQUEE -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track" id="marquee">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Hecho 100% para WhatsApp</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Sin tarjeta para empezar</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Tus datos son tuyos, exportables y borrables</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Tú decides qué aprueba un humano</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Listo en minutos</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="mq1">Hecho 100% para WhatsApp</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="mq2">Sin tarjeta para empezar</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="mq3">Tus datos son tuyos, exportables y borrables</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="mq4">Tú decides qué aprueba un humano</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="mq5">Listo en minutos</span></span>
       </div>
     </div>
   </div>
@@ -514,29 +524,29 @@
 <!-- VALUE OUTCOMES -->
 <section class="sec" style="padding-bottom:0">
   <div class="wrap">
-    <div class="sec-label">El problema que resuelve</div>
-    <h2 class="sec-title">El valor de tu comunidad está encerrado en conversaciones que nadie alcanza a ver.</h2>
-    <p class="sec-sub">Estas son las cuatro cosas para las que la contratas.</p>
+    <div class="sec-label" data-i18n="vo_label">El problema que resuelve</div>
+    <h2 class="sec-title" data-i18n="vo_title">El valor de tu comunidad está encerrado en conversaciones que nadie alcanza a ver.</h2>
+    <p class="sec-sub" data-i18n="vo_sub">Estas son las cuatro cosas para las que la contratas.</p>
     <div class="vgrid">
       <div class="vcard reveal">
-        <span class="vtag">↑ Engagement</span>
-        <h4>Una comunidad que conversa sola</h4>
-        <p>Responde, anima y sostiene el ritmo cada día. Nadie queda en visto.</p>
+        <span class="vtag" data-i18n="vo_t1">↑ Engagement</span>
+        <h4 data-i18n="vo_h1">Una comunidad que conversa sola</h4>
+        <p data-i18n="vo_p1">Responde, anima y sostiene el ritmo cada día. Nadie queda en visto.</p>
       </div>
       <div class="vcard reveal">
-        <span class="vtag">↓ Cancelaciones</span>
-        <h4>Retiene a quien ya paga</h4>
-        <p>Detecta a quien se enfría antes de que cancele y te ayuda a rescatarlo.</p>
+        <span class="vtag" data-i18n="vo_t2">↓ Cancelaciones</span>
+        <h4 data-i18n="vo_h2">Retiene a quien ya paga</h4>
+        <p data-i18n="vo_p2">Detecta a quien se enfría antes de que cancele y te ayuda a rescatarlo.</p>
       </div>
       <div class="vcard reveal">
-        <span class="vtag">🤝 Networking</span>
-        <h4>La razón por la que renuevan</h4>
-        <p>Presenta a las personas correctas en el momento correcto.</p>
+        <span class="vtag" data-i18n="vo_t3">🤝 Networking</span>
+        <h4 data-i18n="vo_h3">La razón por la que renuevan</h4>
+        <p data-i18n="vo_p3">Presenta a las personas correctas en el momento correcto.</p>
       </div>
       <div class="vcard reveal">
-        <span class="vtag">↑ Ingresos</span>
-        <h4>Convierte señales en ventas</h4>
-        <p>Quienes preguntan por tu próximo programa son prospectos calientes.</p>
+        <span class="vtag" data-i18n="vo_t4">↑ Ingresos</span>
+        <h4 data-i18n="vo_h4">Convierte señales en ventas</h4>
+        <p data-i18n="vo_p4">Quienes preguntan por tu próximo programa son prospectos calientes.</p>
       </div>
     </div>
   </div>
@@ -546,15 +556,15 @@
 <section class="sec" id="motores">
   <div class="glow" style="width:520px;height:520px;background:var(--green);top:120px;right:-220px;opacity:.10"></div>
   <div class="wrap">
-    <div class="sec-label">Cómo trabaja · tres motores, dos niveles</div>
-    <h2 class="sec-title">Escucha. Entiende. Activa.</h2>
-    <p class="sec-sub">Tu comunidad vive en dos niveles. El grupo, donde todos hablan, y los chats privados, donde se construyen las relaciones. Vibra trabaja en los dos.</p>
+    <div class="sec-label" data-i18n="en_label">Cómo trabaja · tres motores, dos niveles</div>
+    <h2 class="sec-title" data-i18n="en_title">Escucha. Entiende. Activa.</h2>
+    <p class="sec-sub" data-i18n="en_sub">Tu comunidad vive en dos niveles. El grupo, donde todos hablan, y los chats privados, donde se construyen las relaciones. Vibra trabaja en los dos.</p>
 
     <div class="engine reveal">
       <div class="engine-copy">
-        <div class="engine-num">01 · Escucha</div>
-        <h3>Lee lo que nadie alcanza a leer.</h3>
-        <p>Mientras duermes se acumulan cientos de mensajes en tus grupos. Vibra los lee todos, te dice qué pasó y te llega con un plan listo. A quién escribir, qué responder, qué oportunidad no dejar pasar.</p>
+        <div class="engine-num" data-i18n="en1_num">01 · Escucha</div>
+        <h3 data-i18n="en1_h">Lee lo que nadie alcanza a leer.</h3>
+        <p data-i18n="en1_p">Mientras duermes se acumulan cientos de mensajes en tus grupos. Vibra los lee todos, te dice qué pasó y te llega con un plan listo. A quién escribir, qué responder, qué oportunidad no dejar pasar.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
@@ -568,9 +578,9 @@
 
     <div class="engine reveal">
       <div class="engine-copy">
-        <div class="engine-num">02 · Entiende</div>
-        <h3>Sabe quién es quién, y quién debería conocer a quién.</h3>
-        <p>En toda comunidad hay gente con algo que ofrecer y gente que lo necesita, pero nunca se cruzan. Vibra los encuentra y los conecta. El networking que prometiste, hecho realidad.</p>
+        <div class="engine-num" data-i18n="en2_num">02 · Entiende</div>
+        <h3 data-i18n="en2_h">Sabe quién es quién, y quién debería conocer a quién.</h3>
+        <p data-i18n="en2_p">En toda comunidad hay gente con algo que ofrecer y gente que lo necesita, pero nunca se cruzan. Vibra los encuentra y los conecta. El networking que prometiste, hecho realidad.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag grupo" style="margin-bottom:8px">En el grupo · público</span>
@@ -584,9 +594,9 @@
 
     <div class="engine reveal">
       <div class="engine-copy">
-        <div class="engine-num">03 · Activa</div>
-        <h3>Mantiene la comunidad viva, aunque tú no estés.</h3>
-        <p>Bienvenidas, respuestas, recordatorios, conversaciones que no se apagan, hechas y no sugeridas. Tú no haces nada. Al final del día te cuenta qué hizo.</p>
+        <div class="engine-num" data-i18n="en3_num">03 · Activa</div>
+        <h3 data-i18n="en3_h">Mantiene la comunidad viva, aunque tú no estés.</h3>
+        <p data-i18n="en3_p">Bienvenidas, respuestas, recordatorios, conversaciones que no se apagan, hechas y no sugeridas. Tú no haces nada. Al final del día te cuenta qué hizo.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
@@ -604,15 +614,15 @@
 <section class="sec" style="padding-top:0" id="frontera">
   <div class="glow" style="width:460px;height:460px;background:var(--green);top:40%;left:-220px;opacity:.09"></div>
   <div class="wrap">
-    <div class="sec-label">Autonomía con frontera</div>
-    <h2 class="sec-title">Resuelve solo. Te consulta lo importante.</h2>
-    <p class="sec-sub">Lo rutinario lo resuelve sola y queda registrado. Lo delicado llega por privado con la propuesta lista, y nada sale sin tu OK.</p>
+    <div class="sec-label" data-i18n="fr_label">Autonomía con frontera</div>
+    <h2 class="sec-title" data-i18n="fr_title">Resuelve solo. Te consulta lo importante.</h2>
+    <p class="sec-sub" data-i18n="fr_sub">Lo rutinario lo resuelve sola y queda registrado. Lo delicado llega por privado con la propuesta lista, y nada sale sin tu OK.</p>
 
     <div class="frontier-grid">
       <div class="fcard">
         <span class="level-tag grupo">En el grupo · resuelve solo</span>
-        <h4>Sin pedir permiso.</h4>
-        <p>Defines las reglas una vez. Vibra ejecuta dentro de ellas, sin parar, y cada acción queda registrada.</p>
+        <h4 data-i18n="fr_h1">Sin pedir permiso.</h4>
+        <p data-i18n="fr_p1">Defines las reglas una vez. Vibra ejecuta dentro de ellas, sin parar, y cada acción queda registrada.</p>
         <div class="chat-body" style="padding:0">
           <div class="bubble in"><span class="who alt">Lucía</span>a qué hora es el evento de mañana?<span class="meta">14:19</span></div>
           <div class="bubble out"><span class="who">Vibra</span>Mañana a las 18:00, hora de Madrid 🗓️ que para ti son las 13:00 en CDMX. Les mando recordatorio al grupo 1 hora antes. Lucía, si quieres el link de calendario te lo paso por privado 👌<span class="meta">14:19 <span class="tick">✓✓</span></span></div>
@@ -620,8 +630,8 @@
       </div>
       <div class="fcard h">
         <span class="level-tag privado">En tu chat privado · espera tu OK</span>
-        <h4>Con tu visto bueno.</h4>
-        <p>Te llega el contexto y la propuesta. Respondes con un mensaje normal, como a un empleado de confianza.</p>
+        <h4 data-i18n="fr_h2">Con tu visto bueno.</h4>
+        <p data-i18n="fr_p2">Te llega el contexto y la propuesta. Respondes con un mensaje normal, como a un empleado de confianza.</p>
         <div class="chat-body" style="padding:0">
           <div class="bubble in"><span class="who">Vibra</span>🤝 Diego preguntó en el grupo si alguien conoce gente en Mercado Libre. Valeria, de tu comunidad, trabajó ahí 4 años, lo contó cuando se presentó. ¿Los pongo en contacto?<span class="meta">16:02</span></div>
           <div class="bubble out">sí, conéctalos 🤝<span class="meta">16:04 <span class="tick">✓✓</span></span></div>
@@ -632,18 +642,18 @@
   </div>
 </section>
 
-<div class="wrap" style="text-align:center;padding:0 24px 96px"><a href="#precio" class="btn btn-primary js-gowl" style="padding:14px 30px;font-size:16px">Unirme a la lista de espera →</a></div>
+<div class="wrap" style="text-align:center;padding:0 24px 96px"><a href="#precio" class="btn btn-primary js-gowl" style="padding:14px 30px;font-size:16px" data-i18n="cta_join_full">Unirme a la lista de espera →</a></div>
 
 <!-- INTEGRATIONS -->
 <section class="sec" style="padding-top:0" id="integraciones">
   <div class="glow" style="width:500px;height:500px;background:var(--green);bottom:-160px;right:-180px;opacity:.10"></div>
   <div class="wrap">
-    <div class="sec-label">Un mensaje, todas tus herramientas</div>
-    <h2 class="sec-title">Tu comunidad vive en WhatsApp. Tu negocio vive en todas partes.</h2>
+    <div class="sec-label" data-i18n="int_label">Un mensaje, todas tus herramientas</div>
+    <h2 class="sec-title" data-i18n="int_title">Tu comunidad vive en WhatsApp. Tu negocio vive en todas partes.</h2>
     <div class="int-grid">
       <div class="int-copy">
-        <p>Vibra conecta el grupo con las herramientas donde corre tu operación. Luma, Google Sheets, tu último video de YouTube, tu curso, tu CRM. Le pides cosas por tu chat privado y las cruza todas en una respuesta.</p>
-        <p>Y al revés, el video que subiste a YouTube llega por privado a quien lo estaba esperando. Nutrir sin spam.</p>
+        <p data-i18n="int_p1">Vibra conecta el grupo con las herramientas donde corre tu operación. Luma, Google Sheets, tu último video de YouTube, tu curso, tu CRM. Le pides cosas por tu chat privado y las cruza todas en una respuesta.</p>
+        <p data-i18n="int_p2">Y al revés, el video que subiste a YouTube llega por privado a quien lo estaba esperando. Nutrir sin spam.</p>
         <div class="int-pills">
           <span class="ipill"><span class="ilogo" style="background:#F04E23"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.2 2c.9 3.9-2.9 5.6-2.9 9.2a4.8 4.8 0 009.6 0c0-2.1-1-3.7-2.2-4.8.3 1.6-.4 2.7-1.5 3.2.7-2.7-1-5.8-3-7.6zM8 9.5C6.7 10.8 6 12.4 6 14.2 6 17.4 8.7 20 12 20s6-2.6 6-5.8" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>Hotmart</span>
           <span class="ipill"><span class="ilogo" style="background:#FF0000"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M9.6 7.8v8.4l7.2-4.2z" fill="#fff"/><rect x="2.5" y="5" width="19" height="14" rx="3.5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></span>YouTube</span>
@@ -726,41 +736,41 @@
 <section class="sec" style="padding-top:0" id="segmentos">
   <div class="glow" style="width:440px;height:440px;background:var(--green);top:60px;left:-200px;opacity:.08"></div>
   <div class="wrap">
-    <div class="sec-label">Casos de uso</div>
-    <h2 class="sec-title">¿Para quién está creada Vibra?</h2>
+    <div class="sec-label" data-i18n="sg_label">Casos de uso</div>
+    <h2 class="sec-title" data-i18n="sg_title">¿Para quién está creada Vibra?</h2>
     <div class="tabs">
-      <button class="tab active" data-tab="0">Comunidades de creadores</button>
-      <button class="tab" data-tab="1">Comunidades profesionales</button>
+      <button class="tab active" data-tab="0" data-i18n="sg_tab0">Comunidades de creadores</button>
+      <button class="tab" data-tab="1" data-i18n="sg_tab1">Comunidades profesionales</button>
     </div>
 
     <div class="panel active open" data-panel="0">
-      <button class="panel-head" type="button">Comunidades de creadores <span class="ph-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      <button class="panel-head" type="button" data-i18n-prepend="sg_tab0">Comunidades de creadores <span class="ph-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
       <div class="panel-body">
-      <h3>Tu membresía sigue viva aunque tú estés grabando.</h3>
-      <div class="ptag">Creadores, coaches, membresías y cohortes educativas</div>
+      <h3 data-i18n="sg0_h">Tu membresía sigue viva aunque tú estés grabando.</h3>
+      <div class="ptag" data-i18n="sg0_tag">Creadores, coaches, membresías y cohortes educativas</div>
       <div class="panel-feats">
-        <div class="pfeat"><h5><span class="dot"></span>Nadie entra y se pierde</h5><p>Recibe a cada nuevo y lo conecta con la gente y el contenido. No se te van en la primera semana.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Las dudas, resueltas</h5><p>El link, la fecha, la grabación. Contestadas al toque. No las vuelves a contestar tú.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Menos cancelaciones</h5><p>Te avisa quién se está por ir antes de que se vaya, con el mensaje listo para traerlo de vuelta.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Ideas de contenido gratis</h5><p>Lo que tu gente pregunta una y otra vez es tu próximo video. Vibra te lo rescata del scroll.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Más gente en tus eventos</h5><p>Avisa, confirma quién va y recuerda a los demás. Tú no persigues a nadie.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Despierta a los callados</h5><p>A los que llevan semanas sin aparecer, Vibra les escribe uno por uno. La mitad dormida vuelve.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg0_f1h">Nadie entra y se pierde</span></h5><p data-i18n="sg0_f1p">Recibe a cada nuevo y lo conecta con la gente y el contenido. No se te van en la primera semana.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg0_f2h">Las dudas, resueltas</span></h5><p data-i18n="sg0_f2p">El link, la fecha, la grabación. Contestadas al toque. No las vuelves a contestar tú.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg0_f3h">Menos cancelaciones</span></h5><p data-i18n="sg0_f3p">Te avisa quién se está por ir antes de que se vaya, con el mensaje listo para traerlo de vuelta.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg0_f4h">Ideas de contenido gratis</span></h5><p data-i18n="sg0_f4p">Lo que tu gente pregunta una y otra vez es tu próximo video. Vibra te lo rescata del scroll.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg0_f5h">Más gente en tus eventos</span></h5><p data-i18n="sg0_f5p">Avisa, confirma quién va y recuerda a los demás. Tú no persigues a nadie.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg0_f6h">Despierta a los callados</span></h5><p data-i18n="sg0_f6p">A los que llevan semanas sin aparecer, Vibra les escribe uno por uno. La mitad dormida vuelve.</p></div>
       </div>
       </div>
     </div>
 
     <div class="panel" data-panel="1">
-      <button class="panel-head" type="button">Comunidades profesionales <span class="ph-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      <button class="panel-head" type="button" data-i18n-prepend="sg_tab1">Comunidades profesionales <span class="ph-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
       <div class="panel-body">
-      <h3>Tu red por fin tiene a alguien que la cuida 24/7.</h3>
-      <div class="ptag">Empresarios, directivos, emprendedores, aceleradoras y redes de alumni</div>
+      <h3 data-i18n="sg1_h">Tu red por fin tiene a alguien que la cuida 24/7.</h3>
+      <div class="ptag" data-i18n="sg1_tag">Empresarios, directivos, emprendedores, aceleradoras y redes de alumni</div>
       <div class="panel-feats">
-        <div class="pfeat"><h5><span class="dot"></span>Las presentaciones correctas</h5><p>Sabe quién necesita a quién y te arma la intro. El networking que prometiste, hecho realidad.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Lo delicado, contigo</h5><p>Nada sensible pasa por el grupo. Te llega a tu chat. La comunidad solo ve un grupo vivo.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>No se olvida de nada</h5><p>Qué se habló, qué se decidió, quién pidió qué. Todo guardado, nada perdido en el scroll.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Tu resumen de los lunes</h5><p>Qué pasó, quién participó, qué prendió al grupo. Te pones al día en cinco minutos.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Encuentros que sí se llenan</h5><p>Avisa, confirma quién va, resuelve la logística y hace el seguimiento. Tú solo te presentas.</p></div>
-        <div class="pfeat"><h5><span class="dot"></span>Despierta a los callados</h5><p>A los que llevan meses sin aparecer, Vibra les escribe uno por uno. La red dormida vuelve a moverse.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f1h">Las presentaciones correctas</span></h5><p data-i18n="sg1_f1p">Sabe quién necesita a quién y te arma la intro. El networking que prometiste, hecho realidad.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f2h">Lo delicado, contigo</span></h5><p data-i18n="sg1_f2p">Nada sensible pasa por el grupo. Te llega a tu chat. La comunidad solo ve un grupo vivo.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f3h">No se olvida de nada</span></h5><p data-i18n="sg1_f3p">Qué se habló, qué se decidió, quién pidió qué. Todo guardado, nada perdido en el scroll.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f4h">Tu resumen de los lunes</span></h5><p data-i18n="sg1_f4p">Qué pasó, quién participó, qué prendió al grupo. Te pones al día en cinco minutos.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f5h">Encuentros que sí se llenan</span></h5><p data-i18n="sg1_f5p">Avisa, confirma quién va, resuelve la logística y hace el seguimiento. Tú solo te presentas.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f6h">Despierta a los callados</span></h5><p data-i18n="sg1_f6p">A los que llevan meses sin aparecer, Vibra les escribe uno por uno. La red dormida vuelve a moverse.</p></div>
       </div>
       </div>
     </div>
@@ -909,23 +919,23 @@
   <div class="wrap">
     <div class="pricing">
       <div class="glow"></div>
-      <div class="sec-label" style="position:relative;z-index:1">Precio de lanzamiento · solo para las primeras 100 comunidades</div>
+      <div class="sec-label" style="position:relative;z-index:1" data-i18n="pr_label">Precio de lanzamiento · solo para las primeras 100 comunidades</div>
       <div class="price-big"><span class="js-cur">$1</span></div>
-      <div class="price-unit">por miembro activo &nbsp;·&nbsp; al mes</div>
-      <p class="sub"><strong>Solo pagas por quien participa.</strong> Los miembros silenciosos no se cobran.</p>
+      <div class="price-unit" data-i18n="pr_unit">por miembro activo &nbsp;·&nbsp; al mes</div>
+      <p class="sub" data-i18n-html="pr_sub"><strong>Solo pagas por quien participa.</strong> Los miembros silenciosos no se cobran.</p>
       <div class="wl-card">
-        <div class="wl-card-title"><span class="pulse"></span>Reserva tu lugar con tu número de WhatsApp</div>
+        <div class="wl-card-title"><span class="pulse"></span><span data-i18n="wl_title">Reserva tu lugar con tu número de WhatsApp</span></div>
         <div class="wl-combo">
           <span class="wl-flag">🌐</span>
           <input class="wl-input" type="tel" inputmode="tel" placeholder="+34 612 345 678" aria-label="Tu número de WhatsApp con código de país">
         </div>
-        <button class="btn btn-primary wl-btn">Unirme a la lista de espera →</button>
-        <div class="wl-hint">Escribe tu número de WhatsApp con código de país.</div>
-        <div class="wl-ok"><div class="ok-title">✓ ¡Estás en la lista!</div><div class="ok-body">Te abrimos WhatsApp para confirmar tu lugar con el equipo. Pronto nos pondremos en contacto contigo 🟢</div></div>
+        <button class="btn btn-primary wl-btn" data-i18n="cta_join_full">Unirme a la lista de espera →</button>
+        <div class="wl-hint" data-i18n="wl_hint">Escribe tu número de WhatsApp con código de país.</div>
+        <div class="wl-ok"><div class="ok-title" data-i18n="wl_oktitle">✓ ¡Estás en la lista!</div><div class="ok-body" data-i18n="wl_okbody">Te abrimos WhatsApp para confirmar tu lugar con el equipo. Pronto nos pondremos en contacto contigo 🟢</div></div>
       </div>
       <div class="price-feats">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Hecho 100% para WhatsApp</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Sin tarjeta para empezar</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="mq1">Hecho 100% para WhatsApp</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="mq2">Sin tarjeta para empezar</span></span>
       </div>
     </div>
   </div>
@@ -1037,56 +1047,56 @@
 <!-- FAQ -->
 <section class="sec" style="padding-top:0" id="faq">
   <div class="wrap" style="max-width:860px">
-    <div class="sec-label">Preguntas</div>
-    <h2 class="sec-title">Lo que todos preguntan.</h2>
+    <div class="sec-label" data-i18n="faq_label">Preguntas</div>
+    <h2 class="sec-title" data-i18n="faq_title">Lo que todos preguntan.</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q">¿Qué cuenta como "miembro activo"?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Alguien que durante el mes escribió, reaccionó o habló con Vibra por privado. Da igual cuántas veces, cuenta una sola vez al mes.</p><p>Si tu comunidad tiene 1.000 personas y participan 300, pagas por 300. Los silenciosos no se cobran.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q1">¿Qué cuenta como "miembro activo"?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a1"><p>Alguien que durante el mes escribió, reaccionó o habló con Vibra por privado. Da igual cuántas veces, cuenta una sola vez al mes.</p><p>Si tu comunidad tiene 1.000 personas y participan 300, pagas por 300. Los silenciosos no se cobran.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Mi número corre riesgo de baneo?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Tu número está a salvo. Vibra trabaja con su propio número, separado del tuyo y del de tu negocio, así que cualquier riesgo lo corre su línea, no la tuya.</p><p>Además responde a ritmo de persona, no como una máquina que dispara mensajes en masa, que es justo lo que Meta castiga.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q2">¿Mi número corre riesgo de baneo?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a2"><p>Tu número está a salvo. Vibra trabaja con su propio número, separado del tuyo y del de tu negocio, así que cualquier riesgo lo corre su línea, no la tuya.</p><p>Además responde a ritmo de persona, no como una máquina que dispara mensajes en masa, que es justo lo que Meta castiga.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Cómo se conecta Vibra a WhatsApp?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Tiene su propio número y entra a tu grupo como un miembro más del equipo. La agregas igual que agregarías a una persona.</p><p>Hoy WhatsApp no tiene una API oficial para grupos grandes de comunidad, así que esta es la forma en que cualquier community manager, humano o agente, puede estar dentro de tu grupo.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q3">¿Cómo se conecta Vibra a WhatsApp?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a3"><p>Tiene su propio número y entra a tu grupo como un miembro más del equipo. La agregas igual que agregarías a una persona.</p><p>Hoy WhatsApp no tiene una API oficial para grupos grandes de comunidad, así que esta es la forma en que cualquier community manager, humano o agente, puede estar dentro de tu grupo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Vibra lee todos los mensajes de mi comunidad?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sí, igual que lo haría un community manager humano. Es la única forma de hacer el trabajo. Ver la duda sin responder, el miembro que se enfría, la queja que crece.</p><p>La diferencia es que cada acción de Vibra queda registrada y la puedes revisar. Un humano no te da eso.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q4">¿Vibra lee todos los mensajes de mi comunidad?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a4"><p>Sí, igual que lo haría un community manager humano. Es la única forma de hacer el trabajo. Ver la duda sin responder, el miembro que se enfría, la queja que crece.</p><p>La diferencia es que cada acción de Vibra queda registrada y la puedes revisar. Un humano no te da eso.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Qué pasa con los datos de mi comunidad?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Son tuyos. Nunca se comparten con otras comunidades ni se usan para entrenar modelos de terceros.</p><p>Puedes exportar todo y borrar todo (perfiles, historial, configuración) cuando quieras, sin pedírselo a nadie.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q5">¿Qué pasa con los datos de mi comunidad?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a5"><p>Son tuyos. Nunca se comparten con otras comunidades ni se usan para entrenar modelos de terceros.</p><p>Puedes exportar todo y borrar todo (perfiles, historial, configuración) cuando quieras, sin pedírselo a nadie.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Puede un miembro pedir que no se le perfile?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sí. Si un miembro pide quedar fuera del análisis, queda fuera, y Vibra lo respeta en todo, desde la reactivación hasta las presentaciones entre miembros.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q6">¿Puede un miembro pedir que no se le perfile?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a6"><p>Sí. Si un miembro pide quedar fuera del análisis, queda fuera, y Vibra lo respeta en todo, desde la reactivación hasta las presentaciones entre miembros.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Los miembros saben que Vibra está en el grupo?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sí. Aparece como un participante más, con su nombre, y recomendamos presentarla abiertamente como parte del equipo. Las comunidades sanas saben quién las cuida.</p><p>Lo que tú controlas es cuánto habla en público y cuánto trabaja en privado contigo.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q7">¿Los miembros saben que Vibra está en el grupo?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a7"><p>Sí. Aparece como un participante más, con su nombre, y recomendamos presentarla abiertamente como parte del equipo. Las comunidades sanas saben quién las cuida.</p><p>Lo que tú controlas es cuánto habla en público y cuánto trabaja en privado contigo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Puedo entrenar a Vibra con mi información?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Sí, esa es la gracia. Le enseñas por mensaje tu tono, tus reglas y tus respuestas de siempre, le pasas tus documentos, y aprende de cada corrección que le haces.</p><p>Cuanto más le enseñas, más tuya se vuelve.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q8">¿Puedo entrenar a Vibra con mi información?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a8"><p>Sí, esa es la gracia. Le enseñas por mensaje tu tono, tus reglas y tus respuestas de siempre, le pasas tus documentos, y aprende de cada corrección que le haces.</p><p>Cuanto más le enseñas, más tuya se vuelve.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Vibra puede sustituir a mi community manager?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Depende de tu situación, y te lo decimos sin rodeos. Si hoy nadie sostiene la comunidad, o alguien lo hace a medio tiempo entre mil cosas, Vibra cubre el rol completo desde el primer día.</p><p>Si ya tienes un equipo de comunidad, Vibra es su palanca, no su reemplazo. Se encarga de lo operativo para que tu equipo use su tiempo en lo que solo un humano puede hacer, como la estrategia, el contenido y las relaciones de verdad. Los mejores resultados son humanos con Vibra, no humanos contra Vibra.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q9">¿Vibra puede sustituir a mi community manager?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a9"><p>Depende de tu situación, y te lo decimos sin rodeos. Si hoy nadie sostiene la comunidad, o alguien lo hace a medio tiempo entre mil cosas, Vibra cubre el rol completo desde el primer día.</p><p>Si ya tienes un equipo de comunidad, Vibra es su palanca, no su reemplazo. Se encarga de lo operativo para que tu equipo use su tiempo en lo que solo un humano puede hacer, como la estrategia, el contenido y las relaciones de verdad. Los mejores resultados son humanos con Vibra, no humanos contra Vibra.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿En qué se diferencia de un bot como ManyChat?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Un bot tradicional vive en el chat individual, espera el comando exacto y sigue reglas que tú escribes. Vibra vive donde vive tu comunidad, el grupo. Entiende lenguaje natural, recuerda a cada persona y toma la iniciativa — detecta lo que hay que hacer y lo hace, o te lo trae redactado a tu chat privado.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q10">¿En qué se diferencia de un bot como ManyChat?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a10"><p>Un bot tradicional vive en el chat individual, espera el comando exacto y sigue reglas que tú escribes. Vibra vive donde vive tu comunidad, el grupo. Entiende lenguaje natural, recuerda a cada persona y toma la iniciativa — detecta lo que hay que hacer y lo hace, o te lo trae redactado a tu chat privado.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Y si Vibra se equivoca?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Tú defines la frontera. Qué resuelve sola y qué necesita tu OK por privado. Todo lo que hace sola queda registrado, y lo sensible (un cliente clave, un tema delicado, una crisis) siempre pasa por tu chat antes de salir.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q11">¿Y si Vibra se equivoca?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a11"><p>Tú defines la frontera. Qué resuelve sola y qué necesita tu OK por privado. Todo lo que hace sola queda registrado, y lo sensible (un cliente clave, un tema delicado, una crisis) siempre pasa por tu chat antes de salir.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Cómo es el precio?<span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a"><p>Precio de lanzamiento de <span class="js-cur">$1</span> por miembro activo al mes, solo para las primeras 100 comunidades de la lista de espera. Pagas por la gente que participa, no por la lista entera, y entras con onboarding acompañado.</p></div>
+        <button class="faq-q"><span data-i18n="faq_q12">¿Cómo es el precio?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" data-i18n-html="faq_a12"><p>Precio de lanzamiento de <span class="js-cur">$1</span> por miembro activo al mes, solo para las primeras 100 comunidades de la lista de espera. Pagas por la gente que participa, no por la lista entera, y entras con onboarding acompañado.</p></div>
       </div>
     </div>
   </div>
@@ -1097,9 +1107,9 @@
 <section class="finale">
   <div class="glow"></div>
   <div class="wrap">
-    <h2>Tu comunidad ya tiene a la gente.<span class="line2">Es hora de darle más Vibra.</span></h2>
-    <p>Las primeras 100 comunidades entran con precio de lanzamiento. La tuya puede ser una de ellas.</p>
-    <a href="#precio" class="btn btn-primary js-gowl">Reservar mi lugar →</a>
+    <h2 data-i18n-html="fin_h">Tu comunidad ya tiene a la gente.<span class="line2">Es hora de darle más Vibra.</span></h2>
+    <p data-i18n="fin_p">Las primeras 100 comunidades entran con precio de lanzamiento. La tuya puede ser una de ellas.</p>
+    <a href="#precio" class="btn btn-primary js-gowl" data-i18n="cta_reserve">Reservar mi lugar →</a>
   </div>
 </section>
 
@@ -1109,25 +1119,25 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#" class="logo"><span class="logo-dot"></span>Vibra</a>
-        <p class="lede">Tu comunidad ya tiene a la gente.<br>Es hora de darle más Vibra.</p>
+        <p class="lede" data-i18n-html="foot_tag">Tu comunidad ya tiene a la gente.<br>Es hora de darle más Vibra.</p>
       </div>
       <div class="foot-col">
-        <h6>Producto</h6>
-        <a href="#motores">Funcionalidades</a>
-        <a href="#integraciones">Integraciones</a>
-        <a href="#segmentos">Para quién es</a>
-        <a href="#numeros">Comparación de costos</a>
-        <a href="#faq">Preguntas</a>
+        <h6 data-i18n="foot_product">Producto</h6>
+        <a data-i18n="nav_func" href="#motores">Funcionalidades</a>
+        <a data-i18n="nav_int" href="#integraciones">Integraciones</a>
+        <a data-i18n="nav_seg" href="#segmentos">Para quién es</a>
+        <a href="#numeros" data-i18n="foot_compare">Comparación de costos</a>
+        <a data-i18n="nav_faq" href="#faq">Preguntas</a>
       </div>
       <div class="foot-col">
-        <h6>Contacto</h6>
-        <a href="#precio">Lista de espera</a>
+        <h6 data-i18n="foot_contact">Contacto</h6>
+        <a href="#precio" data-i18n="foot_waitlist">Lista de espera</a>
         <a href="mailto:hola@getvibra.ai">hola@getvibra.ai</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Vibra · Hecho desde España 🇪🇸</span>
-      <span>Escucha. Entiende. Activa.</span>
+      <span data-i18n="foot_copy">© 2026 Vibra · Hecho desde España 🇪🇸</span>
+      <span data-i18n="foot_motto">Escucha. Entiende. Activa.</span>
     </div>
   </div>
 </footer>
@@ -1137,14 +1147,14 @@
   <div class="wl-modal-back"></div>
   <div class="wl-card">
     <button class="wl-close" aria-label="Cerrar">×</button>
-    <div class="wl-card-title"><span class="pulse"></span>Reserva tu lugar con tu número de WhatsApp</div>
+    <div class="wl-card-title"><span class="pulse"></span><span data-i18n="wl_title">Reserva tu lugar con tu número de WhatsApp</span></div>
     <div class="wl-combo">
           <span class="wl-flag">🌐</span>
           <input class="wl-input" type="tel" inputmode="tel" placeholder="+34 612 345 678" aria-label="Tu número de WhatsApp con código de país">
         </div>
-    <button class="btn btn-primary wl-btn">Unirme a la lista de espera →</button>
-        <div class="wl-hint">Escribe tu número de WhatsApp con código de país.</div>
-    <div class="wl-ok"><div class="ok-title">✓ ¡Estás en la lista!</div><div class="ok-body">Te abrimos WhatsApp para confirmar tu lugar con el equipo. Pronto nos pondremos en contacto contigo 🟢</div></div>
+    <button class="btn btn-primary wl-btn" data-i18n="cta_join_full">Unirme a la lista de espera →</button>
+        <div class="wl-hint" data-i18n="wl_hint">Escribe tu número de WhatsApp con código de país.</div>
+    <div class="wl-ok"><div class="ok-title" data-i18n="wl_oktitle">✓ ¡Estás en la lista!</div><div class="ok-body" data-i18n="wl_okbody">Te abrimos WhatsApp para confirmar tu lugar con el equipo. Pronto nos pondremos en contacto contigo 🟢</div></div>
   </div>
 </div>
 
@@ -1433,6 +1443,91 @@
 
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ============================================================
+  // i18n — switch de idioma ES/EN
+  // ============================================================
+  const I18N_EN = {"nav_func": "Features", "nav_int": "Integrations", "nav_seg": "Who it’s for", "nav_price": "Pricing", "nav_faq": "FAQ", "nav_cta": "Join the waitlist", "cta_join_full": "Join the waitlist →", "cta_reserve": "Claim my spot →", "hero_eyebrow": "AI community manager for WhatsApp", "hero_h1": "It’s not a tool.<br><span class=\"accent\">It’s a hire.</span>", "hero_lede": "The AI community manager for your WhatsApp community. It works the group in public and reports back to you in private.", "hero_grpname": "Marketing Membership 🚀", "hero_grpsub": "1,240 members · Laura, Diego, Vibra…", "mq1": "Built 100% for WhatsApp", "mq2": "No card to get started", "mq3": "Your data is yours — export it or delete it", "mq4": "You decide what a human signs off on", "mq5": "Up and running in minutes", "vo_label": "The problem it solves", "vo_title": "Your community’s real value is locked inside conversations nobody can see.", "vo_sub": "Here’s the four things you’re hiring it to do.", "vo_t1": "↑ Engagement", "vo_h1": "A community that keeps itself talking", "vo_p1": "It replies, sparks conversation, and keeps the energy up every day. Nobody gets left on read.", "vo_t2": "↓ Churn", "vo_h2": "Keeps the members already paying", "vo_p2": "It catches who’s going cold before they cancel and helps you win them back.", "vo_t3": "🤝 Networking", "vo_h3": "The reason they renew", "vo_p3": "It introduces the right people at the right moment.", "vo_t4": "↑ Revenue", "vo_h4": "Turns signals into sales", "vo_p4": "The people asking about your next program are your warmest leads.", "en_label": "How it works · three engines, two levels", "en_title": "Listen. Understand. Activate.", "en_sub": "Your community lives on two levels. The group, where everyone talks, and the DMs, where the relationships get built. Vibra works both.", "en1_num": "01 · Listen", "en1_h": "It reads what no one has time to read.", "en1_p": "While you sleep, hundreds of messages pile up across your groups. Vibra reads every one, tells you what happened, and hands you a plan. Who to message, what to answer, which opportunity not to miss.", "en2_num": "02 · Understand", "en2_h": "It knows who’s who — and who should meet whom.", "en2_p": "Every community has people with something to offer and people who need it, but they never cross paths. Vibra finds them and connects them. The networking you promised, finally delivered.", "en3_num": "03 · Activate", "en3_h": "It keeps the community alive, even when you’re not around.", "en3_p": "Welcomes, answers, reminders, conversations that don’t die out — done, not just suggested. You do nothing. At the end of the day it tells you what it handled.", "fr_label": "Autonomy with a line", "fr_title": "It handles the routine. It checks with you on what matters.", "fr_sub": "The routine stuff it handles on its own, all logged. The sensitive stuff comes to your DMs with a draft ready, and nothing goes out without your OK.", "fr_h1": "No need to ask.", "fr_p1": "You set the rules once. Vibra works within them, around the clock, and every action is logged.", "fr_h2": "With your sign-off.", "fr_p2": "You get the context and the proposal. You reply like you would to a trusted employee.", "int_label": "One message, all your tools", "int_title": "Your community lives on WhatsApp. Your business lives everywhere else.", "int_p1": "Vibra connects the group to the tools your operation runs on. Luma, Google Sheets, your latest YouTube video, your course, your CRM. You ask for things in your DMs and it pulls them all into one answer.", "int_p2": "And the other way around — the video you just posted to YouTube lands in the DMs of the people who were waiting for it. Nurture without the spam.", "sg_label": "Use cases", "sg_title": "Who is Vibra built for?", "sg_tab0": "Creator communities", "sg_tab1": "Professional communities", "sg0_h": "Your membership stays alive even while you’re recording.", "sg0_tag": "Creators, coaches, memberships and course cohorts", "sg0_f1h": "Nobody falls through the cracks", "sg0_f1p": "It welcomes every newcomer and connects them to the right people and content. They don’t ghost you in week one.", "sg0_f2h": "Questions, handled", "sg0_f2p": "The link, the date, the replay. Answered on the spot. You never answer them again.", "sg0_f3h": "Less churn", "sg0_f3p": "It flags who’s about to leave before they do, with the message ready to pull them back.", "sg0_f4h": "Free content ideas", "sg0_f4p": "What your people ask over and over is your next video. Vibra pulls it out of the scroll for you.", "sg0_f5h": "More turnout at your events", "sg0_f5p": "It announces, confirms who’s in, and reminds the rest. You chase no one.", "sg0_f6h": "It wakes up the quiet ones", "sg0_f6p": "The ones who’ve gone quiet for weeks, Vibra messages one by one. Half the dormant crowd comes back.", "sg1_h": "Your network finally has someone looking after it 24/7.", "sg1_tag": "Founders, executives, entrepreneurs, accelerators and alumni networks", "sg1_f1h": "The right introductions", "sg1_f1p": "It knows who needs whom and sets up the intro. The networking you promised, finally delivered.", "sg1_f2h": "The sensitive stuff, with you", "sg1_f2p": "Nothing delicate goes through the group. It comes to your DMs. The community just sees a thriving group.", "sg1_f3h": "It forgets nothing", "sg1_f3p": "What was said, what was decided, who asked for what. All saved, nothing lost in the scroll.", "sg1_f4h": "Your Monday recap", "sg1_f4p": "What happened, who showed up, what lit the group up. You’re caught up in five minutes.", "sg1_f5h": "Events that actually fill up", "sg1_f5p": "It announces, confirms who’s coming, handles logistics, and follows up. You just show up.", "sg1_f6h": "It wakes up the quiet ones", "sg1_f6p": "The ones who’ve been gone for months, Vibra messages one by one. The dormant network starts moving again.", "pr_label": "Launch pricing · first 100 communities only", "pr_unit": "per active member &nbsp;·&nbsp; per month", "pr_sub": "<strong>You only pay for who participates.</strong> Silent members are never charged.", "wl_title": "Save your spot with your WhatsApp number", "wl_hint": "Enter your WhatsApp number with country code.", "wl_oktitle": "✓ You’re on the list!", "wl_okbody": "We’re opening WhatsApp so you can confirm your spot with the team. We’ll be in touch soon 🟢", "faq_label": "FAQ", "faq_title": "The questions everyone asks.", "faq_q1": "What counts as an “active member”?", "faq_q2": "Is my number at risk of getting banned?", "faq_q3": "How does Vibra connect to WhatsApp?", "faq_q4": "Does Vibra read every message in my community?", "faq_q5": "What happens to my community’s data?", "faq_q6": "Can a member opt out of being profiled?", "faq_q7": "Do members know Vibra is in the group?", "faq_q8": "Can I train Vibra on my own material?", "faq_q9": "Can Vibra replace my community manager?", "faq_q10": "How is it different from a bot like ManyChat?", "faq_q11": "What if Vibra gets something wrong?", "faq_q12": "How does pricing work?", "faq_a1": "<p>Someone who wrote, reacted, or talked to Vibra in DMs during the month. Doesn’t matter how many times — it counts once a month.</p><p>If your community has 1,000 people and 300 participate, you pay for 300. The silent ones are never charged.</p>", "faq_a2": "<p>Your number is safe. Vibra works off its own number, separate from yours and your business line, so any risk sits on its line, not yours.</p><p>It also replies at a human pace, not like a machine blasting messages — which is exactly what Meta cracks down on.</p>", "faq_a3": "<p>It has its own number and joins your group like any other team member. You add it just like you’d add a person.</p><p>Today WhatsApp has no official API for large community groups, so this is the way any community manager — human or AI — can actually be inside your group.</p>", "faq_a4": "<p>Yes, the same way a human community manager would. It’s the only way to do the job — to catch the unanswered question, the member going cold, the complaint that’s building.</p><p>The difference is that every action Vibra takes is logged and reviewable. A human can’t give you that.</p>", "faq_a5": "<p>It’s yours. It’s never shared with other communities or used to train third-party models.</p><p>You can export everything and delete everything — profiles, history, settings — whenever you want, no need to ask anyone.</p>", "faq_a6": "<p>Yes. If a member asks to be left out of the analysis, they’re left out, and Vibra respects it across the board — from re-engagement to member intros.</p>", "faq_a7": "<p>Yes. It shows up as a regular participant, with its name, and we recommend introducing it openly as part of the team. Healthy communities know who’s looking after them.</p><p>What you control is how much it speaks in public and how much it works in private with you.</p>", "faq_a8": "<p>Yes, that’s the whole point. You teach it your tone, your rules, and your go-to answers over chat, hand it your docs, and it learns from every correction you make.</p><p>The more you teach it, the more it becomes yours.</p>", "faq_a9": "<p>Depends on your situation, and we’ll tell you straight. If nobody’s running the community today, or someone’s doing it part-time between a hundred other things, Vibra covers the whole role from day one.</p><p>If you already have a community team, Vibra is their leverage, not their replacement. It takes the operational load so your team spends its time on what only a human can do — strategy, content, and real relationships. The best results are humans with Vibra, not humans versus Vibra.</p>", "faq_a10": "<p>A traditional bot lives in the 1:1 chat, waits for the exact command, and follows rules you write. Vibra lives where your community lives — the group. It understands natural language, remembers each person, and takes initiative: it spots what needs doing and does it, or hands it to you drafted in your DMs.</p>", "faq_a11": "<p>You set the line. What it handles on its own and what needs your OK in DMs. Everything it does solo is logged, and the sensitive stuff (a key client, a delicate topic, a crisis) always runs by you before it goes out.</p>", "faq_a12": "<p>Launch pricing of <span class=\"js-cur\">$1</span> per active member per month, for the first 100 communities on the waitlist only. You pay for the people who participate, not the whole list, and you come in with guided onboarding.</p>", "fin_h": "Your community already has the people.<span class=\"line2\">Time to give it more Vibra.</span>", "fin_p": "The first 100 communities come in at launch pricing. Yours can be one of them.", "foot_tag": "Your community already has the people.<br>Time to give it more Vibra.", "foot_product": "Product", "foot_compare": "Cost comparison", "foot_contact": "Contact", "foot_waitlist": "Waitlist", "foot_copy": "© 2026 Vibra · Made from Spain 🇪🇸", "foot_motto": "Listen. Understand. Activate."};
+  const CHAT_EN = {"En el grupo · público": "In the group · public", "Contigo · privado": "With you · private", "En el grupo · resuelve solo": "In the group · handles it solo", "En tu chat privado · espera tu OK": "In your DMs · waits for your OK", "mientras tanto, en tu chat privado": "meanwhile, in your DMs", "en línea": "online", "alguien sabe si la sesión de hoy se grabó? me la perdí 😩": "did anyone catch if today’s session was recorded? i missed it 😩", "¡Hola Laura! Sí 🙌 La grabación ya está disponible — te la paso por privado para no llenar el grupo 👌": "Hey Laura! Yes 🙌 The recording’s up — I’ll send it to you in DM so we don’t clutter the group 👌", "esta comunidad es otro nivel 🔥": "this community is on another level 🔥", "👀 ojo con Laura, preguntó por la grabación pero su renovación venció hace 3 días y sigue en el grupo. Le mandaría la grabación junto con esto 👇": "👀 heads up on Laura — she asked for the recording but her renewal lapsed 3 days ago and she’s still in the group. I’d send the recording along with this 👇", "Borrador": "Draft", "Laura, aquí está la grabación 🎥 Aprovecho para avisarte que tu membresía venció el lunes — ¿la renuevo para que no pierdas acceso a lo que viene?": "Laura, here’s the recording 🎥 Quick heads up — your membership lapsed on Monday. Want me to renew it so you don’t lose access to what’s coming?", "perfecto, envíalo 👍": "perfect, send it 👍", "Enviado ✅ Te aviso si renueva.": "Sent ✅ I’ll let you know if she renews.", "buenas ☀️ te resumo la noche y te dejo 3 cosas para hoy 👇": "morning ☀️ here’s the overnight recap and 3 things for today 👇", "1️⃣ 14 personas preguntaron por tu próximo evento — te armo la lista para escribirles 💰<br>2️⃣ Carla lleva 2 semanas sin aparecer, yo le hablo para traerla de vuelta<br>3️⃣ se armó un buen debate y quedaron 3 preguntas sin responder, ¿las contesto? 📝": "1️⃣ 14 people asked about your next event — I’ll pull the list so you can reach out 💰<br>2️⃣ Carla’s been gone 2 weeks, I’ll message her to bring her back<br>3️⃣ a great thread kicked off and 3 questions went unanswered — want me to handle them? 📝", "dale a las 3 🔥": "do all 3 🔥", "alguien ha conseguido clientes por LinkedIn? estoy medio perdida 😅": "has anyone landed clients through LinkedIn? i’m kinda lost 😅", "Andrea, justo Marcos contó en marzo cómo armó su sistema de clientes por LinkedIn — uno de los mejores hilos del grupo 🏆 @Marcos, ¿le cuentas? Andrea, te paso el resumen por privado 📩": "Andrea, Marcos actually broke down his whole LinkedIn client system back in March — one of the best threads in here 🏆 @Marcos, want to share? Andrea, I’ll send you the recap in DM 📩", "jaja buena memoria 😂 Andrea claro, escríbeme": "haha good memory 😂 Andrea for sure, hit me up", "cierre del día 🌙 esto hice hoy mientras grababas 👇": "end-of-day wrap 🌙 here’s what I handled while you were recording 👇", "✅ recibí a 2 nuevos y los presenté al grupo<br>✅ respondí 11 dudas<br>✅ Carla volvió a escribir, le di la bienvenida de vuelta 🎉<br>✅ reviví el chat con una pregunta y se armó conversación": "✅ welcomed 2 new members and introduced them to the group<br>✅ answered 11 questions<br>✅ Carla posted again — I welcomed her back 🎉<br>✅ revived the chat with a question and a real conversation took off", "crack 👏": "legend 👏", "a qué hora es el evento de mañana?": "what time is the event tomorrow?", "Mañana a las 18:00, hora de Madrid 🗓️ que para ti son las 13:00 en CDMX. Les mando recordatorio al grupo 1 hora antes. Lucía, si quieres el link de calendario te lo paso por privado 👌": "Tomorrow at 6:00 PM Madrid time 🗓️ which is 11:00 AM for you in NYC. I’ll drop a reminder in the group 1 hour before. Lucía, want the calendar link? I’ll DM it to you 👌", "🤝 Diego preguntó en el grupo si alguien conoce gente en Mercado Libre. Valeria, de tu comunidad, trabajó ahí 4 años, lo contó cuando se presentó. ¿Los pongo en contacto?": "🤝 Diego asked in the group if anyone knows people at MercadoLibre. Valeria, from your community, worked there 4 years — she mentioned it when she introduced herself. Want me to connect them?", "sí, conéctalos 🤝": "yes, connect them 🤝", "Hecho ✅ Valeria respondió \"claro, que me escriba\" 🙌": "Done ✅ Valeria replied “of course, have him reach out” 🙌", "quién tiene la renovación vencida este mes?": "who’s got a lapsed renewal this month?", "Según Hotmart son 3 miembros 💳 Laura (3 días), Pedro (1 semana) y Ana (venció hoy). Laura sigue súper activa en el grupo — ¿le mando primero a ella un recordatorio amable?": "Per Hotmart it’s 3 members 💳 Laura (3 days), Pedro (1 week), and Ana (lapsed today). Laura’s still super active in the group — want me to send her a friendly reminder first?", "sí, y a los otros dos mañana": "yes, and the other two tomorrow", "Hecho ✅ Programados para mañana 10am.": "Done ✅ Scheduled for 10 AM tomorrow.", "quiénes del grupo confirmaron al evento de mañana en Luma?": "who in the group RSVP’d to tomorrow’s event on Luma?", "Confirmaron 38 de 52 invitados ✅ Del grupo, faltan 9 — incluidos 3 de tus top-10. ¿Les mando un recordatorio personal por privado y actualizo la hoja de asistencia?": "38 of 52 invitees confirmed ✅ From the group, 9 are missing — including 3 of your top 10. Want me to DM them a personal reminder and update the attendance sheet?", "sí a ambos": "yes to both", "Listo, 9 recordatorios enviados y Sheet actualizado 📋": "Done — 9 reminders sent and the Sheet’s updated 📋", "quiénes del reto no han entregado la tarea 2?": "who in the challenge hasn’t turned in assignment 2?", "Según tu hoja de Google Sheets son 14 de 60 📋 De ellos, 9 siguen activos en el grupo. ¿Les mando un empujón por privado con el link de entrega y les doy hasta el viernes?": "Per your Google Sheet it’s 14 of 60 📋 Of those, 9 are still active in the group. Want me to DM them a nudge with the submission link and give them until Friday?", "dale, tono motivador 💪": "go for it, keep it motivating 💪", "acabo de subir un video a YouTube — muévelo en la comunidad": "just dropped a new video on YouTube — push it in the community", "🎯 Lo vi. 12 personas preguntaron por ese tema este mes — se lo mando por privado solo a ellas, con una línea de por qué les sirve. Al resto, mención natural cuando salga en el grupo. ¿Va?": "🎯 Saw it. 12 people asked about that exact topic this month — I’ll DM it just to them, with a line on why it’s useful. For everyone else, a natural mention when it comes up in the group. Good?", "perfecto así": "perfect like that"};
+
+  // Guardar la versión ES original de cada elemento marcado
+  function snapshotES(){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{ el.dataset.es = el.textContent; });
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.dataset.esHtml = el.innerHTML; });
+    document.querySelectorAll('[data-i18n-prepend]').forEach(el=>{
+      // guarda el primer nodo de texto (antes del <span>)
+      const tn = el.childNodes[0];
+      if(tn && tn.nodeType===3) el.dataset.esPre = tn.textContent;
+    });
+  }
+
+  function translateChatNodes(toEN){
+    // Recorre burbujas, level-tags, connector, ch-sub.on, etc. por contenido literal
+    const sels = ['.bubble','.level-tag','.connector','.quoted','.ch-name','.ch-sub','.duel-job','.actor','.ans','.compare-cell'];
+    document.querySelectorAll(sels.join(',')).forEach(el=>{
+      // saltar si tiene data-i18n (ya manejado)
+      if(el.hasAttribute('data-i18n')||el.hasAttribute('data-i18n-html')) return;
+      if(toEN){
+        if(el.dataset.esHtmlChat===undefined){
+          const html=el.innerHTML;
+          // buscar coincidencia exacta del texto interno conocido
+          for(const es in CHAT_EN){
+            if(html.indexOf(es)!==-1){
+              el.dataset.esHtmlChat = html;
+              el.innerHTML = html.replace(es, CHAT_EN[es]);
+              break;
+            }
+          }
+        }
+      } else {
+        if(el.dataset.esHtmlChat!==undefined){ el.innerHTML = el.dataset.esHtmlChat; delete el.dataset.esHtmlChat; }
+      }
+    });
+  }
+
+  function setLang(lang){
+    const en = (lang==='en');
+    document.documentElement.lang = lang;
+    // textos simples
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.getAttribute('data-i18n');
+      el.textContent = en ? (I18N_EN[k] ?? el.dataset.es) : el.dataset.es;
+    });
+    // textos con HTML
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+      const k = el.getAttribute('data-i18n-html');
+      el.innerHTML = en ? (I18N_EN[k] ?? el.dataset.esHtml) : el.dataset.esHtml;
+    });
+    // botones de acordeón (texto antes del icono)
+    document.querySelectorAll('[data-i18n-prepend]').forEach(el=>{
+      const k = el.getAttribute('data-i18n-prepend');
+      const tn = el.childNodes[0];
+      if(tn && tn.nodeType===3) tn.textContent = en ? (I18N_EN[k] ? I18N_EN[k]+' ' : el.dataset.esPre) : el.dataset.esPre;
+    });
+    // chats
+    translateChatNodes(en);
+    // placeholder del input de telefono
+    document.querySelectorAll('.wl-input').forEach(i=>{
+      i.setAttribute('aria-label', en ? 'Your WhatsApp number with country code' : 'Tu número de WhatsApp con código de país');
+    });
+    // estado visual del switch
+    document.querySelectorAll('.lang-opt').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+    try{ localStorage.setItem('vibra_lang', lang); }catch(e){}
+  }
+
+  snapshotES();
+  // idioma inicial: guardado > navegador (en→EN, resto ES)
+  let initLang = 'es';
+  try{
+    const saved = localStorage.getItem('vibra_lang');
+    if(saved){ initLang = saved; }
+    else if((navigator.language||'').toLowerCase().startsWith('en')){ initLang='en'; }
+  }catch(e){}
+  document.querySelectorAll('.lang-opt').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.dataset.lang));
+  });
+  if(initLang==='en') setLang('en');
+
 </script>
 
 </body>
