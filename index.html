@@ -1255,12 +1255,22 @@
     if(national.length < range[0] || national.length > range[1]) return false;
     return {det, national, fullPhone: det.pre + national};
   }
-  // Actualiza el estado del botón (verde activo / gris inactivo) en vivo
+  // Solo TRUE cuando el número supera el máximo de dígitos de su país (claramente inválido)
+  function isTooLong(card){
+    const input=card.querySelector('.wl-input');
+    const det = detectCountry(input.value);
+    if(!det) return false; // sin prefijo aún: no apagar
+    const allDigits = input.value.replace(/\D/g,'');
+    const preDigits = det.pre.replace(/\D/g,'');
+    const national = allDigits.slice(preDigits.length).replace(/^0+/,'');
+    const range = PHONE_LEN[det.iso] || [7,15];
+    return national.length > range[1];
+  }
+  // El botón siempre está encendido; solo se apaga si el número se pasa de largo
   function updateState(card){
     const btn=card.querySelector('.wl-btn');
-    const v = isValidPhone(card);
-    if(v){ btn.classList.remove('off'); }
-    else { btn.classList.add('off'); }
+    if(isTooLong(card)){ btn.classList.add('off'); }
+    else { btn.classList.remove('off'); }
   }
   function joinWaitlist(card){
     const v = isValidPhone(card);
