@@ -1,0 +1,87 @@
+# Vibra
+
+> Vibra is an AI community manager for WhatsApp communities. It is positioned as a hire, not a tool: "It's not a tool. It's a hire." Vibra works inside the WhatsApp group in public and reports back to the admin in private, 24/7.
+
+## What Vibra does
+
+Vibra works on two levels: the group (where conversation happens) and direct messages (where relationships are built). It runs on three engines:
+
+- **Listen**: reads every message across the WhatsApp groups, day and night, and surfaces what matters — unanswered questions, members going cold, recurring topics, buying signals.
+- **Understand**: knows who's who, remembers each member, and identifies who should be introduced to whom.
+- **Activate**: welcomes new members, answers recurring questions, sends reminders, re-engages quiet members, and connects people — done autonomously, not just suggested. Sensitive or important matters come to the admin's DMs with a ready-to-send draft.
+
+Autonomy has a clear boundary the admin sets: routine actions are handled automatically and logged; sensitive ones wait for the admin's OK in private.
+
+## Who it's for
+
+- Creator communities: creators, coaches, paid memberships, course cohorts.
+- Professional communities: founders, executives, entrepreneurs, masterminds, accelerators, alumni networks.
+
+The core insight: a community's real value is locked inside conversations nobody can see. Vibra surfaces and activates that value.
+
+## How it connects to WhatsApp
+
+Vibra uses its own WhatsApp number and joins the group like any other team member — no app to install, no code. WhatsApp has no official API for large community groups, so this is how any community manager, human or AI, can be present in a group. It works at a human pace and keeps every action logged and reviewable.
+
+## Pricing
+
+Launch pricing: 1 USD per active member per month, for the first 100 communities on the waitlist. Only members who participate are charged; silent members are free. No minimums, no contracts, guided onboarding.
+
+## Integrations
+
+Google Sheets, Google Calendar, Slack, HubSpot, Stripe, Calendly, Notion, Luma, Hotmart, Kajabi, GoHighLevel, and more.
+
+## Data and privacy
+
+Community data belongs to the admin. It is never shared with other communities or used to train third-party models. Everything can be exported or deleted at any time. Members can opt out of profiling, and Vibra respects it across all functions.
+
+## Links
+
+- Website: https://getvibra.ai/
+- Waitlist: https://getvibra.ai/#precio
+- Contact: hello@getvibra.com
+
+---
+
+# Vibra (Español)
+
+> Vibra es un agente community manager con IA para comunidades de WhatsApp. Se posiciona como una contratación, no una herramienta: "No es una herramienta. Es un empleado." Vibra trabaja dentro del grupo de WhatsApp en público y le reporta al administrador en privado, las 24 horas.
+
+## Qué hace Vibra
+
+Vibra trabaja en dos niveles: el grupo (donde pasa la conversación) y los chats privados (donde se construyen las relaciones). Funciona con tres motores:
+
+- **Escucha**: lee todos los mensajes de los grupos de WhatsApp, de día y de noche, y destaca lo que importa — preguntas sin responder, miembros que se enfrían, temas recurrentes, señales de compra.
+- **Entiende**: sabe quién es quién, recuerda a cada miembro e identifica quién debería conocer a quién.
+- **Activa**: da la bienvenida a nuevos miembros, responde las dudas de siempre, manda recordatorios, reactiva a los miembros callados y conecta personas — hecho de forma autónoma, no solo sugerido. Lo sensible o importante llega al chat privado del administrador con un borrador listo para enviar.
+
+La autonomía tiene una frontera clara que define el administrador: lo rutinario se resuelve solo y queda registrado; lo sensible espera su visto bueno en privado.
+
+## Para quién es
+
+- Comunidades de creadores: creadores, coaches, membresías de pago, cohortes educativas.
+- Comunidades profesionales: fundadores, ejecutivos, emprendedores, masterminds, aceleradoras, redes de alumni.
+
+La idea central: el valor real de una comunidad está encerrado en conversaciones que nadie alcanza a ver. Vibra saca a la superficie y activa ese valor.
+
+## Cómo se conecta a WhatsApp
+
+Vibra usa su propio número de WhatsApp y entra al grupo como un miembro más del equipo — sin instalar nada, sin código. WhatsApp no ofrece una API oficial para grupos grandes de comunidad, así que esta es la forma en que cualquier community manager, humano o IA, puede estar presente en un grupo. Trabaja a ritmo humano y deja cada acción registrada y revisable.
+
+## Precio
+
+Precio de lanzamiento: 1 USD por miembro activo al mes, para las primeras 100 comunidades de la lista de espera. Solo se cobra por los miembros que participan; los silenciosos son gratis. Sin mínimos, sin contratos, con onboarding acompañado.
+
+## Integraciones
+
+Google Sheets, Google Calendar, Slack, HubSpot, Stripe, Calendly, Notion, Luma, Hotmart, Kajabi, GoHighLevel, y más.
+
+## Datos y privacidad
+
+Los datos de la comunidad son del administrador. Nunca se comparten con otras comunidades ni se usan para entrenar modelos de terceros. Todo se puede exportar o borrar en cualquier momento. Los miembros pueden pedir no ser perfilados, y Vibra lo respeta en todas sus funciones.
+
+## Enlaces
+
+- Sitio web: https://getvibra.ai/
+- Lista de espera: https://getvibra.ai/#precio
+- Contacto: hello@getvibra.com
