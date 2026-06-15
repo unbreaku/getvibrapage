@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vibra · No es una herramienta. Es un empleado.</title>
+<title>Vibra · AI Community Manager para WhatsApp</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%2322C55E'/%3E%3C/svg%3E">
 <meta name="description" content="Vibra es el agente community manager (IA) para comunidades de WhatsApp. Trabaja en el grupo, te reporta en privado y activa a tu gente — las 24 horas. Lista de espera abierta.">
 <meta name="keywords" content="community manager IA, WhatsApp community manager, agente IA WhatsApp, gestión de comunidades WhatsApp, AI community manager, WhatsApp group management, membership community AI">
@@ -414,7 +414,16 @@
   .foot-col a{display:block;font-size:14.5px;color:var(--text-2);margin-bottom:11px}
   .foot-col a:hover{color:var(--green)}
   .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-3);flex-wrap:wrap;gap:14px}
-  @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+  @media(max-width:820px){
+    .foot-grid{grid-template-columns:1fr 1fr;gap:20px 24px}
+    /* el logo + eslogan ocupan toda la fila de arriba */
+    .foot-brand{grid-column:1 / -1;margin-bottom:4px}
+    .foot-brand .lede{font-size:14px;margin-top:10px;max-width:none}
+    .foot-brand .lede br{display:none}
+    .foot-col h6{margin-bottom:12px}
+    .foot-col a{font-size:14px;margin-bottom:9px}
+    .foot-bottom{flex-direction:column;align-items:flex-start;gap:8px;font-size:12.5px;text-align:left}
+  }
 
   /* waitlist phone capture — el CTA protagonista */
   .wl-card{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid rgba(34,197,94,.35);border-radius:20px;padding:22px;max-width:560px;box-shadow:0 0 0 1px rgba(34,197,94,.06),0 24px 60px -28px rgba(34,197,94,.25)}
@@ -496,7 +505,10 @@
   .lang-switch{display:inline-flex;align-items:center;gap:0;background:var(--bg-2);border:1px solid var(--line-strong);border-radius:999px;padding:3px;cursor:pointer;flex-shrink:0}
   .lang-opt{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:13px;font-weight:700;font-family:inherit;color:var(--text-3);background:none;border:none;cursor:pointer;padding:6px 11px;border-radius:999px;transition:.2s;line-height:1}
   .lang-opt .fl{font-size:15px}
-  .lang-opt.active{background:var(--green);color:#04140a}
+  .lang-opt.active{background:var(--surface-2);color:var(--text)}
+  /* el switch de idioma se oculta al hacer scroll (desktop y móvil) — no compite con el CTA */
+  nav .lang-switch{transition:opacity .25s ease, transform .25s ease}
+  nav.scrolled .lang-switch{opacity:0;transform:translateY(-6px);pointer-events:none}
   @media(max-width:560px){.lang-opt{padding:5px 7px;font-size:11.5px;gap:3px}.lang-opt .fl{font-size:13px}.nav-cta{gap:9px}.logo{font-size:18px}}
   @media(max-width:380px){.lang-opt{padding:5px 6px}.lang-opt span:not(.fl){display:none}.nav-cta{gap:7px}}  /* barra fija inferior (solo móvil) */
   .mobile-cta-bar{display:none}
@@ -507,9 +519,6 @@
     /* en móvil quitamos hamburguesa y botón de la barra de arriba: queda logo + switch */
     .nav-burger{display:none!important}
     nav .nav-cta .btn-primary{display:none}
-    /* el switch de idioma se oculta al hacer scroll hacia abajo */
-    nav .lang-switch{transition:opacity .25s ease, transform .25s ease}
-    nav.scrolled .lang-switch{opacity:0;transform:translateY(-6px);pointer-events:none}
     /* CTAs intermedios fuera: la barra fija de abajo los cubre */
     .m-hide-cta{display:none!important}
     /* espacio para que la barra no tape el final de la página */
