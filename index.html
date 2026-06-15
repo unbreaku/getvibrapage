@@ -1160,14 +1160,15 @@
   const waReady = ASESOR_WHATSAPP !== '0000000000';
 
   function saveLead(phone, countryCode, country){
-    // Guarda el lead en la base de datos (fire-and-forget: nunca bloquea la conversión)
-    return fetch(SUPA_URL + '/rest/v1/vibra_waitlist?on_conflict=phone', {
+    // Guarda el lead (fire-and-forget: nunca bloquea la conversión).
+    // Insert simple — los duplicados los frena la constraint UNIQUE de phone (error inofensivo, se ignora).
+    return fetch(SUPA_URL + '/rest/v1/vibra_waitlist', {
       method:'POST',
       headers:{
         'apikey': SUPA_KEY,
         'Authorization': 'Bearer ' + SUPA_KEY,
         'Content-Type': 'application/json',
-        'Prefer': 'resolution=ignore-duplicates'
+        'Prefer': 'return=minimal'
       },
       body: JSON.stringify({phone:phone, country_code:countryCode, country:country, source:'landing'})
     }).catch(()=>{});
