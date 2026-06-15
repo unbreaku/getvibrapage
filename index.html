@@ -1231,9 +1231,34 @@
     const text = encodeURIComponent('¡Hola! Acabo de registrar mi solicitud para unirme a la lista de espera de Vibra 🙋 Mi WhatsApp es ' + fullPhone + '. Mi comunidad se llama: ');
     window.open('https://wa.me/' + ASESOR_WHATSAPP + '?text=' + text, '_blank'); // 2) chat con el asesor
   }
+  // Agrupación de dígitos por país (cómo se separan visualmente con espacios)
+  const PHONE_GROUPS = {
+    ES:[3,3,3], MX:[2,4,4], CO:[3,3,4], AR:[2,4,4], CL:[1,4,4], PE:[3,3,3],
+    US:[3,3,4], DO:[3,3,4], EC:[2,3,4], VE:[3,3,4], BO:[8], UY:[1,3,4],
+    PY:[3,3,3], GT:[4,4], CR:[4,4], PA:[4,4], HN:[4,4], SV:[4,4], NI:[4,4],
+    BR:[2,5,4], PT:[3,3,3]
+  };
+  function formatPhone(digits, country){
+    const groups = PHONE_GROUPS[country] || [3,3,3,3];
+    const out=[]; let i=0;
+    for(const g of groups){
+      if(i>=digits.length) break;
+      out.push(digits.slice(i, i+g)); i+=g;
+    }
+    if(i < digits.length) out.push(digits.slice(i)); // sobrantes en bloque
+    return out.join(' ');
+  }
+  function liveFormat(input, sel){
+    const country = sel.selectedOptions[0].dataset.country;
+    const digits = input.value.replace(/\D/g,'').replace(/^0+/,'');
+    input.value = formatPhone(digits, country);
+  }
   document.querySelectorAll('.wl-card').forEach(card=>{
+    const input=card.querySelector('.wl-input'), sel=card.querySelector('.wl-select');
     card.querySelector('.wl-btn').addEventListener('click',()=>joinWaitlist(card));
-    card.querySelector('.wl-input').addEventListener('keydown',e=>{if(e.key==='Enter')joinWaitlist(card)});
+    input.addEventListener('keydown',e=>{if(e.key==='Enter')joinWaitlist(card)});
+    input.addEventListener('input',()=>liveFormat(input, sel));
+    sel.addEventListener('change',()=>liveFormat(input, sel)); // reformatea al cambiar país
   });
   // CTAs de lista de espera: por ahora bajan al bloque de precio.
   // (El modal queda montado y listo: para reactivarlo, cambia GOWL_MODE a 'modal'.)
