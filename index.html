@@ -1413,7 +1413,11 @@
     const hint=card.querySelector('.wl-hint'); if(hint) hint.style.display='none';
     const ok = card.querySelector('.wl-ok'); if(ok) ok.classList.add('show');
     if(!waReady){ return; }
-    const text = encodeURIComponent('¡Hola! Quiero confirmar mi lugar en la lista de espera de Vibra ✅ Mi número es ' + v.fullPhone + '. Mi comunidad se llama: ');
+    const isEN = document.documentElement.lang === 'en';
+    const msg = isEN
+      ? ('Hi! I\'d like to confirm my spot on the Vibra waitlist. My number is ' + v.fullPhone + '. My community is called: ')
+      : ('¡Hola! Quiero confirmar mi lugar en la lista de espera de Vibra. Mi número es ' + v.fullPhone + '. Mi comunidad se llama: ');
+    const text = encodeURIComponent(msg);
     const waUrl = 'https://wa.me/' + ASESOR_WHATSAPP + '?text=' + text;
     window.__vibraWaUrl = waUrl;
     // Poner el link en el botón "da clic aquí" del mensaje de éxito
