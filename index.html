@@ -49,7 +49,7 @@
         "@type": "Offer",
         "price": "1",
         "priceCurrency": "USD",
-        "description": "Launch pricing: $1 per active member per month, first 100 communities. You only pay for members who participate; silent members are not charged."
+        "description": "Launch pricing: $1 per active member per month, first communities. You only pay for members who participate; silent members are not charged."
       },
       "audience": {
         "@type": "Audience",
@@ -81,7 +81,7 @@
         {"@type":"Question","name":"Can Vibra replace my community manager?","acceptedAnswer":{"@type":"Answer","text":"If nobody runs the community today or someone does it part-time, Vibra covers the whole role. If you have a community team, Vibra is their leverage, taking the operational load so the team focuses on strategy, content and real relationships."}},
         {"@type":"Question","name":"How is it different from a bot like ManyChat?","acceptedAnswer":{"@type":"Answer","text":"A traditional bot lives in the 1:1 chat, waits for the exact command, and follows rules you write. Vibra lives in the group, understands natural language, remembers each person, and takes initiative: it spots what needs doing and does it, or hands it to you drafted in your DMs."}},
         {"@type":"Question","name":"What if Vibra gets something wrong?","acceptedAnswer":{"@type":"Answer","text":"You set the line: what it handles on its own and what needs your OK in DMs. Everything autonomous is logged, and sensitive matters always run by you before going out."}},
-        {"@type":"Question","name":"How does pricing work?","acceptedAnswer":{"@type":"Answer","text":"Launch pricing of $1 per active member per month, for the first 100 communities on the waitlist. You pay for the people who participate, not the whole list, with guided onboarding."}}
+        {"@type":"Question","name":"How does pricing work?","acceptedAnswer":{"@type":"Answer","text":"Launch pricing of $1 per active member per month, for the first communities on the waitlist. You pay for the people who participate, not the whole list, with guided onboarding."}}
       ]
     }
   ]
@@ -90,6 +90,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#071208;
@@ -254,7 +255,7 @@
   @media(max-width:820px){.frontier-grid{grid-template-columns:1fr}}
 
   /* integrations */
-  .int-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin-top:64px}
+  .int-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start;margin-top:40px}
   .int-pills{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
   .ipill{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:6px 16px 6px 6px;font-size:14px;font-weight:600;color:var(--text-2)}
   .ilogo{width:27px;height:27px;border-radius:8px;display:grid;place-items:center;flex-shrink:0}
@@ -404,6 +405,9 @@
   .finale h2 .line2{display:block;color:var(--green)}
   .finale p{font-size:18px;color:var(--text-2);max-width:720px;margin:22px auto 36px;position:relative;z-index:1;text-wrap:balance}
   .finale .btn{position:relative;z-index:1;padding:16px 38px;font-size:17px;box-shadow:0 14px 40px -12px rgba(34,197,94,.55)}
+  /* el CTA pino sobre fondo oscuro necesita un borde para definirse */
+  .finale .btn-primary{border:1px solid rgba(255,255,255,.22)}
+  .finale .btn-primary:hover{border-color:rgba(255,255,255,.34)}
   @media(max-width:820px){.finale{padding:80px 0 10px}.finale p{font-size:16px}}
 
   /* footer */
@@ -524,6 +528,311 @@
     /* espacio para que la barra no tape el final de la página */
     body{padding-bottom:74px}
   }
+  /* ============================================================
+     HERO · capa estética clara (acotada a .hero, no afecta el resto)
+     ============================================================ */
+  .hero{
+    --h-canvas:#FBFAF6;--h-ink:#0A2A20;--h-ink2:#577267;--h-ink3:#8a9d92;
+    --h-line:rgba(14,42,32,.10);--h-line2:rgba(14,42,32,.14);
+    --h-green:#22C55E;--h-green-ink:#15803d;--h-green-hl:rgba(34,197,94,.16);
+    --h-blue:#3F7DE0;--h-pine:#0C3B2E;--h-pine-2:#124A38;--h-pine-out:#1F6B45;
+    --h-pine-ink:#EAF4EE;--h-pine-ink2:#9DC4B4;--h-pine-line:rgba(255,255,255,.10);
+    background:var(--h-canvas);color:var(--h-ink);
+    padding:84px 0 60px;border-bottom:1px solid var(--h-line);
+  }
+  .hero .glow{display:none}
+  .hero .hero-copy{position:relative;z-index:1}
+
+  /* eyebrow → píldora clara */
+  .hero .eyebrow{background:#fff;border:1px solid var(--h-line2);color:var(--h-ink);
+    font-family:'Hanken Grotesk',sans-serif;font-weight:600}
+  .hero .eyebrow .pulse{background:var(--h-green);box-shadow:0 0 10px var(--h-green)}
+
+  /* H1 display + resaltado verde */
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;color:var(--h-ink);
+    font-weight:800;font-size:clamp(40px,5.4vw,68px);line-height:1.0;letter-spacing:-.03em}
+  .hero h1 .accent{color:var(--h-green-ink);background:var(--h-green-hl);
+    padding:.02em .14em;border-radius:8px;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+  /* lede */
+  .hero .lede{font-family:'Hanken Grotesk',sans-serif;color:var(--h-ink2)}
+
+  /* CTA → píldora pino */
+  .hero .hero-ctas .btn-primary{background:var(--h-pine);color:#fff;border-radius:999px}
+  .hero .hero-ctas .btn-primary:hover{background:#10493a;transform:translateY(-1px)}
+
+  /* etiquetas de nivel */
+  .hero .level-tag.grupo{background:rgba(63,125,224,.10);border:1px solid rgba(63,125,224,.28);color:var(--h-blue)}
+  .hero .level-tag.privado{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.30);color:var(--h-green-ink)}
+  .hero .connector{color:var(--h-ink3)}
+  .hero .connector .arrow{color:var(--h-green)}
+
+  /* tarjeta pública (wallpaper claro + patrón sutil + sombra) */
+  .hero .level-tag.grupo + .phone{
+    background:#E9E2D4;border:1px solid rgba(10,42,32,.12);
+    box-shadow:0 26px 60px -30px rgba(14,42,32,.30);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%230e2a20' stroke-opacity='0.035' stroke-width='1.4'%3E%3Cpath d='M8 10h14a3 3 0 013 3v6a3 3 0 01-3 3h-7l-5 4v-4H8a3 3 0 01-3-3v-6a3 3 0 013-3z'/%3E%3Ccircle cx='33' cy='32' r='5'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero .level-tag.grupo + .phone .chat-head{border-bottom-color:rgba(14,42,32,.10)}
+  .hero .level-tag.grupo + .phone .ch-name{color:var(--h-ink)}
+  .hero .level-tag.grupo + .phone .ch-sub{color:var(--h-ink3)}
+  .hero .level-tag.grupo + .phone .ch-avatar.grp{background:linear-gradient(135deg,#3F7DE0,#2c5fb0);color:#fff}
+  .hero .level-tag.grupo + .phone .bubble.in{background:#fff;border:1px solid rgba(14,42,32,.08);color:var(--h-ink)}
+  .hero .level-tag.grupo + .phone .bubble.out{background:#D7F0C2;border:1px solid rgba(34,197,94,.25);color:var(--h-ink)}
+  .hero .level-tag.grupo + .phone .bubble .meta{color:var(--h-ink3)}
+  .hero .level-tag.grupo + .phone .who{color:var(--h-green-ink)}
+  .hero .level-tag.grupo + .phone .who.alt{color:var(--h-blue)}
+  .hero .level-tag.grupo + .phone .who.alt2{color:#c2872f}
+  .hero .level-tag.grupo + .phone .tick{color:var(--h-green)}
+
+  /* tarjeta privada (pino oscuro, siempre) */
+  .hero .level-tag.privado + .phone{
+    background:var(--h-pine);border:1px solid var(--h-pine-line);
+    box-shadow:0 26px 60px -30px rgba(0,0,0,.45)}
+  .hero .level-tag.privado + .phone .chat-head{border-bottom-color:var(--h-pine-line)}
+  .hero .level-tag.privado + .phone .ch-avatar{background:var(--h-green);color:#06351c}
+  .hero .level-tag.privado + .phone .ch-name{color:var(--h-pine-ink)}
+  .hero .level-tag.privado + .phone .ch-sub{color:var(--h-pine-ink2)}
+  .hero .level-tag.privado + .phone .ch-sub.on{color:var(--h-green)}
+  .hero .level-tag.privado + .phone .bubble{color:var(--h-pine-ink)}
+  .hero .level-tag.privado + .phone .bubble.in{background:var(--h-pine-2);border:1px solid var(--h-pine-line)}
+  .hero .level-tag.privado + .phone .bubble.out{background:var(--h-pine-out);border:1px solid rgba(255,255,255,.06)}
+  .hero .level-tag.privado + .phone .bubble .meta{color:var(--h-pine-ink2)}
+  .hero .level-tag.privado + .phone .who{color:#4ADE80}
+  .hero .level-tag.privado + .phone .tick{color:#4ADE80}
+  .hero .level-tag.privado + .phone .quoted{border-left-color:var(--h-green);background:rgba(255,255,255,.06);color:var(--h-pine-ink2)}
+  .hero .level-tag.privado + .phone .quoted b{color:#4ADE80}
+
+  /* chips de confianza → píldoras claras (se mantiene el scroll suave) */
+  .hero .marquee{border-top:none;border-bottom:none;margin-top:48px}
+  .hero .marquee-track{gap:14px}
+  .hero .marquee-track > span{background:#fff;border:1px solid var(--h-line2);border-radius:999px;
+    padding:9px 16px;color:var(--h-ink);font-family:'Hanken Grotesk',sans-serif}
+  .hero .marquee-track > span svg{color:var(--h-green)}
+
+  @media(max-width:940px){
+    .hero h1{font-size:clamp(32px,8.5vw,46px)}
+  }
+  /* ============================================================
+     TEMA CÁLIDO · página completa (claro + ritmo privado oscuro)
+     Re-mapea tokens y re-skinea clases existentes. No toca HTML/JS.
+     ============================================================ */
+  :root{
+    --bg:#FBFAF6;--bg-2:#F3EEE3;--surface:#FFFFFF;--surface-2:#F6F1E8;
+    --line:rgba(10,42,32,.12);--line-strong:rgba(10,42,32,.18);
+    --text:#0A2A20;--text-2:#577267;--text-3:#8a9d92;
+    --wa-out:#D7F0C2;--wa-in:#FFFFFF;
+    --v-pine:#0C3B2E;--v-pine-2:#10493A;--v-pine-ink:#EAF4EE;--v-pine-ink-2:#A7C6B6;--v-pine-line:rgba(255,255,255,.09);
+    --v-pub:#E9E2D4;--v-accent-text:#1C7A40;--v-blue:#5b86d6;
+    --v-doodle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='none' stroke='%230A2A20' stroke-opacity='0.05' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 24h30a7 7 0 017 7v14a7 7 0 01-7 7H28l-9 8v-8a7 7 0 01-7-7V31a7 7 0 017-7z'/%3E%3Cpath d='M96 104l7 7 14-16'/%3E%3Ccircle cx='112' cy='34' r='10'/%3E%3Cpath d='M34 112c5-7 14-7 19 0'/%3E%3Cpath d='M104 124h22'/%3E%3C/g%3E%3C/svg%3E");
+    --v-doodle-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 24h30a7 7 0 017 7v14a7 7 0 01-7 7H28l-9 8v-8a7 7 0 01-7-7V31a7 7 0 017-7z'/%3E%3Cpath d='M96 104l7 7 14-16'/%3E%3Ccircle cx='112' cy='34' r='10'/%3E%3Cpath d='M34 112c5-7 14-7 19 0'/%3E%3Cpath d='M104 124h22'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  body{background:radial-gradient(900px 480px at 84% -6%,rgba(34,197,94,.08),transparent 60%),var(--bg);color:var(--text)}
+
+  /* tipografía display en titulares */
+  h1,.sec-title,.anchor-card h2{font-family:'Bricolage Grotesque',Georgia,serif;letter-spacing:-.025em}
+
+  /* nav claro */
+  nav{background:rgba(251,250,246,.82);border-bottom:1px solid var(--line)}
+  nav.scrolled{background:rgba(251,250,246,.92)}
+
+  /* sombras suaves (anti-negro) */
+  .phone,.mini-chat,.fcard,.vs-card,.tcard,.step,.pricing,.wl-card,.compare,.panel,.anchor-card{
+    box-shadow:0 26px 60px -36px rgba(10,42,32,.26)!important}
+  /* glow sutil sobre claro */
+  .hero .glow,.pricing .glow{opacity:.10}
+
+  /* ---- ENCIMADO · solo hero (privado montado sobre grupo) ---- */
+  .hero .chat-stack{position:relative}
+  .hero .connector{display:none}
+  .hero .chat-stack > div:last-child{margin-top:-30px;margin-left:52px;width:calc(100% - 52px);position:relative;z-index:2}
+  @media(max-width:940px){.hero .chat-stack > div:last-child{margin-top:16px;margin-left:0;width:100%}}
+
+  /* ---- level-tags claros ---- */
+  .level-tag.grupo{background:rgba(91,134,214,.12);border:1px solid rgba(91,134,214,.30);color:var(--v-blue)}
+  .level-tag.privado{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.30);color:var(--v-accent-text)}
+
+  /* ---- mini-chats: PÚBLICO claro (beige+garabatos) ---- */
+  .mini-chat:has(.level-tag.grupo){background:var(--v-pub);background-image:var(--v-doodle);border:1px solid var(--line)}
+  .mini-chat:has(.level-tag.grupo) .bubble.in{background:#fff;border:1px solid var(--line)}
+  .mini-chat:has(.level-tag.grupo) .bubble.out{background:var(--wa-out);border:1px solid rgba(34,197,94,.25);color:#123A1F}
+  .mini-chat:has(.level-tag.grupo) .who{color:var(--v-accent-text)}
+  .mini-chat:has(.level-tag.grupo) .who.alt{color:var(--v-blue)}
+  .mini-chat:has(.level-tag.grupo) .who.alt2{color:#c79133}
+  .mini-chat:has(.level-tag.grupo) .meta{color:var(--text-3)}
+  .mini-chat:has(.level-tag.grupo) .ch-name{color:var(--text)}
+  .mini-chat:has(.level-tag.grupo) .ch-sub{color:var(--text-3)}
+
+  /* ---- mini-chats: PRIVADO pino (oscuro) ---- */
+  .mini-chat:has(.level-tag.privado){background:var(--v-pine);border:1px solid var(--v-pine-line)}
+  .mini-chat:has(.level-tag.privado) .bubble{color:var(--v-pine-ink)}
+  .mini-chat:has(.level-tag.privado) .bubble.in{background:var(--v-pine-2);border:1px solid var(--v-pine-line)}
+  .mini-chat:has(.level-tag.privado) .bubble.out{background:#1d5c47;border:1px solid rgba(255,255,255,.06);color:var(--v-pine-ink)}
+  .mini-chat:has(.level-tag.privado) .who{color:#4ADE80}
+  .mini-chat:has(.level-tag.privado) .meta{color:var(--v-pine-ink-2)}
+  .mini-chat:has(.level-tag.privado) .tick{color:#4ADE80}
+  .mini-chat:has(.level-tag.privado) .ch-name{color:var(--v-pine-ink)}
+  .mini-chat:has(.level-tag.privado) .ch-sub{color:var(--v-pine-ink-2)}
+  .mini-chat:has(.level-tag.privado) .ch-sub.on{color:#4ADE80}
+  .mini-chat:has(.level-tag.privado) .quoted{background:rgba(255,255,255,.06);color:#cfe3d8;border-left-color:var(--green)}
+  .mini-chat:has(.level-tag.privado) .quoted b{color:#4ADE80}
+
+  /* ---- Frontera (clara): tarjeta privada en pino, pública en beige (como el resto) ---- */
+  .fcard:has(.level-tag.grupo){background:var(--v-pub);background-image:var(--v-doodle);border:1px solid var(--line)}
+  .fcard:has(.level-tag.grupo) .bubble.in{background:#fff;border:1px solid var(--line)}
+  .fcard:has(.level-tag.grupo) .bubble.out{background:var(--wa-out);border:1px solid rgba(34,197,94,.25);color:#123A1F}
+  .fcard:has(.level-tag.grupo) .who.alt{color:var(--v-blue)}
+  .fcard:has(.level-tag.privado){background:var(--v-pine);border-color:var(--v-pine-line)}
+  .fcard:has(.level-tag.privado) h4{color:var(--v-pine-ink)}
+  .fcard:has(.level-tag.privado) p{color:var(--v-pine-ink-2)}
+  .fcard:has(.level-tag.privado) .bubble{color:var(--v-pine-ink)}
+  .fcard:has(.level-tag.privado) .bubble.in{background:var(--v-pine-2);border:1px solid var(--v-pine-line)}
+  .fcard:has(.level-tag.privado) .bubble.out{background:#1d5c47;color:var(--v-pine-ink)}
+  .fcard:has(.level-tag.privado) .who{color:#4ADE80}
+  .fcard:has(.level-tag.privado) .meta{color:var(--v-pine-ink-2)}
+  .fcard:has(.level-tag.privado) .tick{color:#4ADE80}
+  .fcard:has(.level-tag.privado) .quoted{background:rgba(255,255,255,.06);color:#cfe3d8;border-left-color:var(--green)}
+  .fcard:has(.level-tag.privado) .quoted b{color:#4ADE80}
+
+  /* ---- SECCIONES OSCURAS (ritmo): Integraciones + Finale ---- */
+  /* verde oscuro PROPIO (carbón-esmeralda), sin garabatos ni teal de WhatsApp */
+  #integraciones,.finale{background:radial-gradient(950px 540px at 50% -12%,rgba(34,197,94,.09),transparent 60%),#0E2A20!important;color:var(--v-pine-ink)}
+  #integraciones{padding-top:96px!important}
+  #integraciones .glow{opacity:.06}
+  #integraciones .sec-title,.finale .finale-title,.finale h2{color:var(--v-pine-ink)}
+  #integraciones .sec-sub,#integraciones .int-copy p,.finale p,.finale .lede{color:var(--v-pine-ink-2)}
+  #integraciones .sec-label{color:#4ADE80}
+  #integraciones .ipill{background:var(--v-pine-2);border-color:var(--v-pine-line);color:var(--v-pine-ink)}
+  #integraciones .ipill-txt{color:var(--v-pine-ink-2)}
+  #integraciones .cdot{background:var(--v-pine-line)}
+  #integraciones .cdot.active{background:var(--green)}
+  #integraciones .cnav{background:var(--v-pine-2);border-color:var(--v-pine-line);color:var(--v-pine-ink)}
+  .finale .glow{opacity:.16}
+
+  /* ---- pricing / waitlist (claro) ---- */
+  .wl-card{background:var(--surface);border:1px solid rgba(34,197,94,.30)}
+  .wl-select,.wl-input{background:var(--bg);border:1px solid var(--line);color:var(--text)}
+  .pricing{background:linear-gradient(135deg,#F1F6EC,var(--surface));border:1px solid rgba(34,197,94,.22)}
+
+  /* ---- detalles varios sobre claro ---- */
+  .bubble .who.alt{color:var(--v-blue)}
+  .ipill{color:var(--text-2)}
+  .compare-cell.vibra{color:var(--text)}
+  .duel-cell.vw .ans{color:var(--text)}
+  /* ---- móvil: barra fija inferior + menú desplegable (entibiar) ---- */
+  .mobile-cta-bar{background:rgba(251,250,246,.92)!important;border-top:1px solid var(--line)!important}
+  .nav-mobile{background:rgba(251,250,246,.97)!important;border-bottom:1px solid var(--line)}
+  /* ============================================================
+     AJUSTES v2 · verdes, comparativa, finale→footer
+     ============================================================ */
+  /* Botones: verde profundo (el del título "es un empleado"), no el brillante */
+  .btn-primary{background:#0C3B2E;color:#fff}
+  .btn-primary:hover{background:#10493A}
+  .tab.active{background:#15803d!important;color:#fff!important;border-color:#15803d!important}
+
+  /* "Creators, coaches…" legible sobre claro */
+  .panel .ptag{color:#15803d}
+  /* etiqueta de sección más presente sobre claro (las oscuras conservan su verde claro) */
+  .sec-label{color:#15803d}
+  #integraciones .sec-label{color:#4ADE80}
+
+  /* Comparativa + costos: verde de Vibra más fuerte (no tan suave) */
+  .compare-cell.vibra{background:#D7F0C2;color:#123A1F;border-left:1px solid rgba(21,128,61,.30)}
+  .compare-cell.vibra::before{color:#15803d}
+  .compare-head-vibra{color:#15803d!important;background:#CDEBB4!important}
+  .srow.vibra{background:#D7F0C2;border-color:rgba(21,128,61,.35)}
+  .srow.vibra .val{color:#15803d}
+  .duel-cell.vw{background:#D7F0C2}
+  .duel-cell.vw .actor{color:#15803d}
+  .duel-cell.vw .ans{color:#123A1F}
+  .duel-cell.vw .ans::before{color:#15803d}
+
+  /* Finale + footer = un solo bloque oscuro continuo (transición suave, sin línea triste) */
+  .finale{background:#0E2A20!important;color:var(--v-pine-ink);padding-top:132px;padding-bottom:72px;clip-path:polygon(0 72px,100% 0,100% 100%,0 100%)}
+  footer{background:#0E2A20!important;border-top:none!important;margin-top:0!important;color:var(--v-pine-ink-2)}
+  footer .logo{color:var(--v-pine-ink)}
+  footer .foot-brand .lede{color:var(--v-pine-ink-2)}
+  footer .foot-col h6{color:var(--v-pine-ink-2);opacity:.85}
+  footer .foot-col a{color:var(--v-pine-ink-2)}
+  footer .foot-col a:hover{color:#4ADE80}
+  footer .foot-bottom{border-top:1px solid var(--v-pine-line);color:var(--v-pine-ink-2)}
+  /* logo en la fuente display (la misma del título "es un empleado") */
+  .logo{font-family:'Bricolage Grotesque',Georgia,serif;letter-spacing:-.03em}
+
+  /* NAV: arriba se ven los idiomas; al bajar, esa misma zona se convierte en el CTA "Unirme a la lista" */
+  .nav-cta{position:relative;min-width:152px;justify-content:flex-end}
+  .nav-cta .btn-primary{position:absolute;right:0;top:50%;transform:translateY(-50%);opacity:0;pointer-events:none;transition:opacity .28s ease;white-space:nowrap}
+  nav.scrolled .nav-cta .btn-primary{opacity:1;pointer-events:auto}
+  /* en tablet (561–820) el swap también va en el nav; sin barra inferior */
+  @media(min-width:561px) and (max-width:820px){
+    nav .nav-cta .btn-primary{display:inline-flex}
+    .mobile-cta-bar{display:none!important}
+  }
+
+  /* "Casos de uso": separarlo del bloque verde de arriba */
+  #segmentos{padding-top:96px!important}
+
+  /* PRICING dentro del card verde oscuro propio (mismo del cierre) */
+  .pricing{background:radial-gradient(680px 420px at 50% 0%,rgba(34,197,94,.12),transparent 60%),#0E2A20!important;border:1px solid rgba(34,197,94,.30)!important;color:var(--v-pine-ink)}
+  .pricing .sec-label{color:#4ADE80}
+  .pricing .price-big{color:#fff}
+  .pricing .price-unit,.pricing .sub,.pricing .price-feats{color:var(--v-pine-ink-2)}
+  .pricing .price-feats svg{color:#4ADE80}
+  /* ============================================================
+     AJUSTES v4
+     ============================================================ */
+  /* LOGO igual al design system: punto verde con anillo + glow + parpadeo, peso 700 */
+  .logo{font-family:'Bricolage Grotesque',Georgia,serif;font-weight:700;font-size:21px;letter-spacing:-.02em;gap:10px}
+  .logo-dot{width:13px;height:13px;box-shadow:0 0 0 4px rgba(34,197,94,.18),0 0 13px var(--green);animation:pulse 2.6s infinite}
+
+  /* Títulos "01 · Escucha / 02 · Entiende / 03 · Activa" en el verde correcto */
+  .engine-num{color:#15803d}
+
+  /* Switch de idioma: el activo claramente encendido, el inactivo apagado */
+  .lang-switch{background:rgba(10,42,32,.05)}
+  .lang-opt{color:#8a978e;font-weight:600}
+  .lang-opt.active{background:#15803d;color:#fff;font-weight:700;box-shadow:0 1px 6px -1px rgba(21,128,61,.45)}
+
+  /* "Contigo · privado" más claro SOLO dentro de los cards verde oscuro */
+  .mini-chat:has(.level-tag.privado) .level-tag.privado,
+  .fcard:has(.level-tag.privado) .level-tag.privado{
+    background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.45);color:#86EFAC
+  }
+  /* el "Contigo · privado" del hero va sobre fondo claro: verde oscuro legible */
+  .hero .level-tag.privado{color:#15803d}
+
+  /* MÓVIL: mostrar solo la mitad de las herramientas y esconder la sección de Frontera (par grupo+privado) */
+  @media(max-width:640px){
+    .int-pills .ipill:nth-child(n+9){display:none}
+    .int-pills .ipill:nth-child(7){display:none}        /* Google Drive fuera en móvil */
+    .int-pills .ipill:nth-child(14){display:inline-flex!important} /* Kajabi sí aparece */
+    #frontera{display:none}
+  }
+  /* ============================================================
+     AJUSTES v5
+     ============================================================ */
+  /* "Reserva tu lugar con tu número…" legible sobre el wl-card blanco
+     (el pricing oscuro le pasaba color claro por herencia) */
+  .pricing .wl-card-title{color:#0A2A20}
+  .pricing .wl-hint{color:#577267}
+  .pricing .wl-ok{color:#15803d}
+
+  /* Motores: quitar la etiqueta "tres motores, dos niveles" y el párrafo;
+     dejar solo el título "Escucha. Entiende. Activa." armónico con los motores de abajo */
+  #motores .sec-label{display:none}
+  #motores .sec-title{margin-bottom:6px}
+  #motores .engine:first-of-type{margin-top:52px}
+  /* ============================================================
+     AJUSTES v6
+     ============================================================ */
+  /* salto de línea del título (vo_title) solo en desktop; en móvil fluye natural */
+  .d-br{display:none}
+  @media(min-width:821px){ .d-br{display:inline} }
+
+  /* corte diagonal (igual al footer) en la sección de herramientas, para que se vea más divertido */
+  #integraciones{clip-path:polygon(0 72px,100% 0,100% calc(100% - 72px),0 100%);padding-top:120px!important;padding-bottom:120px!important}
+  [data-i18n-html="vo_title"]{max-width:1080px}
 </style>
 </head>
 <body>
@@ -570,9 +879,9 @@
       <div class="hero-copy">
         <span class="eyebrow" data-i18n-html="hero_eyebrow"><span class="pulse"></span>Agente community manager para WhatsApp</span>
         <h1 data-i18n-html="hero_h1">No es una herramienta.<br><span class="accent">Es un empleado.</span></h1>
-        <p class="lede" data-i18n="hero_lede">El agente community manager de tu comunidad de WhatsApp. Trabaja en el grupo y te reporta en privado.</p>
+        <p class="lede" data-i18n="hero_lede">El community manager de tu comunidad de WhatsApp. Trabaja en el grupo y te reporta en privado.</p>
         <div class="hero-ctas">
-          <a href="#precio" class="btn btn-primary js-gowl m-hide-cta" style="padding:14px 30px;font-size:16.5px" data-i18n="cta_join_full">Unirme a la lista de espera →</a>
+          <a href="#precio" class="btn btn-primary js-gowl" style="padding:14px 30px;font-size:16.5px" data-i18n="cta_reserve">Reservar mi lugar →</a>
         </div>
       </div>
 
@@ -639,7 +948,7 @@
 <section class="sec" style="padding-bottom:0">
   <div class="wrap">
     <div class="sec-label" data-i18n="vo_label">El problema que resuelve</div>
-    <h2 class="sec-title" data-i18n="vo_title">El valor de tu comunidad está encerrado en conversaciones que nadie alcanza a ver.</h2>
+    <h2 class="sec-title" data-i18n-html="vo_title">El valor de tu comunidad está en<br class="d-br">conversaciones que nadie alcanza a ver.</h2>
     <p class="sec-sub" data-i18n="vo_sub">Estas son las cuatro cosas para las que la contratas.</p>
     <div class="vgrid">
       <div class="vcard reveal">
@@ -672,13 +981,13 @@
   <div class="wrap">
     <div class="sec-label" data-i18n="en_label">Cómo trabaja · tres motores, dos niveles</div>
     <h2 class="sec-title" data-i18n="en_title">Escucha. Entiende. Activa.</h2>
-    <p class="sec-sub" data-i18n="en_sub">Tu comunidad vive en dos niveles. El grupo, donde todos hablan, y los chats privados, donde se construyen las relaciones. Vibra trabaja en los dos.</p>
+    <p class="sec-sub" data-i18n="en_sub">Como un buen community manager: escucha cada conversación, entiende a tu gente y actúa por ti.</p>
 
     <div class="engine reveal">
       <div class="engine-copy">
         <div class="engine-num" data-i18n="en1_num">01 · Escucha</div>
         <h3 data-i18n="en1_h">Lee lo que nadie alcanza a leer.</h3>
-        <p data-i18n="en1_p">Mientras duermes se acumulan cientos de mensajes en tus grupos. Vibra los lee todos, te dice qué pasó y te llega con un plan listo. A quién escribir, qué responder, qué oportunidad no dejar pasar.</p>
+        <p data-i18n="en1_p">Mientras duermes se acumulan cientos de mensajes en tus grupos. Vibra los lee todos, te dice qué pasó y te llega con un plan listo.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
@@ -694,7 +1003,7 @@
       <div class="engine-copy">
         <div class="engine-num" data-i18n="en2_num">02 · Entiende</div>
         <h3 data-i18n="en2_h">Sabe quién es quién, y quién debería conocer a quién.</h3>
-        <p data-i18n="en2_p">En toda comunidad hay gente con algo que ofrecer y gente que lo necesita, pero nunca se cruzan. Vibra los encuentra y los conecta. El networking que prometiste, hecho realidad.</p>
+        <p data-i18n="en2_p">En toda comunidad hay gente con algo que ofrecer y gente que lo necesita, pero nunca se cruzan. Vibra los encuentra y los conecta.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag grupo" style="margin-bottom:8px">En el grupo · público</span>
@@ -710,7 +1019,7 @@
       <div class="engine-copy">
         <div class="engine-num" data-i18n="en3_num">03 · Activa</div>
         <h3 data-i18n="en3_h">Mantiene la comunidad viva, aunque tú no estés.</h3>
-        <p data-i18n="en3_p">Bienvenidas, respuestas, recordatorios, conversaciones que no se apagan, hechas y no sugeridas. Tú no haces nada. Al final del día te cuenta qué hizo.</p>
+        <p data-i18n="en3_p">Bienvenidas, respuestas y recordatorios: hechos, no sugeridos. Al final del día te cuenta qué hizo.</p>
       </div>
       <div class="mini-chat">
         <span class="level-tag privado" style="margin-bottom:8px">Contigo · privado</span>
@@ -730,7 +1039,7 @@
   <div class="wrap">
     <div class="sec-label" data-i18n="fr_label">Autonomía con frontera</div>
     <h2 class="sec-title" data-i18n="fr_title">Resuelve solo. Te consulta lo importante.</h2>
-    <p class="sec-sub" data-i18n="fr_sub">Lo rutinario lo resuelve sola y queda registrado. Lo delicado llega por privado con la propuesta lista, y nada sale sin tu OK.</p>
+    <p class="sec-sub" data-i18n="fr_sub">Lo rutinario lo resuelve Vibra y queda registrado. Lo delicado llega por privado con la propuesta lista, y nada sale sin tu aprobación.</p>
 
     <div class="frontier-grid">
       <div class="fcard">
@@ -744,10 +1053,10 @@
       </div>
       <div class="fcard h">
         <span class="level-tag privado">En tu chat privado · espera tu OK</span>
-        <h4 data-i18n="fr_h2">Con tu visto bueno.</h4>
+        <h4 data-i18n="fr_h2">Con tu aprobación.</h4>
         <p data-i18n="fr_p2">Te llega el contexto y la propuesta. Respondes con un mensaje normal, como a un empleado de confianza.</p>
         <div class="chat-body" style="padding:0">
-          <div class="bubble in"><span class="who">Vibra</span>🤝 Diego preguntó en el grupo si alguien conoce gente en Mercado Libre. Valeria, de tu comunidad, trabajó ahí 4 años, lo contó cuando se presentó. ¿Los pongo en contacto?<span class="meta">16:02</span></div>
+          <div class="bubble in"><span class="who">Vibra</span>🤝 Diego preguntó en el grupo si alguien conoce gente en Mercado Libre. Valeria, de la comunidad, contó que trabajó ahí cuando se presentó. ¿Los pongo en contacto?<span class="meta">16:02</span></div>
           <div class="bubble out">sí, conéctalos 🤝<span class="meta">16:04 <span class="tick">✓✓</span></span></div>
           <div class="bubble in"><span class="who">Vibra</span>Hecho ✅ Valeria respondió "claro, que me escriba" 🙌<span class="meta">16:05</span></div>
         </div>
@@ -762,12 +1071,11 @@
 <section class="sec" style="padding-top:0" id="integraciones">
   <div class="glow" style="width:500px;height:500px;background:var(--green);bottom:-160px;right:-180px;opacity:.10"></div>
   <div class="wrap">
-    <div class="sec-label" data-i18n="int_label">Un mensaje, todas tus herramientas</div>
-    <h2 class="sec-title" data-i18n="int_title">Tu comunidad vive en WhatsApp. Tu negocio vive en todas partes.</h2>
+    <div class="sec-label" data-i18n="int_label">Una conversación, conectada a todas tus herramientas</div>
+    <h2 class="sec-title" data-i18n="int_title">Tu comunidad vive en WhatsApp. Tu información está en todas partes.</h2>
     <div class="int-grid">
       <div class="int-copy">
-        <p data-i18n="int_p1">Vibra conecta el grupo con las herramientas donde corre tu operación. Luma, Google Sheets, tu último video de YouTube, tu curso, tu CRM. Le pides cosas por tu chat privado y las cruza todas en una respuesta.</p>
-        <p data-i18n="int_p2">Y al revés, el video que subiste a YouTube llega por privado a quien lo estaba esperando. Nutrir sin spam.</p>
+        <p data-i18n="int_p1">Vibra conecta el grupo con las herramientas donde corre tu operación. Luma, Google Sheets, YouTube, tu LMS, tu CRM.</p>
         <div class="int-pills">
           <span class="ipill"><span class="ilogo" style="background:#F04E23"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12.2 2c.9 3.9-2.9 5.6-2.9 9.2a4.8 4.8 0 009.6 0c0-2.1-1-3.7-2.2-4.8.3 1.6-.4 2.7-1.5 3.2.7-2.7-1-5.8-3-7.6zM8 9.5C6.7 10.8 6 12.4 6 14.2 6 17.4 8.7 20 12 20s6-2.6 6-5.8" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>Hotmart</span>
           <span class="ipill"><span class="ilogo" style="background:#FF0000"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M9.6 7.8v8.4l7.2-4.2z" fill="#fff"/><rect x="2.5" y="5" width="19" height="14" rx="3.5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></span>YouTube</span>
@@ -782,7 +1090,7 @@
           <span class="ipill"><span class="ilogo" style="background:#2D8CFF"><svg viewBox="0 0 24 24" width="15" height="15"><rect x="2.5" y="6.5" width="13" height="11" rx="3" fill="#fff"/><path d="M16.8 10.6l4.7-2.8v8.4l-4.7-2.8z" fill="#fff"/></svg></span>Zoom</span>
           <span class="ipill"><span class="ilogo" style="background:#fff"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" fill="#000"/></svg></span>Notion</span>
           <span class="ipill"><span class="ilogo" style="background:#0f0f0f;border:1px solid rgba(255,255,255,.2)"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M12 1c.55 5.9 4.55 9.9 11 11-6.45 1.1-10.45 5.1-11 11-.55-5.9-4.55-9.9-11-11 6.45-1.1 10.45-5.1 11-11z" fill="#fff"/></svg></span>Luma</span>
-          <span class="ipill m-hide"><span class="ilogo" style="background:#2670E8"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M6 4h3.2v16H6zM11.5 12l6.2-8h3.6l-6.7 8 6.7 8h-3.6l-6.2-8z" fill="#fff"/></svg></span>Kajabi</span>
+          <span class="ipill"><span class="ilogo" style="background:#2670E8"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M6 4h3.2v16H6zM11.5 12l6.2-8h3.6l-6.7 8 6.7 8h-3.6l-6.2-8z" fill="#fff"/></svg></span>Kajabi</span>
           <span class="ipill m-hide"><span class="ilogo" style="background:#36A0F5"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M4.5 14h3.4v6H4.5zM10.3 9.5h3.4V20h-3.4zM16.1 4h3.4v16h-3.4z" fill="#fff"/></svg></span>GoHighLevel</span>
         </div>
       </div>
@@ -879,7 +1187,7 @@
       <h3 data-i18n="sg1_h">Tu red por fin tiene a alguien que la cuida 24/7.</h3>
       <div class="ptag" data-i18n="sg1_tag">Empresarios, directivos, emprendedores, aceleradoras y redes de alumni</div>
       <div class="panel-feats">
-        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f1h">Las presentaciones correctas</span></h5><p data-i18n="sg1_f1p">Sabe quién necesita a quién y te arma la intro. El networking que prometiste, hecho realidad.</p></div>
+        <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f1h">Las presentaciones correctas</span></h5><p data-i18n="sg1_f1p">Sabe quién necesita a quién y te arma la intro.</p></div>
         <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f2h">Lo delicado, contigo</span></h5><p data-i18n="sg1_f2p">Nada sensible pasa por el grupo. Te llega a tu chat. La comunidad solo ve un grupo vivo.</p></div>
         <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f3h">No se olvida de nada</span></h5><p data-i18n="sg1_f3p">Qué se habló, qué se decidió, quién pidió qué. Todo guardado, nada perdido en el scroll.</p></div>
         <div class="pfeat"><h5><span class="dot"></span><span data-i18n="sg1_f4h">Tu resumen de los lunes</span></h5><p data-i18n="sg1_f4p">Qué pasó, quién participó, qué prendió al grupo. Te pones al día en cinco minutos.</p></div>
@@ -1033,7 +1341,7 @@
   <div class="wrap">
     <div class="pricing">
       <div class="glow"></div>
-      <div class="sec-label" style="position:relative;z-index:1" data-i18n="pr_label">Precio de lanzamiento · solo para las primeras 100 comunidades</div>
+      <div class="sec-label" style="position:relative;z-index:1" data-i18n="pr_label">Precio de lanzamiento · solo para las primeras comunidades</div>
       <div class="price-big"><span class="js-cur">$1</span></div>
       <div class="price-unit" data-i18n="pr_unit">por miembro activo  ·  al mes</div>
       <p class="sub" data-i18n-html="pr_sub"><strong>Solo pagas por quien participa.</strong> Los miembros silenciosos no se cobran.</p>
@@ -1044,7 +1352,7 @@
           <input class="wl-input" type="tel" inputmode="tel" placeholder="+34 612 345 678" aria-label="Tu número de WhatsApp con código de país">
         </div>
         <button class="btn btn-primary wl-btn" data-i18n="cta_join_full">Unirme a la lista de espera →</button>
-        <div class="wl-hint" data-i18n="wl_hint">Para confirmar tu lugar te abriremos un WhatsApp con nuestro equipo.</div>
+        <div class="wl-hint" data-i18n="wl_hint">Para confirmar tu lugar abriremos una conversación de WhatsApp.</div>
         <div class="wl-ok"><div class="ok-title" data-i18n="wl_oktitle">✓ ¡Estás en la lista!</div><div class="ok-body" data-i18n-html="wl_okbody">Te abrimos un WhatsApp con tu mensaje listo. <strong>Solo envíalo y tu lugar queda confirmado.</strong> Si no se abrió, <a class="ok-link" href="#" target="_blank" rel="noopener" style="color:var(--green);font-weight:700;text-decoration:underline">ábrelo aquí</a> 🟢</div></div>
       </div>
       <div class="price-feats">
@@ -1210,7 +1518,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q"><span data-i18n="faq_q12">¿Cómo es el precio?</span><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>
-        <div class="faq-a" data-i18n-html="faq_a12"><p>Precio de lanzamiento de <span class="js-cur">$1</span> por miembro activo al mes, solo para las primeras 100 comunidades de la lista de espera. Pagas por la gente que participa, no por la lista entera, y entras con onboarding acompañado.</p></div>
+        <div class="faq-a" data-i18n-html="faq_a12"><p>Precio de lanzamiento de <span class="js-cur">$1</span> por miembro activo al mes, solo para las primeras comunidades de la lista de espera. Pagas por la gente que participa, no por la lista entera, y entras con onboarding acompañado.</p></div>
       </div>
     </div>
   </div>
@@ -1222,7 +1530,7 @@
   <div class="glow"></div>
   <div class="wrap">
     <h2 data-i18n-html="fin_h"><span class="l1">Tu comunidad ya tiene a la gente.</span><span class="line2">Es hora de darle más Vibra.</span></h2>
-    <p data-i18n="fin_p">Las primeras 100 comunidades entran con precio de lanzamiento. La tuya puede ser una de ellas.</p>
+    <p data-i18n="fin_p">Las primeras comunidades entran con precio de lanzamiento. La tuya puede ser una de ellas.</p>
     <a href="#precio" class="btn btn-primary js-gowl m-hide-cta" data-i18n="cta_reserve">Reservar mi lugar →</a>
   </div>
 </section>
@@ -1267,7 +1575,7 @@
           <input class="wl-input" type="tel" inputmode="tel" placeholder="+34 612 345 678" aria-label="Tu número de WhatsApp con código de país">
         </div>
     <button class="btn btn-primary wl-btn" data-i18n="cta_join_full">Unirme a la lista de espera →</button>
-        <div class="wl-hint" data-i18n="wl_hint">Para confirmar tu lugar te abriremos un WhatsApp con nuestro equipo.</div>
+        <div class="wl-hint" data-i18n="wl_hint">Para confirmar tu lugar abriremos una conversación de WhatsApp.</div>
     <div class="wl-ok"><div class="ok-title" data-i18n="wl_oktitle">✓ ¡Estás en la lista!</div><div class="ok-body" data-i18n-html="wl_okbody">Te abrimos un WhatsApp con tu mensaje listo. <strong>Solo envíalo y tu lugar queda confirmado.</strong> Si no se abrió, <a class="ok-link" href="#" target="_blank" rel="noopener" style="color:var(--green);font-weight:700;text-decoration:underline">ábrelo aquí</a> 🟢</div></div>
   </div>
 </div>
@@ -1349,11 +1657,24 @@
     const det = detectCountry(input.value);
     if(det){
       flag.textContent = FLAGS[det.iso] || '🌐';
-      // dígitos nacionales = todo lo que va después del prefijo
-      const allDigits = input.value.replace(/\D/g,'');
+      const oldVal = input.value;
+      const sel = (input.selectionStart!=null) ? input.selectionStart : oldVal.length;
+      const digitsBefore = (oldVal.slice(0, sel).match(/\d/g) || []).length; // dígitos antes del cursor
+      const allDigits = oldVal.replace(/\D/g,'');
       const preDigits = det.pre.replace(/\D/g,'');
       const national = allDigits.slice(preDigits.length);
-      input.value = det.pre + ' ' + formatPhone(national, det.iso);
+      const newVal = det.pre + ' ' + formatPhone(national, det.iso); // agrupa con espacios según país
+      if(newVal !== oldVal){
+        input.value = newVal;
+        // recolocar el cursor tras el mismo nº de dígitos (no salta al final)
+        let count=0, pos=newVal.length;
+        for(let i=0;i<newVal.length;i++){
+          if(/\d/.test(newVal[i])) count++;
+          if(count>=digitsBefore){ pos=i+1; break; }
+        }
+        if(digitsBefore===0) pos=Math.min(det.pre.length+1, newVal.length);
+        try{ input.setSelectionRange(pos,pos); }catch(_){}
+      }
     } else {
       flag.textContent = '🌐';
     }
@@ -1429,6 +1750,31 @@
     card.querySelector('.wl-btn').addEventListener('click',()=>joinWaitlist(card));
     input.addEventListener('keydown',e=>{if(e.key==='Enter')joinWaitlist(card)});
     input.addEventListener('input',()=>{ liveFormat(card); updateState(card); });
+    // Borrado inteligente: los espacios de formato no son texto. Backspace/Delete saltan
+    // los espacios y borran siempre un dígito (luego se reagrupa).
+    input.addEventListener('beforeinput',(e)=>{
+      if(input.selectionStart!==input.selectionEnd) return; // con selección: borrado normal
+      const v=input.value, pos=input.selectionStart;
+      if(e.inputType==='deleteContentBackward'){
+        let i=pos-1;
+        while(i>=0 && !/\d/.test(v[i])) i--;          // salta espacios a la izquierda
+        if(i>=0 && i!==pos-1){                          // había espacios antes del dígito
+          e.preventDefault();
+          input.value=v.slice(0,i)+v.slice(i+1);
+          input.setSelectionRange(i,i);
+          liveFormat(card); updateState(card);
+        }
+      } else if(e.inputType==='deleteContentForward'){
+        let i=pos;
+        while(i<v.length && !/\d/.test(v[i])) i++;     // salta espacios a la derecha
+        if(i<v.length && i!==pos){
+          e.preventDefault();
+          input.value=v.slice(0,i)+v.slice(i+1);
+          input.setSelectionRange(i,i);
+          liveFormat(card); updateState(card);
+        }
+      }
+    });
     updateState(card); // estado inicial
   });
   // Prefill por defecto (España) para que el campo nunca arranque vacío
@@ -1584,7 +1930,6 @@
     if(!bar || !trigger) return;
     const obs = new IntersectionObserver(es=>{
       es.forEach(e=>{
-        // aparece cuando la marquee entra en pantalla, y se queda visible de ahí en adelante
         if(e.isIntersecting || e.boundingClientRect.top < 0){ bar.classList.add('show'); }
       });
     }, {threshold:0});
@@ -1594,8 +1939,8 @@
   // ============================================================
   // i18n — switch de idioma ES/EN
   // ============================================================
-  const I18N_EN = {"cmp_label":"Vibra vs. the usual","cmp_title":"You’ve tried the bots. Your community’s still dead.","cmp_sub":"A bot waits for the exact command. A human CM tries when they’re awake. Vibra just does it — and shows you the log.","cmp_h_job":"The job","cmp_h_bot":"Bot platform","cmp_h_cm":"Human CM","sal_label":"To put it in perspective","sal_title":"What it costs to have someone at the wheel.","sal_h":"Let’s do the math.","sal_p":"A community manager costs you a full salary and works 8 hours. Vibra works all day and all night, and you only pay for the people who participate.","sal_latam":"CM in LATAM<span class=\"sub\">typical monthly salary</span>","sal_spain":"CM in Spain<span class=\"sub\">typical monthly salary</span>","sal_usa":"CM in the US<span class=\"sub\">typical monthly salary</span>","sal_vibra":"Vibra<span class=\"sub\">per active member / month</span>","nav_func": "Features", "nav_int": "Integrations", "nav_seg": "Who it’s for", "nav_price": "Pricing", "nav_faq": "FAQ", "nav_cta": "Join the waitlist", "cta_join_full": "Join the waitlist →", "cta_reserve": "Claim my spot →", "hero_eyebrow": "<span class=\"pulse\"></span>AI community manager for WhatsApp", "hero_h1": "It’s not a tool.<br><span class=\"accent\">It’s a hire.</span>", "hero_lede": "The AI community manager for your WhatsApp community. It works the group in public and reports back to you in private.", "hero_grpname": "Marketing Membership 🚀", "hero_grpsub": "1,240 members · Laura, Diego, Vibra…", "mq1": "Built 100% for WhatsApp", "mq2": "No card to get started", "mq3": "Your data is yours — export it or delete it", "mq4": "You decide what a human signs off on", "mq5": "Up and running in minutes", "vo_label": "The problem it solves", "vo_title": "Your community’s real value is locked inside conversations nobody can see.", "vo_sub": "Here’s the four things you’re hiring it to do.", "vo_t1": "↑ Engagement", "vo_h1": "A community that keeps itself talking", "vo_p1": "It replies, sparks conversation, and keeps the energy up every day. Nobody gets left on read.", "vo_t2": "↓ Churn", "vo_h2": "Keeps the members already paying", "vo_p2": "It catches who’s going cold before they cancel and helps you win them back.", "vo_t3": "🤝 Networking", "vo_h3": "The reason they renew", "vo_p3": "It introduces the right people at the right moment.", "vo_t4": "↑ Revenue", "vo_h4": "Turns signals into sales", "vo_p4": "The people asking about your next program are your warmest leads.", "en_label": "How it works · three engines, two levels", "en_title": "Listen. Understand. Activate.", "en_sub": "Your community lives on two levels. The group, where everyone talks, and the DMs, where the relationships get built. Vibra works both.", "en1_num": "01 · Listen", "en1_h": "It reads what no one has time to read.", "en1_p": "While you sleep, hundreds of messages pile up across your groups. Vibra reads every one, tells you what happened, and hands you a plan. Who to message, what to answer, which opportunity not to miss.", "en2_num": "02 · Understand", "en2_h": "It knows who’s who — and who should meet whom.", "en2_p": "Every community has people with something to offer and people who need it, but they never cross paths. Vibra finds them and connects them. The networking you promised, finally delivered.", "en3_num": "03 · Activate", "en3_h": "It keeps the community alive, even when you’re not around.", "en3_p": "Welcomes, answers, reminders, conversations that don’t die out — done, not just suggested. You do nothing. At the end of the day it tells you what it handled.", "fr_label": "Autonomy with a line", "fr_title": "It handles the routine. It checks with you on what matters.", "fr_sub": "The routine stuff it handles on its own, all logged. The sensitive stuff comes to your DMs with a draft ready, and nothing goes out without your OK.", "fr_h1": "No need to ask.", "fr_p1": "You set the rules once. Vibra works within them, around the clock, and every action is logged.", "fr_h2": "With your sign-off.", "fr_p2": "You get the context and the proposal. You reply like you would to a trusted employee.", "int_label": "One message, all your tools", "int_title": "Your community lives on WhatsApp. Your business lives everywhere else.", "int_p1": "Vibra connects the group to the tools your operation runs on. Luma, Google Sheets, your latest YouTube video, your course, your CRM. You ask for things in your DMs and it pulls them all into one answer.", "int_p2": "And the other way around — the video you just posted to YouTube lands in the DMs of the people who were waiting for it. Nurture without the spam.", "sg_label": "Use cases", "sg_title": "Who is Vibra built for?", "sg_tab0": "Creator communities", "sg_tab1": "Professional communities", "sg0_h": "Your membership stays alive even while you’re recording.", "sg0_tag": "Creators, coaches, memberships and course cohorts", "sg0_f1h": "Nobody falls through the cracks", "sg0_f1p": "It welcomes every newcomer and connects them to the right people and content. They don’t ghost you in week one.", "sg0_f2h": "Questions, handled", "sg0_f2p": "The link, the date, the replay. Answered on the spot. You never answer them again.", "sg0_f3h": "Less churn", "sg0_f3p": "It flags who’s about to leave before they do, with the message ready to pull them back.", "sg0_f4h": "Free content ideas", "sg0_f4p": "What your people ask over and over is your next video. Vibra pulls it out of the scroll for you.", "sg0_f5h": "More turnout at your events", "sg0_f5p": "It announces, confirms who’s in, and reminds the rest. You chase no one.", "sg0_f6h": "It wakes up the quiet ones", "sg0_f6p": "The ones who’ve gone quiet for weeks, Vibra messages one by one. Half the dormant crowd comes back.", "sg1_h": "Your network finally has someone looking after it 24/7.", "sg1_tag": "Founders, executives, entrepreneurs, accelerators and alumni networks", "sg1_f1h": "The right introductions", "sg1_f1p": "It knows who needs whom and sets up the intro. The networking you promised, finally delivered.", "sg1_f2h": "The sensitive stuff, with you", "sg1_f2p": "Nothing delicate goes through the group. It comes to your DMs. The community just sees a thriving group.", "sg1_f3h": "It forgets nothing", "sg1_f3p": "What was said, what was decided, who asked for what. All saved, nothing lost in the scroll.", "sg1_f4h": "Your Monday recap", "sg1_f4p": "What happened, who showed up, what lit the group up. You’re caught up in five minutes.", "sg1_f5h": "Events that actually fill up", "sg1_f5p": "It announces, confirms who’s coming, handles logistics, and follows up. You just show up.", "sg1_f6h": "It wakes up the quiet ones", "sg1_f6p": "The ones who’ve been gone for months, Vibra messages one by one. The dormant network starts moving again.", "pr_label": "Launch pricing · first 100 communities only", "pr_unit": "per active member \u00a0·\u00a0 per month", "pr_sub": "<strong>You only pay for who participates.</strong> Silent members are never charged.", "wl_title": "Save your spot with your WhatsApp number", "wl_hint": "To confirm your spot we’ll open a WhatsApp chat with our team.", "wl_oktitle": "✓ You’re on the list!", "wl_okbody": "We opened a WhatsApp with your message ready. <strong>Just send it and your spot is confirmed.</strong> If it didn’t open, <a class=\"ok-link\" href=\"#\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--green);font-weight:700;text-decoration:underline\">open it here</a> 🟢", "faq_label": "FAQ", "faq_title": "The questions everyone asks.", "faq_q1": "What counts as an “active member”?", "faq_q2": "Is my number at risk of getting banned?", "faq_q3": "How does Vibra connect to WhatsApp?", "faq_q4": "Does Vibra read every message in my community?", "faq_q5": "What happens to my community’s data?", "faq_q6": "Can a member opt out of being profiled?", "faq_q7": "Do members know Vibra is in the group?", "faq_q8": "Can I train Vibra on my own material?", "faq_q9": "Can Vibra replace my community manager?", "faq_q10": "How is it different from a bot like ManyChat?", "faq_q11": "What if Vibra gets something wrong?", "faq_q12": "How does pricing work?", "faq_a1": "<p>Someone who wrote, reacted, or talked to Vibra in DMs during the month. Doesn’t matter how many times — it counts once a month.</p><p>If your community has 1,000 people and 300 participate, you pay for 300. The silent ones are never charged.</p>", "faq_a2": "<p>Your number is safe. Vibra works off its own number, separate from yours and your business line, so any risk sits on its line, not yours.</p><p>It also replies at a human pace, not like a machine blasting messages — which is exactly what Meta cracks down on.</p>", "faq_a3": "<p>It has its own number and joins your group like any other team member. You add it just like you’d add a person.</p><p>Today WhatsApp has no official API for large community groups, so this is the way any community manager — human or AI — can actually be inside your group.</p>", "faq_a4": "<p>Yes, the same way a human community manager would. It’s the only way to do the job — to catch the unanswered question, the member going cold, the complaint that’s building.</p><p>The difference is that every action Vibra takes is logged and reviewable. A human can’t give you that.</p>", "faq_a5": "<p>It’s yours. It’s never shared with other communities or used to train third-party models.</p><p>You can export everything and delete everything — profiles, history, settings — whenever you want, no need to ask anyone.</p>", "faq_a6": "<p>Yes. If a member asks to be left out of the analysis, they’re left out, and Vibra respects it across the board — from re-engagement to member intros.</p>", "faq_a7": "<p>Yes. It shows up as a regular participant, with its name, and we recommend introducing it openly as part of the team. Healthy communities know who’s looking after them.</p><p>What you control is how much it speaks in public and how much it works in private with you.</p>", "faq_a8": "<p>Yes, that’s the whole point. You teach it your tone, your rules, and your go-to answers over chat, hand it your docs, and it learns from every correction you make.</p><p>The more you teach it, the more it becomes yours.</p>", "faq_a9": "<p>Depends on your situation, and we’ll tell you straight. If nobody’s running the community today, or someone’s doing it part-time between a hundred other things, Vibra covers the whole role from day one.</p><p>If you already have a community team, Vibra is their leverage, not their replacement. It takes the operational load so your team spends its time on what only a human can do — strategy, content, and real relationships. The best results are humans with Vibra, not humans versus Vibra.</p>", "faq_a10": "<p>A traditional bot lives in the 1:1 chat, waits for the exact command, and follows rules you write. Vibra lives where your community lives — the group. It understands natural language, remembers each person, and takes initiative: it spots what needs doing and does it, or hands it to you drafted in your DMs.</p>", "faq_a11": "<p>You set the line. What it handles on its own and what needs your OK in DMs. Everything it does solo is logged, and the sensitive stuff (a key client, a delicate topic, a crisis) always runs by you before it goes out.</p>", "faq_a12": "<p>Launch pricing of <span class=\"js-cur\">$1</span> per active member per month, for the first 100 communities on the waitlist only. You pay for the people who participate, not the whole list, and you come in with guided onboarding.</p>", "fin_h": "<span class=\"l1\">Your community already has the people.</span><span class=\"line2\">Time to give it more Vibra.</span>", "fin_p": "The first 100 communities come in at launch pricing. Yours can be one of them.", "foot_tag": "Your community already has the people.<br>Time to give it more Vibra.", "foot_product": "Product", "foot_compare": "Cost comparison", "foot_contact": "Contact", "foot_waitlist": "Waitlist", "foot_copy": "© 2026 Vibra · Made from Spain 🇪🇸", "foot_motto": "Listen. Understand. Activate."};
-  const CHAT_EN = {"¿Quién hace el trabajo?":"Who does the work?","Tú armas flujos, plantillas y reglas":"You build flows, templates and rules","Él, cuando puede":"They do, when they can","Vibra. Tú solo apruebas lo importante":"Vibra. You just approve what matters","La duda de las 2am":"The 2am question","Espera el comando exacto":"Waits for the exact command","La verá mañana, quizás":"They’ll see it tomorrow, maybe","La respondió a las 2:01":"Answered it at 2:01","El nuevo miembro":"The new member","Pega el mensaje genérico":"Pastes the generic message","Saluda cuando se acuerda":"Says hi when they remember","Lo recibió y le presentó a alguien":"Welcomed them and made an intro","El miembro que se enfría":"The member going cold","No lo ve":"Doesn’t notice","Imposible leer 4.000 mensajes":"Can’t read 4,000 messages","Te escribió en privado con el rescate listo":"DM’d you with the win-back ready","En el grupo · público": "In the group · public", "Contigo · privado": "With you · private", "En el grupo · resuelve solo": "In the group · handles it solo", "En tu chat privado · espera tu OK": "In your DMs · waits for your OK", "mientras tanto, en tu chat privado": "meanwhile, in your DMs", "en línea": "online", "alguien sabe si la sesión de hoy se grabó? me la perdí 😩": "did anyone catch if today’s session was recorded? i missed it 😩", "¡Hola Laura! Sí 🙌 La grabación ya está disponible — te la paso por privado para no llenar el grupo 👌": "Hey Laura! Yes 🙌 The recording’s up — I’ll send it to you in DM so we don’t clutter the group 👌", "esta comunidad es otro nivel 🔥": "this community is on another level 🔥", "👀 ojo con Laura, preguntó por la grabación pero su renovación venció hace 3 días y sigue en el grupo. Le mandaría la grabación junto con esto 👇": "👀 heads up on Laura — she asked for the recording but her renewal lapsed 3 days ago and she’s still in the group. I’d send the recording along with this 👇", "Borrador": "Draft", "Laura, aquí está la grabación 🎥 Aprovecho para avisarte que tu membresía venció el lunes — ¿la renuevo para que no pierdas acceso a lo que viene?": "Laura, here’s the recording 🎥 Quick heads up — your membership lapsed on Monday. Want me to renew it so you don’t lose access to what’s coming?", "perfecto, envíalo 👍": "perfect, send it 👍", "Enviado ✅ Te aviso si renueva.": "Sent ✅ I’ll let you know if she renews.", "buenas ☀️ te resumo la noche y te dejo 3 cosas para hoy 👇": "morning ☀️ here’s the overnight recap and 3 things for today 👇", "1️⃣ 14 personas preguntaron por tu próximo evento — te armo la lista para escribirles 💰<br>2️⃣ Carla lleva 2 semanas sin aparecer, yo le hablo para traerla de vuelta<br>3️⃣ se armó un buen debate y quedaron 3 preguntas sin responder, ¿las contesto? 📝": "1️⃣ 14 people asked about your next event — I’ll pull the list so you can reach out 💰<br>2️⃣ Carla’s been gone 2 weeks, I’ll message her to bring her back<br>3️⃣ a great thread kicked off and 3 questions went unanswered — want me to handle them? 📝", "dale a las 3 🔥": "do all 3 🔥", "alguien ha conseguido clientes por LinkedIn? estoy medio perdida 😅": "has anyone landed clients through LinkedIn? i’m kinda lost 😅", "Andrea, justo Marcos contó en marzo cómo armó su sistema de clientes por LinkedIn — uno de los mejores hilos del grupo 🏆 @Marcos, ¿le cuentas? Andrea, te paso el resumen por privado 📩": "Andrea, Marcos actually broke down his whole LinkedIn client system back in March — one of the best threads in here 🏆 @Marcos, want to share? Andrea, I’ll send you the recap in DM 📩", "jaja buena memoria 😂 Andrea claro, escríbeme": "haha good memory 😂 Andrea for sure, hit me up", "cierre del día 🌙 esto hice hoy mientras grababas 👇": "end-of-day wrap 🌙 here’s what I handled while you were recording 👇", "✅ recibí a 2 nuevos y los presenté al grupo<br>✅ respondí 11 dudas<br>✅ Carla volvió a escribir, le di la bienvenida de vuelta 🎉<br>✅ reviví el chat con una pregunta y se armó conversación": "✅ welcomed 2 new members and introduced them to the group<br>✅ answered 11 questions<br>✅ Carla posted again — I welcomed her back 🎉<br>✅ revived the chat with a question and a real conversation took off", "crack 👏": "legend 👏", "a qué hora es el evento de mañana?": "what time is the event tomorrow?", "Mañana a las 18:00, hora de Madrid 🗓️ que para ti son las 13:00 en CDMX. Les mando recordatorio al grupo 1 hora antes. Lucía, si quieres el link de calendario te lo paso por privado 👌": "Tomorrow at 6:00 PM Madrid time 🗓️ which is 11:00 AM for you in NYC. I’ll drop a reminder in the group 1 hour before. Lucía, want the calendar link? I’ll DM it to you 👌", "🤝 Diego preguntó en el grupo si alguien conoce gente en Mercado Libre. Valeria, de tu comunidad, trabajó ahí 4 años, lo contó cuando se presentó. ¿Los pongo en contacto?": "🤝 Diego asked in the group if anyone knows people at MercadoLibre. Valeria, from your community, worked there 4 years — she mentioned it when she introduced herself. Want me to connect them?", "sí, conéctalos 🤝": "yes, connect them 🤝", "Hecho ✅ Valeria respondió \"claro, que me escriba\" 🙌": "Done ✅ Valeria replied “of course, have him reach out” 🙌", "quién tiene la renovación vencida este mes?": "who’s got a lapsed renewal this month?", "Según Hotmart son 3 miembros 💳 Laura (3 días), Pedro (1 semana) y Ana (venció hoy). Laura sigue súper activa en el grupo — ¿le mando primero a ella un recordatorio amable?": "Per Hotmart it’s 3 members 💳 Laura (3 days), Pedro (1 week), and Ana (lapsed today). Laura’s still super active in the group — want me to send her a friendly reminder first?", "sí, y a los otros dos mañana": "yes, and the other two tomorrow", "Hecho ✅ Programados para mañana 10am.": "Done ✅ Scheduled for 10 AM tomorrow.", "quiénes del grupo confirmaron al evento de mañana en Luma?": "who in the group RSVP’d to tomorrow’s event on Luma?", "Confirmaron 38 de 52 invitados ✅ Del grupo, faltan 9 — incluidos 3 de tus top-10. ¿Les mando un recordatorio personal por privado y actualizo la hoja de asistencia?": "38 of 52 invitees confirmed ✅ From the group, 9 are missing — including 3 of your top 10. Want me to DM them a personal reminder and update the attendance sheet?", "sí a ambos": "yes to both", "Listo, 9 recordatorios enviados y Sheet actualizado 📋": "Done — 9 reminders sent and the Sheet’s updated 📋", "quiénes del reto no han entregado la tarea 2?": "who in the challenge hasn’t turned in assignment 2?", "Según tu hoja de Google Sheets son 14 de 60 📋 De ellos, 9 siguen activos en el grupo. ¿Les mando un empujón por privado con el link de entrega y les doy hasta el viernes?": "Per your Google Sheet it’s 14 of 60 📋 Of those, 9 are still active in the group. Want me to DM them a nudge with the submission link and give them until Friday?", "dale, tono motivador 💪": "go for it, keep it motivating 💪", "acabo de subir un video a YouTube — muévelo en la comunidad": "just dropped a new video on YouTube — push it in the community", "🎯 Lo vi. 12 personas preguntaron por ese tema este mes — se lo mando por privado solo a ellas, con una línea de por qué les sirve. Al resto, mención natural cuando salga en el grupo. ¿Va?": "🎯 Saw it. 12 people asked about that exact topic this month — I’ll DM it just to them, with a line on why it’s useful. For everyone else, a natural mention when it comes up in the group. Good?", "perfecto así": "perfect like that"};
+  const I18N_EN = {"cmp_label":"Vibra vs. the usual","cmp_title":"You’ve tried the bots. Your community’s still dead.","cmp_sub":"A bot waits for the exact command. A human CM tries when they’re awake. Vibra just does it — and shows you the log.","cmp_h_job":"The job","cmp_h_bot":"Bot platform","cmp_h_cm":"Human CM","sal_label":"To put it in perspective","sal_title":"What it costs to have someone at the wheel.","sal_h":"Let’s do the math.","sal_p":"A community manager costs you a full salary and works 8 hours. Vibra works all day and all night, and you only pay for the people who participate.","sal_latam":"CM in LATAM<span class=\"sub\">typical monthly salary</span>","sal_spain":"CM in Spain<span class=\"sub\">typical monthly salary</span>","sal_usa":"CM in the US<span class=\"sub\">typical monthly salary</span>","sal_vibra":"Vibra<span class=\"sub\">per active member / month</span>","nav_func": "Features", "nav_int": "Integrations", "nav_seg": "Who it’s for", "nav_price": "Pricing", "nav_faq": "FAQ", "nav_cta": "Join the waitlist", "cta_join_full": "Join the waitlist →", "cta_reserve": "Claim my spot →", "hero_eyebrow": "<span class=\"pulse\"></span>AI community manager for WhatsApp", "hero_h1": "It’s not a tool.<br><span class=\"accent\">It’s a hire.</span>", "hero_lede": "The community manager for your WhatsApp community. It works in the group and reports back to you in private.", "hero_grpname": "Marketing Membership 🚀", "hero_grpsub": "1,240 members · Laura, Diego, Vibra…", "mq1": "Built 100% for WhatsApp", "mq2": "No card to get started", "mq3": "Your data is yours — export it or delete it", "mq4": "You decide what a human signs off on", "mq5": "Up and running in minutes", "vo_label": "The problem it solves", "vo_title": "Your community’s real value is in<br class='d-br'>conversations nobody can see.", "vo_sub": "Here’s the four things you’re hiring it to do.", "vo_t1": "↑ Engagement", "vo_h1": "A community that keeps itself talking", "vo_p1": "It replies, sparks conversation, and keeps the energy up every day. Nobody gets left on read.", "vo_t2": "↓ Churn", "vo_h2": "Keeps the members already paying", "vo_p2": "It catches who’s going cold before they cancel and helps you win them back.", "vo_t3": "🤝 Networking", "vo_h3": "The reason they renew", "vo_p3": "It introduces the right people at the right moment.", "vo_t4": "↑ Revenue", "vo_h4": "Turns signals into sales", "vo_p4": "The people asking about your next program are your warmest leads.", "en_label": "How it works · three engines, two levels", "en_title": "Listen. Understand. Activate.", "en_sub": "Like a great community manager: it listens to every conversation, understands your people, and acts for you.", "en1_num": "01 · Listen", "en1_h": "It reads what no one has time to read.", "en1_p": "While you sleep, hundreds of messages pile up across your groups. Vibra reads every one, tells you what happened, and hands you a plan.", "en2_num": "02 · Understand", "en2_h": "It knows who’s who — and who should meet whom.", "en2_p": "Every community has people with something to offer and people who need it, but they never cross paths. Vibra finds them and connects them.", "en3_num": "03 · Activate", "en3_h": "It keeps the community alive, even when you’re not around.", "en3_p": "Welcomes, answers, reminders — done, not just suggested. At the end of the day it tells you what it handled.", "fr_label": "Autonomy with a line", "fr_title": "It handles the routine. It checks with you on what matters.", "fr_sub": "The routine stuff Vibra handles on its own, all logged. The sensitive stuff comes to your DMs with a draft ready, and nothing goes out without your approval.", "fr_h1": "No need to ask.", "fr_p1": "You set the rules once. Vibra works within them, around the clock, and every action is logged.", "fr_h2": "With your approval.", "fr_p2": "You get the context and the proposal. You reply like you would to a trusted employee.", "int_label": "One conversation, connected to all your tools", "int_title": "Your community lives on WhatsApp. Your information lives everywhere else.", "int_p1": "Vibra connects the group to the tools your operation runs on. Luma, Google Sheets, YouTube, your LMS, your CRM.", "int_p2": "And the other way around — the video you just posted to YouTube lands in the DMs of the people who were waiting for it. Nurture without the spam.", "sg_label": "Use cases", "sg_title": "Who is Vibra built for?", "sg_tab0": "Creator communities", "sg_tab1": "Professional communities", "sg0_h": "Your membership stays alive even while you’re recording.", "sg0_tag": "Creators, coaches, memberships and course cohorts", "sg0_f1h": "Nobody falls through the cracks", "sg0_f1p": "It welcomes every newcomer and connects them to the right people and content. They don’t ghost you in week one.", "sg0_f2h": "Questions, handled", "sg0_f2p": "The link, the date, the replay. Answered on the spot. You never answer them again.", "sg0_f3h": "Less churn", "sg0_f3p": "It flags who’s about to leave before they do, with the message ready to pull them back.", "sg0_f4h": "Free content ideas", "sg0_f4p": "What your people ask over and over is your next video. Vibra pulls it out of the scroll for you.", "sg0_f5h": "More turnout at your events", "sg0_f5p": "It announces, confirms who’s in, and reminds the rest. You chase no one.", "sg0_f6h": "It wakes up the quiet ones", "sg0_f6p": "The ones who’ve gone quiet for weeks, Vibra messages one by one. Half the dormant crowd comes back.", "sg1_h": "Your network finally has someone looking after it 24/7.", "sg1_tag": "Founders, executives, entrepreneurs, accelerators and alumni networks", "sg1_f1h": "The right introductions", "sg1_f1p": "It knows who needs whom and sets up the intro.", "sg1_f2h": "The sensitive stuff, with you", "sg1_f2p": "Nothing delicate goes through the group. It comes to your DMs. The community just sees a thriving group.", "sg1_f3h": "It forgets nothing", "sg1_f3p": "What was said, what was decided, who asked for what. All saved, nothing lost in the scroll.", "sg1_f4h": "Your Monday recap", "sg1_f4p": "What happened, who showed up, what lit the group up. You’re caught up in five minutes.", "sg1_f5h": "Events that actually fill up", "sg1_f5p": "It announces, confirms who’s coming, handles logistics, and follows up. You just show up.", "sg1_f6h": "It wakes up the quiet ones", "sg1_f6p": "The ones who’ve been gone for months, Vibra messages one by one. The dormant network starts moving again.", "pr_label": "Launch pricing · first communities only", "pr_unit": "per active member \u00a0·\u00a0 per month", "pr_sub": "<strong>You only pay for who participates.</strong> Silent members are never charged.", "wl_title": "Save your spot with your WhatsApp number", "wl_hint": "To confirm your spot, we’ll open a WhatsApp conversation.", "wl_oktitle": "✓ You’re on the list!", "wl_okbody": "We opened a WhatsApp with your message ready. <strong>Just send it and your spot is confirmed.</strong> If it didn’t open, <a class=\"ok-link\" href=\"#\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--green);font-weight:700;text-decoration:underline\">open it here</a> 🟢", "faq_label": "FAQ", "faq_title": "The questions everyone asks.", "faq_q1": "What counts as an “active member”?", "faq_q2": "Is my number at risk of getting banned?", "faq_q3": "How does Vibra connect to WhatsApp?", "faq_q4": "Does Vibra read every message in my community?", "faq_q5": "What happens to my community’s data?", "faq_q6": "Can a member opt out of being profiled?", "faq_q7": "Do members know Vibra is in the group?", "faq_q8": "Can I train Vibra on my own material?", "faq_q9": "Can Vibra replace my community manager?", "faq_q10": "How is it different from a bot like ManyChat?", "faq_q11": "What if Vibra gets something wrong?", "faq_q12": "How does pricing work?", "faq_a1": "<p>Someone who wrote, reacted, or talked to Vibra in DMs during the month. Doesn’t matter how many times — it counts once a month.</p><p>If your community has 1,000 people and 300 participate, you pay for 300. The silent ones are never charged.</p>", "faq_a2": "<p>Your number is safe. Vibra works off its own number, separate from yours and your business line, so any risk sits on its line, not yours.</p><p>It also replies at a human pace, not like a machine blasting messages — which is exactly what Meta cracks down on.</p>", "faq_a3": "<p>It has its own number and joins your group like any other team member. You add it just like you’d add a person.</p><p>Today WhatsApp has no official API for large community groups, so this is the way any community manager — human or AI — can actually be inside your group.</p>", "faq_a4": "<p>Yes, the same way a human community manager would. It’s the only way to do the job — to catch the unanswered question, the member going cold, the complaint that’s building.</p><p>The difference is that every action Vibra takes is logged and reviewable. A human can’t give you that.</p>", "faq_a5": "<p>It’s yours. It’s never shared with other communities or used to train third-party models.</p><p>You can export everything and delete everything — profiles, history, settings — whenever you want, no need to ask anyone.</p>", "faq_a6": "<p>Yes. If a member asks to be left out of the analysis, they’re left out, and Vibra respects it across the board — from re-engagement to member intros.</p>", "faq_a7": "<p>Yes. It shows up as a regular participant, with its name, and we recommend introducing it openly as part of the team. Healthy communities know who’s looking after them.</p><p>What you control is how much it speaks in public and how much it works in private with you.</p>", "faq_a8": "<p>Yes, that’s the whole point. You teach it your tone, your rules, and your go-to answers over chat, hand it your docs, and it learns from every correction you make.</p><p>The more you teach it, the more it becomes yours.</p>", "faq_a9": "<p>Depends on your situation, and we’ll tell you straight. If nobody’s running the community today, or someone’s doing it part-time between a hundred other things, Vibra covers the whole role from day one.</p><p>If you already have a community team, Vibra is their leverage, not their replacement. It takes the operational load so your team spends its time on what only a human can do — strategy, content, and real relationships. The best results are humans with Vibra, not humans versus Vibra.</p>", "faq_a10": "<p>A traditional bot lives in the 1:1 chat, waits for the exact command, and follows rules you write. Vibra lives where your community lives — the group. It understands natural language, remembers each person, and takes initiative: it spots what needs doing and does it, or hands it to you drafted in your DMs.</p>", "faq_a11": "<p>You set the line. What it handles on its own and what needs your OK in DMs. Everything it does solo is logged, and the sensitive stuff (a key client, a delicate topic, a crisis) always runs by you before it goes out.</p>", "faq_a12": "<p>Launch pricing of <span class=\"js-cur\">$1</span> per active member per month, for the first communities on the waitlist only. You pay for the people who participate, not the whole list, and you come in with guided onboarding.</p>", "fin_h": "<span class=\"l1\">Your community already has the people.</span><span class=\"line2\">Time to give it more Vibra.</span>", "fin_p": "The first communities come in at launch pricing. Yours can be one of them.", "foot_tag": "Your community already has the people.<br>Time to give it more Vibra.", "foot_product": "Product", "foot_compare": "Cost comparison", "foot_contact": "Contact", "foot_waitlist": "Waitlist", "foot_copy": "© 2026 Vibra · Made from Spain 🇪🇸", "foot_motto": "Listen. Understand. Activate."};
+  const CHAT_EN = {"¿Quién hace el trabajo?":"Who does the work?","Tú armas flujos, plantillas y reglas":"You build flows, templates and rules","Él, cuando puede":"They do, when they can","Vibra. Tú solo apruebas lo importante":"Vibra. You just approve what matters","La duda de las 2am":"The 2am question","Espera el comando exacto":"Waits for the exact command","La verá mañana, quizás":"They’ll see it tomorrow, maybe","La respondió a las 2:01":"Answered it at 2:01","El nuevo miembro":"The new member","Pega el mensaje genérico":"Pastes the generic message","Saluda cuando se acuerda":"Says hi when they remember","Lo recibió y le presentó a alguien":"Welcomed them and made an intro","El miembro que se enfría":"The member going cold","No lo ve":"Doesn’t notice","Imposible leer 4.000 mensajes":"Can’t read 4,000 messages","Te escribió en privado con el rescate listo":"DM’d you with the win-back ready","En el grupo · público": "In the group · public", "Contigo · privado": "With you · private", "En el grupo · resuelve solo": "In the group · handles it solo", "En tu chat privado · espera tu OK": "In your DMs · waits for your OK", "mientras tanto, en tu chat privado": "meanwhile, in your DMs", "en línea": "online", "alguien sabe si la sesión de hoy se grabó? me la perdí 😩": "did anyone catch if today’s session was recorded? i missed it 😩", "¡Hola Laura! Sí 🙌 La grabación ya está disponible — te la paso por privado para no llenar el grupo 👌": "Hey Laura! Yes 🙌 The recording’s up — I’ll send it to you in DM so we don’t clutter the group 👌", "esta comunidad es otro nivel 🔥": "this community is on another level 🔥", "👀 ojo con Laura, preguntó por la grabación pero su renovación venció hace 3 días y sigue en el grupo. Le mandaría la grabación junto con esto 👇": "👀 heads up on Laura — she asked for the recording but her renewal lapsed 3 days ago and she’s still in the group. I’d send the recording along with this 👇", "Borrador": "Draft", "Laura, aquí está la grabación 🎥 Aprovecho para avisarte que tu membresía venció el lunes — ¿la renuevo para que no pierdas acceso a lo que viene?": "Laura, here’s the recording 🎥 Quick heads up — your membership lapsed on Monday. Want me to renew it so you don’t lose access to what’s coming?", "perfecto, envíalo 👍": "perfect, send it 👍", "Enviado ✅ Te aviso si renueva.": "Sent ✅ I’ll let you know if she renews.", "buenas ☀️ te resumo la noche y te dejo 3 cosas para hoy 👇": "morning ☀️ here’s the overnight recap and 3 things for today 👇", "1️⃣ 14 personas preguntaron por tu próximo evento — te armo la lista para escribirles 💰<br>2️⃣ Carla lleva 2 semanas sin aparecer, yo le hablo para traerla de vuelta<br>3️⃣ se armó un buen debate y quedaron 3 preguntas sin responder, ¿las contesto? 📝": "1️⃣ 14 people asked about your next event — I’ll pull the list so you can reach out 💰<br>2️⃣ Carla’s been gone 2 weeks, I’ll message her to bring her back<br>3️⃣ a great thread kicked off and 3 questions went unanswered — want me to handle them? 📝", "dale a las 3 🔥": "do all 3 🔥", "alguien ha conseguido clientes por LinkedIn? estoy medio perdida 😅": "has anyone landed clients through LinkedIn? i’m kinda lost 😅", "Andrea, justo Marcos contó en marzo cómo armó su sistema de clientes por LinkedIn — uno de los mejores hilos del grupo 🏆 @Marcos, ¿le cuentas? Andrea, te paso el resumen por privado 📩": "Andrea, Marcos actually broke down his whole LinkedIn client system back in March — one of the best threads in here 🏆 @Marcos, want to share? Andrea, I’ll send you the recap in DM 📩", "jaja buena memoria 😂 Andrea claro, escríbeme": "haha good memory 😂 Andrea for sure, hit me up", "cierre del día 🌙 esto hice hoy mientras grababas 👇": "end-of-day wrap 🌙 here’s what I handled while you were recording 👇", "✅ recibí a 2 nuevos y los presenté al grupo<br>✅ respondí 11 dudas<br>✅ Carla volvió a escribir, le di la bienvenida de vuelta 🎉<br>✅ reviví el chat con una pregunta y se armó conversación": "✅ welcomed 2 new members and introduced them to the group<br>✅ answered 11 questions<br>✅ Carla posted again — I welcomed her back 🎉<br>✅ revived the chat with a question and a real conversation took off", "crack 👏": "legend 👏", "a qué hora es el evento de mañana?": "what time is the event tomorrow?", "Mañana a las 18:00, hora de Madrid 🗓️ que para ti son las 13:00 en CDMX. Les mando recordatorio al grupo 1 hora antes. Lucía, si quieres el link de calendario te lo paso por privado 👌": "Tomorrow at 6:00 PM Madrid time 🗓️ which is 11:00 AM for you in NYC. I’ll drop a reminder in the group 1 hour before. Lucía, want the calendar link? I’ll DM it to you 👌", "🤝 Diego preguntó en el grupo si alguien conoce gente en Mercado Libre. Valeria, de la comunidad, contó que trabajó ahí cuando se presentó. ¿Los pongo en contacto?": "🤝 Diego asked in the group if anyone knows people at MercadoLibre. Valeria, from the community, mentioned she worked there when she introduced herself. Want me to connect them?", "sí, conéctalos 🤝": "yes, connect them 🤝", "Hecho ✅ Valeria respondió \"claro, que me escriba\" 🙌": "Done ✅ Valeria replied “of course, have him reach out” 🙌", "quién tiene la renovación vencida este mes?": "who’s got a lapsed renewal this month?", "Según Hotmart son 3 miembros 💳 Laura (3 días), Pedro (1 semana) y Ana (venció hoy). Laura sigue súper activa en el grupo — ¿le mando primero a ella un recordatorio amable?": "Per Hotmart it’s 3 members 💳 Laura (3 days), Pedro (1 week), and Ana (lapsed today). Laura’s still super active in the group — want me to send her a friendly reminder first?", "sí, y a los otros dos mañana": "yes, and the other two tomorrow", "Hecho ✅ Programados para mañana 10am.": "Done ✅ Scheduled for 10 AM tomorrow.", "quiénes del grupo confirmaron al evento de mañana en Luma?": "who in the group RSVP’d to tomorrow’s event on Luma?", "Confirmaron 38 de 52 invitados ✅ Del grupo, faltan 9 — incluidos 3 de tus top-10. ¿Les mando un recordatorio personal por privado y actualizo la hoja de asistencia?": "38 of 52 invitees confirmed ✅ From the group, 9 are missing — including 3 of your top 10. Want me to DM them a personal reminder and update the attendance sheet?", "sí a ambos": "yes to both", "Listo, 9 recordatorios enviados y Sheet actualizado 📋": "Done — 9 reminders sent and the Sheet’s updated 📋", "quiénes del reto no han entregado la tarea 2?": "who in the challenge hasn’t turned in assignment 2?", "Según tu hoja de Google Sheets son 14 de 60 📋 De ellos, 9 siguen activos en el grupo. ¿Les mando un empujón por privado con el link de entrega y les doy hasta el viernes?": "Per your Google Sheet it’s 14 of 60 📋 Of those, 9 are still active in the group. Want me to DM them a nudge with the submission link and give them until Friday?", "dale, tono motivador 💪": "go for it, keep it motivating 💪", "acabo de subir un video a YouTube — muévelo en la comunidad": "just dropped a new video on YouTube — push it in the community", "🎯 Lo vi. 12 personas preguntaron por ese tema este mes — se lo mando por privado solo a ellas, con una línea de por qué les sirve. Al resto, mención natural cuando salga en el grupo. ¿Va?": "🎯 Saw it. 12 people asked about that exact topic this month — I’ll DM it just to them, with a line on why it’s useful. For everyone else, a natural mention when it comes up in the group. Good?", "perfecto así": "perfect like that"};
 
   // Guardar la versión ES original de cada elemento marcado
   function snapshotES(){
